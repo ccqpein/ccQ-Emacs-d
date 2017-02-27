@@ -18,6 +18,7 @@
 (global-hl-line-mode 1)
 (global-linum-mode t) ;; enable line numbers globally
 
+
 ;;;;;;; autocomplete ;;;;;;
 (require 'auto-complete)
 (require 'go-autocomplete)

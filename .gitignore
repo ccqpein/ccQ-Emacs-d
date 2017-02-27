@@ -1,5 +1,8 @@
 .*DS_Store
 /*
+!README.md
 !.gitignore
 !init.el
 !plugins/
+!packages
+!install-packages.el
