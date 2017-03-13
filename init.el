@@ -83,6 +83,63 @@
 (require 'solarized-dark-theme)
 
 
+;;;;;; Helm ;;;;;;;;;;;;
+(require 'helm)
+(require 'helm-config)
+(helm-mode 1)
+(helm-autoresize-mode t)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-s") 'helm-occur)
+(global-set-key (kbd "C-c h g") 'helm-google-suggest)
+
+(setq helm-split-window-in-side-p           t
+      helm-move-to-line-cycle-in-source     t
+      helm-ff-search-library-in-sexp        t
+      helm-M-x-fuzzy-match                  t
+      helm-buffers-fuzzy-matching           t
+      helm-locate-fuzzy-match               t
+      helm-recentf-fuzzy-match              t
+      helm-semantic-fuzzy-match             t
+      helm-imenu-fuzzy-match                t
+      helm-scroll-amount                    8
+      helm-ff-file-name-history-use-recentf t)
+
+(require 'helm-gtags)
+
+(setq
+ helm-gtags-ignore-case t
+ helm-gtags-auto-update t
+ helm-gtags-use-input-at-cursor t
+ helm-gtags-pulse-at-cursor t
+ helm-gtags-prefix-key "\C-cg"
+ helm-gtags-suggested-key-mapping t
+ )
+
+(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
+(define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
+(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+
+;; Enable helm-gtags-mode
+(add-hook 'dired-mode-hook 'helm-gtags-mode)
+(add-hook 'eshell-mode-hook 'helm-gtags-mode)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'emacs-lisp-mode-hook 'helm-gtags-mode)
+(add-hook 'lisp-mode-hook 'helm-gtags-mode)
+(add-hook 'lisp-interaction-mode-hook 'helm-gtags-mode)
+(add-hook 'slime-repl-mode-hook 'helm-gtags-mode)
+(add-hook 'clojure-mode-hook 'helm-gtags-mode)
+(add-hook 'cider-repl-mode-hook 'helm-gtags-mode)
+
+
 ;;;;;; Magit ;;;;;;;
 (global-set-key (kbd "C-x M-G") 'magit-dispatch-popup)
 (global-set-key (kbd "C-x M-g") 'magit-status)
@@ -123,7 +180,7 @@
 ;;;;;; Google ;;;;;;;;;;;;;;;;
 (require 'google-this)
 (google-this-mode 1)
-(global-set-key (kbd "C-c g") 'google-this-mode-submap)
+(global-set-key (kbd "C-c /") 'google-this-mode-submap)
 
 
 ;;;;;; markdown mode ;;;;;;
@@ -277,7 +334,7 @@
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
    (quote
-    (ggtags solarized-theme ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+    (helm-gtags helm solarized-theme ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
  '(visible-bell nil))
 
 (custom-set-faces
