@@ -140,6 +140,7 @@
 (add-hook 'cider-repl-mode-hook 'helm-gtags-mode)
 (add-hook 'python-mode 'helm-gtags-mode)
 (add-hook 'elpy-mode-hook 'helm-gtags-mode)
+(add-hook 'web-mode-hook 'helm-gtags-mode)
 
 
 ;;;;;; Magit ;;;;;;;
@@ -337,6 +338,7 @@
  '(package-selected-packages
    (quote
     (helm-gtags helm solarized-theme ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+ '(recentf-max-saved-items 10)
  '(visible-bell nil))
 
 (custom-set-faces
