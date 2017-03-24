@@ -289,7 +289,8 @@
 
 (add-hook 'web-mode-hook
           '(lambda ()
-             (define-key web-mode-map (kbd "C-c s") 'toggle-php-flavor-mode)))
+             (define-key web-mode-map (kbd "C-c s") 'toggle-php-flavor-mode)
+             (define-key web-mode-map (kbd "C-c C-;") 'web-mode-comment-or-uncomment)))
 
 
 ;;;;;;; PHP mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
