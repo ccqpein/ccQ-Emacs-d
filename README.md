@@ -43,7 +43,7 @@ List all languages support and the dependencies that need install in system. All
 
 ## About custom setting
 
-The custom setting configure at the bottle of `init.el`. Focus on `jdee-jdk-registry`, you should change jdk path to your java home dir. 
+The custom setting configure at the bottle of `init.el`. Focus on `jdee-jdk-registry`, you should change jdk path to your java home dir, or use `/Library/Java/Home` symbolic link instead of true jdk path.
 
 ## About Plugins
 

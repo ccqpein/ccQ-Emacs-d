@@ -292,6 +292,7 @@
         :placeOpenBraceOnNewLineForFunctions
         nil))
 
+(setq tide-tsserver-executable "/usr/local/bin/tsserver")
 
 ;;;;;;; web mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'web-mode)
@@ -368,7 +369,7 @@
  '(jdee-compiler (quote ("javac")))
  '(jdee-jdk-registry
    (quote
-    (("1.8" . "/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home"))))
+    (("1.8" . "/Library/Java/Home"))))
  '(magit-diff-arguments (quote ("--no-ext-diff" "--stat")))
  '(markdown-command "~/.emacs.d/plugins/open-markdown-to-web.sh")
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
