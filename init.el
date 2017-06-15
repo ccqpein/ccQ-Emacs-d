@@ -17,7 +17,7 @@
 (add-to-list 'default-frame-alist '(height . 60))
 (global-hl-line-mode 1)
 (global-linum-mode t) ;; enable line numbers globally
-
+(tool-bar-mode -1)
 
 ;;;;;;; autocomplete ;;;;;;
 (require 'auto-complete)
