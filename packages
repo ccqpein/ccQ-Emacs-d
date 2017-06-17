@@ -1,6 +1,8 @@
+monokai-theme
+ensime
+tide
 helm
 helm-gtags
-solarized-theme
 ac-cider
 cider
 clojure-mode

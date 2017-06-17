@@ -17,8 +17,14 @@
 (add-to-list 'default-frame-alist '(height . 60))
 (global-hl-line-mode 1)
 (global-linum-mode t) ;; enable line numbers globally
-(defalias 'list-buffers 'ibuffer) ; make ibuffer default
+;; close bars
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+
+(setq backup-directory-alist '(("" . "~/.emacs.d/backups")))
+(defalias 'list-buffers 'ibuffer) ; make ibuffer default
+
 
 ;;;;;;; autocomplete ;;;;;;
 (require 'auto-complete)
@@ -81,7 +87,7 @@
 
 
 ;;;;;; Styling and Themes ;;;;;;;
-(require 'solarized-dark-theme)
+(load-theme 'monokai t)
 
 
 ;;;;;; Helm ;;;;;;;;;;;;
@@ -356,6 +362,12 @@
 (add-hook 'js2-mode-hook #'setup-tide-mode) ; for typescript mode
 
 
+;;;;;;;; Scala mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+
+
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -368,15 +380,13 @@
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
  '(jdee-compiler (quote ("javac")))
- '(jdee-jdk-registry
-   (quote
-    (("1.8" . "/Library/Java/Home"))))
+ '(jdee-jdk-registry (quote (("1.8" . "/Library/Java/Home"))))
  '(magit-diff-arguments (quote ("--no-ext-diff" "--stat")))
  '(markdown-command "~/.emacs.d/plugins/open-markdown-to-web.sh")
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
    (quote
-    (tide helm-gtags helm solarized-theme ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+    (monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
  '(recentf-max-saved-items 10)
  '(visible-bell nil))
 
