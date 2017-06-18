@@ -224,14 +224,18 @@
 ;;;;;;;;;Golang;;;;;;;;;;;;;;;;;;;;
 (require 'go-mode)
 ;;(require 'go-autocomplete) add this line to autocomplete config
+(with-eval-after-load 'go-mode
+   (require 'go-autocomplete))
 
-(defun my-go-mode-hook () ; Call Gofmt before saving
-  (add-hook 'before-save-hook 'gofmt-before-save) ; Customize gofmt command to run go build
+(defun my-go-mode-hook ()
+  (setq gofmt-command "goimports") ; Use goimports instead of go-fmt
+  (add-hook 'before-save-hook 'gofmt-before-save) ; Call Gofmt before saving
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
-           "go generate && go build -v && go test -v && go vet")) ; Godef jump key binding
+           "go generate && go build -v && go test -v && go vet")) ; Customize gofmt command to run go build
   (setq tab-width 4)
-  (local-set-key (kbd "M-.") 'godef-jump)
+  (local-set-key (kbd "M-.") 'godef-jump); Godef jump key binding
+  (local-set-key (kbd "M-*") 'pop-tag-mark)
   (define-key (current-local-map) "\C-c\C-c" 'compile)
   (define-key (current-local-map) "\C-c\C-r" 'go-remove-unused-imports)
   (define-key (current-local-map) "\C-c\i" 'go-goto-imports))
@@ -365,7 +369,6 @@
 ;;;;;;;; Scala mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
 
 
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
