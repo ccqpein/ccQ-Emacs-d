@@ -21,6 +21,8 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
+(show-paren-mode 1)
+(setq show-paren-style 'mix)
 
 (setq backup-directory-alist '(("" . "~/.emacs.d/backups")))
 (defalias 'list-buffers 'ibuffer) ; make ibuffer default
@@ -180,7 +182,8 @@
                   (inferior-emacs-lisp-mode . "elisp")
                   (haskell-interactive-mode . "haskell")
                   (cider-repl-mode . "clojure")
-                  (jdee-mode . "java")))
+                  (jdee-mode . "java")
+		  (scala-mode . "scala")))
   (add-to-list 'dash-at-point-mode-alist-legacy queryS)
   (add-to-list 'dash-at-point-mode-alist queryS)
   )
@@ -398,4 +401,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(region ((t (:inherit highlight :background "SkyBlue4"))))
+ '(show-paren-match ((t (:foreground "#A6E22E" :inverse-video t :weight normal)))))
