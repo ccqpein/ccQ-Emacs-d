@@ -4,8 +4,8 @@ Personal Emacs configure
 
 My environment:
 
-  * Emacs 25.1
-  * macOS 10.12.3
+  * Emacs 25.2
+  * macOS 10.12.5
 
 All configure files store in `~/.emacs.d` that Emacs default path.
 
@@ -36,9 +36,13 @@ List all languages support and the dependencies that need install in system. All
 + Java
     - jdk
 + Python
+	- ipython
 + Golang
 + Swift
 + Haskell
+	- cabal
++ Scala (still working on)
+	- sbt 
 + HTML & PHP
 
 ## About custom setting
@@ -48,6 +52,4 @@ The custom setting configure at the bottle of `init.el`. Focus on `jdee-jdk-regi
 ## About Plugins
 
 Some scripts or tools. Get more detail in plugins [README](./plugins/README.md)
-
-
 
