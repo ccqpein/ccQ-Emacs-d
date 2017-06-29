@@ -51,9 +51,15 @@
 (global-set-key (kbd "C-c M-\\") 'mc/mark-all-in-region)
 
 
+;;;;;;;; highlight-symbol ;;;;;;;;;;;;;;;;;;
+(require 'highlight-symbol)
+(global-set-key (kbd "C-M-]") 'highlight-symbol-next)
+(global-set-key (kbd "C-M-[") 'highlight-symbol-prev)
+
+
 ;;;;;;;; Neotree ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'neotree)
-(global-set-key (kbd "C-x M-D") 'neotree-toggle)
+(global-set-key (kbd "C-x M-d") 'neotree-toggle)
 (setq neo-smart-open t)
 
 
@@ -147,10 +153,12 @@
 (add-hook 'slime-repl-mode-hook 'helm-gtags-mode)
 (add-hook 'clojure-mode-hook 'helm-gtags-mode)
 (add-hook 'cider-repl-mode-hook 'helm-gtags-mode)
-(add-hook 'python-mode 'helm-gtags-mode)
+(add-hook 'python-mode-hook 'helm-gtags-mode)
 (add-hook 'elpy-mode-hook 'helm-gtags-mode)
 (add-hook 'web-mode-hook 'helm-gtags-mode)
-(add-hook 'haskell-mode 'helm-gtags-mode)
+(add-hook 'swift-mode-hook 'helm-gtags-mode)
+(add-hook 'haskell-mode-hook 'helm-gtags-mode)
+(add-hook 'scala-mode-hook 'helm-gtags-mode)
 
 
 ;;;;;; Magit ;;;;;;;
@@ -176,6 +184,7 @@
   "Search the word at point with Dash." t nil)
 ;; Dash intergration does not have some keys' words connection, add code below to make it happen
 (dolist (queryS '((swift-mode . "swift")
+		  (swift-repl-mode . "swift")
                   (lisp-mode . "lisp")
                   (slime-repl-mode . "lisp")
                   (lisp-interaction-mode . "elisp")
@@ -309,6 +318,7 @@
 
 (setq tide-tsserver-executable "/usr/local/bin/tsserver")
 
+
 ;;;;;;; web mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -371,8 +381,9 @@
 
 
 ;;;;;;;; Scala mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'scala-mode)
 (require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(require 'sbt-mode)
 
 
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -393,10 +404,9 @@
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
    (quote
-    (monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+    (highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
  '(recentf-max-saved-items 10)
  '(visible-bell nil))
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
