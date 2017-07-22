@@ -42,6 +42,11 @@
 (global-auto-complete-mode t)
 
 
+;;;;;;; yasnippet ;;;;;;
+(require 'yasnippet)
+(yas-global-mode 1)
+
+
 ;;;;;;;; multiple-cursors ;;;;;;;;;;;;;;;;
 (require 'multiple-cursors)
 (global-set-key (kbd "M-\\") 'mc/edit-lines)
