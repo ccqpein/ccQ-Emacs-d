@@ -22,7 +22,7 @@
 
 ;(print *packages-list)
 
-(unless package-activated-contents
+(unless package-archive-contents
   (package-refresh-contents))
 
 ;;; install packages
