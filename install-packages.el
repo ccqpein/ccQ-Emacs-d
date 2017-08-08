@@ -1,4 +1,4 @@
-#! emacs --script 
+#! emacs -q --script 
 
 ;;; make path var
 (defvar cpath "~/.emacs.d/")
@@ -31,5 +31,5 @@
       (princ (format "%s already installed \n" package))
     (progn
       (princ (format "%s is installing \n" package))
-      (package-install package)
-      (princ (format "%s installed \n\n")))))
+      (package-install (intern package))
+      (princ (format "%s installed \n\n" package)))))
