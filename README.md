@@ -13,7 +13,15 @@ All configure files store in `~/.emacs.d` that Emacs default path.
 
 ### Install
 
-First clone to emacs.d folder
+First install emacs >= 25
+
+`brew install emacs`
+
+Make sure your emacs is install successfully.
+
+`which emacs` -> `/usr/local/bin/emacs`
+
+Clone to emacs.d folder
 
 `git clone https://github.com/ccqpein/ccQ-Emacs-d.git ~/.emacs.d`
 

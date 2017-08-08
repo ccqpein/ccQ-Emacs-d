@@ -20,6 +20,11 @@
                          (insert-file-contents (concat cpath "packages"))
                          (split-string (buffer-string) "\n" t)))
 
+;(print *packages-list)
+
+(unless package-activated-contents
+  (package-refresh-contents))
+
 ;;; install packages
 (dolist (package *packages-list)
   (if (package-installed-p (intern package))
