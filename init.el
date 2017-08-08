@@ -164,6 +164,7 @@
 (add-hook 'swift-mode-hook 'helm-gtags-mode)
 (add-hook 'haskell-mode-hook 'helm-gtags-mode)
 (add-hook 'scala-mode-hook 'helm-gtags-mode)
+(add-hook 'go-mode-hook 'helm-gtags-mode)
 
 
 ;;;;;; Magit ;;;;;;;
