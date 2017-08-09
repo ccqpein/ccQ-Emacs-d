@@ -27,7 +27,7 @@ Clone to emacs.d folder
 
 Run script to install all packages 
 
-`emacs --script install-packages.el`
+`emacs -q --script install-packages.el`
 
 or run `install-packages.el` directly.
 
