@@ -45,6 +45,7 @@ List all languages support and the dependencies that need install in system. All
     - jdk
 + Python
 	- ipython
+	- autopep8
 + Golang
 + Swift
 + Haskell
