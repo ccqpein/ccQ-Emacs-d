@@ -22,6 +22,7 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (show-paren-mode 1)
+(blink-cursor-mode 1)
 (setq show-paren-style 'mix)
 
 (setq backup-directory-alist '(("" . "~/.emacs.d/backups")))
@@ -256,11 +257,11 @@
       (set (make-local-variable 'compile-command)
            "go generate && go build -v && go test -v && go vet")) ; Customize gofmt command to run go build
   (setq tab-width 4)
-  (local-set-key (kbd "M-.") 'godef-jump); Godef jump key binding
-  (local-set-key (kbd "M-*") 'pop-tag-mark)
-  (define-key (current-local-map) "\C-c\C-c" 'compile)
-  (define-key (current-local-map) "\C-c\C-r" 'go-remove-unused-imports)
-  (define-key (current-local-map) "\C-c\i" 'go-goto-imports))
+  ;(local-set-key (kbd "M-.") 'godef-jump); Godef jump key binding, rewrite by helm-gtags
+  ;(local-set-key (kbd "M-*") 'pop-tag-mark) ;rewrite by helm-gtags
+  (local-set-key (kbd "C-c C-c") 'compile)
+  (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
+  (local-set-key (kbd "C-c i") 'go-goto-imports))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
