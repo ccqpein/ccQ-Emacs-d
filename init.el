@@ -261,8 +261,13 @@
   ;(local-set-key (kbd "M-*") 'pop-tag-mark) ;rewrite by helm-gtags
   (local-set-key (kbd "C-c C-c") 'compile)
   (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
-  (local-set-key (kbd "C-c i") 'go-goto-imports))
-
+  (local-set-key (kbd "C-c i") 'go-goto-imports)
+  ;; update imenu regex expression to match two-lines funtion declare
+  (setq imenu-generic-expression
+        '(("type" "^[ \t]*type *\\([^ \t\n\r\f]*[ \t]*\\(struct\\|interface\\)\\)" 1)
+          ("func" "^func *\\(.*\\)" 1)))
+  )
+  
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 
