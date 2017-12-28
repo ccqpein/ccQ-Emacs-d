@@ -266,6 +266,7 @@
   (setq imenu-generic-expression
         '(("type" "^[ \t]*type *\\([^ \t\n\r\f]*[ \t]*\\(struct\\|interface\\)\\)" 1)
           ("func" "^func *\\(.*\\)" 1)))
+  ;;(setq helm-gtags--update-tags-command (lambda (how-to) '("global" "-u")))
   )
   
 (add-hook 'go-mode-hook 'my-go-mode-hook)
