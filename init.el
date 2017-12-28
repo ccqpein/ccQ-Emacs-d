@@ -281,7 +281,7 @@
             (setq swift-indent-offset 4)))
 
 
-;;;;;;;;; haskell ;;;;;;;;;;;;;
+;;;;;;;;; Haskell ;;;;;;;;;;;;;
 (require 'haskell-mode)
 (require 'hindent)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)

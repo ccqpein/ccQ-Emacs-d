@@ -18,7 +18,7 @@ Add dicts to auto-complete
 
 ### open-markdown-to-web.sh
 
-Need Marked 2
+Need change configuration to fit your environment
 
 ### open-markdown-marked2.sh
 
