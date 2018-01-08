@@ -35,7 +35,7 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (let ((ACpath (file-name-as-directory (car ac-dictionary-directories)))
-      (user-modes '("swift-mode" "lisp-mode")))
+      (user-modes '("swift-mode" "lisp-mode" "rust-mode")))
   (dolist (user-mode-name user-modes)
     (if (not (file-exists-p (concat ACpath user-mode-name)))
           (shell-command (concat "ln -s " "~/.emacs.d/plugins/" user-mode-name " " ACpath user-mode-name)))
@@ -409,6 +409,11 @@
 (require 'sbt-mode)
 
 
+;;;;;;;; Rust ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'rust-mode)
+(setq rust-format-on-save t)
+
+
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -428,7 +433,7 @@
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
    (quote
-    (highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+    (rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
  '(recentf-max-saved-items 10)
  '(visible-bell nil))
 (custom-set-faces
