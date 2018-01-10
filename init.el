@@ -231,9 +231,7 @@
 
 ;;;;;;;;pythono-mode;;;;;;;;;;;;;;;;;;
 (elpy-enable)
-; ipython 5 make elpy-use-ipython bug
-(elpy-use-ipython "ipython3")
-(setq python-shell-interpreter "ipython3"
+(setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "--simple-prompt --pprint")
 
 ; M-. conflict with helm-gtags, and helm-gtags is better
