@@ -29,6 +29,12 @@
 (defalias 'list-buffers 'ibuffer) ; make ibuffer default
 
 
+;;;;;;; lsp support ;;;;;;;
+(require 'lsp-mode)
+(require 'lsp-imenu)
+(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
+
+
 ;;;;;;; autocomplete ;;;;;;
 (require 'auto-complete)
 (require 'go-autocomplete)
@@ -415,8 +421,29 @@
 ;;;;;;;; Rust ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'rust-mode)
 (add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'rust-mode-hook #'flycheck-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'racer-mode-hook #'company-mode)
+
+;; maybe future, add hook lsp-rust-enable to rust-mode make racer-mode..
+;; cannot work, it looks I need define lsp-rust-enable by myself
+(lsp-define-stdio-client
+ ;; This can be a symbol of your choosing. It will be used as a the
+ ;; prefix for a dynamically generated function "-enable"; in this
+ ;; case: lsp-prog-major-mode-enable
+ lsp-rust
+ "rust"
+ ;; This will be used to report a project's root directory to the LSP
+ ;; server.
+ (lambda () default-directory)
+ ;; This is the command to start the LSP server. It may either be a
+ ;; string containing the path of the command, or a list wherein the
+ ;; car is a string containing the path of the command, and the cdr
+ ;; are arguments to that command.
+ '("rustup" "run" "nightly" "rls"))
+(setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
+;(add-hook 'rust-mode-hook #'lsp-rust-enable)
+
 (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 (setq company-tooltip-align-annotations t)
 (setq rust-format-on-save t)
@@ -441,7 +468,7 @@
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
    (quote
-    (racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+    (lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
  '(recentf-max-saved-items 10)
  '(visible-bell nil))
 (custom-set-faces
