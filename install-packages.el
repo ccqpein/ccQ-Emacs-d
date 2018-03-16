@@ -1,4 +1,4 @@
-#! emacs -q --script 
+#!emacs -q --script 
 
 ;;; make path var
 (defvar cpath "~/.emacs.d/")
@@ -14,16 +14,14 @@
   (add-to-list 'package-archives url t))
 (package-initialize)
 
-
 ;;; read package list from `packages` file
 (defvar *packages-list (with-temp-buffer
                          (insert-file-contents (concat cpath "packages"))
                          (split-string (buffer-string) "\n" t)))
 
 ;(print *packages-list)
-
-(unless package-archive-contents
-  (package-refresh-contents))
+;; refrash contents anyway in case cannot found package
+(package-refresh-contents)
 
 ;;; install packages
 (dolist (package *packages-list)
