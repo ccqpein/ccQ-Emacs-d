@@ -229,6 +229,14 @@
 (global-set-key (kbd "C-c /") 'google-this-mode-submap)
 
 
+;;;;;; Org mode ;;;;;;;;;;
+(require 'org)
+(define-key org-mode-map (kbd "C-c l") 'org-store-link)
+(define-key org-mode-map (kbd "C-c a") 'org-agenda)
+(setq org-agenda-files (list (getenv "ORG_PATH")))
+(setq org-log-done t)
+
+
 ;;;;;; markdown mode ;;;;;;
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)

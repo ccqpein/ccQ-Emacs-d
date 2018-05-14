@@ -52,6 +52,7 @@ List all languages support and the dependencies that need install in system. All
 	- cabal
 + Scala (still working on)
 	- sbt 
++ Rust
 + HTML & PHP
 
 ## About custom setting
