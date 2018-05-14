@@ -1,3 +1,4 @@
+;;; init file
 (require 'package)
 (dolist (url '(("melpa" . "https://melpa.org/packages/")
 	       ("melpa-stable" . "http://stable.melpa.org/packages/")
