@@ -55,6 +55,9 @@ List all languages support and the dependencies that need install in system. All
 + Rust
 + HTML & PHP
 
+## About org-mode
+`org-agenda-files` is be set by environment variable `$ORG_PATH`
+
 ## About custom setting
 
 The custom setting configure at the bottle of `init.el`. Focus on `jdee-jdk-registry`, you should change jdk path to your java home dir, or use `/Library/Java/Home` symbolic link instead of true jdk path.

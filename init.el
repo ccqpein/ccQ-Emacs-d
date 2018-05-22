@@ -265,7 +265,7 @@
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 
-;;;;;;;;;Golang;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;; Golang ;;;;;;;;;;;;;;;;;;;;
 (require 'go-mode)
 ;;(require 'go-autocomplete) add this line to autocomplete config
 (with-eval-after-load 'go-mode
