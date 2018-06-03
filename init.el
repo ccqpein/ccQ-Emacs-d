@@ -63,6 +63,32 @@
 (yas-global-mode 1)
 
 
+;;;;;;;; treemacs ;;;;;;;;;
+(require 'treemacs-mode)
+(setq treemacs-follow-after-init          t
+      treemacs-width                      25
+      treemacs-indentation                2
+
+      treemacs-git-integration            t
+      treemacs-git-mode                   'extended
+      treemacs-filewatch-mode             t
+      
+      treemacs-collapse-dirs              3
+      treemacs-silent-refresh             nil
+      treemacs-change-root-without-asking nil
+      treemacs-sorting                    'alphabetic-desc
+      treemacs-show-hidden-files          t
+      treemacs-never-persist              nil
+      treemacs-is-never-other-window      nil
+      treemacs-goto-tag-strategy          'refetch-index
+      
+)
+
+(global-set-key (kbd "C-x M-d") 'treemacs)
+(define-key treemacs-mode-map (kbd "M-p") 'treemacs-previous-project)
+(define-key treemacs-mode-map (kbd "M-n") 'treemacs-next-project)
+
+
 ;;;;;;;; multiple-cursors ;;;;;;;;;;;;;;;;
 (require 'multiple-cursors)
 (global-set-key (kbd "M-\\") 'mc/edit-lines)
@@ -78,10 +104,11 @@
 (global-set-key (kbd "C-M-[") 'highlight-symbol-prev)
 
 
+;;:= TODO: in trash now, waiting for delete if treemacs-mode is better
 ;;;;;;;; Neotree ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'neotree)
-(global-set-key (kbd "C-x M-d") 'neotree-toggle)
-(setq neo-smart-open t)
+;(require 'neotree)
+;(global-set-key (kbd "C-x M-d") 'neotree-toggle)
+;(setq neo-smart-open t)
 
 
 ;;;;;;;; Paredit ;;;;;;;;;;
@@ -482,7 +509,7 @@
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
    (quote
-    (flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+    (treemacs flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
  '(recentf-max-saved-items 10)
  '(visible-bell nil))
 (custom-set-faces
