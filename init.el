@@ -262,6 +262,7 @@
 (define-key org-mode-map (kbd "C-c a") 'org-agenda)
 (setq org-agenda-files (list (getenv "ORG_PATH")))
 (setq org-log-done t)
+(setq org-hide-leading-stars t)
 
 
 ;;;;;; markdown mode ;;;;;;
