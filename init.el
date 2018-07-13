@@ -104,13 +104,6 @@
 (global-set-key (kbd "C-M-[") 'highlight-symbol-prev)
 
 
-;;:= TODO: in trash now, waiting for delete if treemacs-mode is better
-;;;;;;;; Neotree ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(require 'neotree)
-;(global-set-key (kbd "C-x M-d") 'neotree-toggle)
-;(setq neo-smart-open t)
-
-
 ;;;;;;;; Paredit ;;;;;;;;;;
 (autoload 'enable-paredit-mode "paredit"
   "Turn on pseudo-structural editing of Lisp code."
@@ -356,9 +349,10 @@
 (add-hook 'cider-mode-hook 'ac-cider-setup)
 (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 
+;;:= TODO: below code in trash bin and waiting be deleted
 ;; conflict with gtags helm
-(define-key cider-mode-map (kbd "M-.") nil)
-(define-key cider-mode-map (kbd "M-f") 'cider-find-var)
+;(define-key cider-mode-map (kbd "M-.") nil)
+;(define-key cider-mode-map (kbd "M-f") 'cider-find-var)
 
 (eval-after-load "auto-complete"
        '(progn
