@@ -349,11 +349,6 @@
 (add-hook 'cider-mode-hook 'ac-cider-setup)
 (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 
-;;:= TODO: below code in trash bin and waiting be deleted
-;; conflict with gtags helm
-;(define-key cider-mode-map (kbd "M-.") nil)
-;(define-key cider-mode-map (kbd "M-f") 'cider-find-var)
-
 (eval-after-load "auto-complete"
        '(progn
           (add-to-list 'ac-modes 'cider-mode)
