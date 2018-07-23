@@ -7,6 +7,7 @@
 
 (dolist (path '("~/.emacs.d/elpa"
 		"~/.emacs.d/plugins/"
+		"~/.emacs.d/languages/"
                 ))
   (add-to-list 'load-path path))
 
@@ -62,32 +63,7 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-
-;;;;;;;; treemacs ;;;;;;;;;
-(require 'treemacs-mode)
-(setq treemacs-follow-after-init          t
-      treemacs-width                      25
-      treemacs-indentation                2
-
-      treemacs-git-integration            t
-      treemacs-git-mode                   'extended
-      treemacs-filewatch-mode             t
-      
-      treemacs-collapse-dirs              3
-      treemacs-silent-refresh             nil
-      treemacs-change-root-without-asking nil
-      treemacs-sorting                    'alphabetic-desc
-      treemacs-show-hidden-files          t
-      treemacs-never-persist              nil
-      treemacs-is-never-other-window      nil
-      treemacs-goto-tag-strategy          'refetch-index
-      
-)
-
-(global-set-key (kbd "C-x M-d") 'treemacs)
-(define-key treemacs-mode-map (kbd "M-p") 'treemacs-previous-project)
-(define-key treemacs-mode-map (kbd "M-n") 'treemacs-next-project)
-
+(require 'treemacs )
 
 ;;;;;;;; multiple-cursors ;;;;;;;;;;;;;;;;
 (require 'multiple-cursors)
@@ -103,25 +79,7 @@
 (global-set-key (kbd "C-M-]") 'highlight-symbol-next)
 (global-set-key (kbd "C-M-[") 'highlight-symbol-prev)
 
-
-;;;;;;;; Paredit ;;;;;;;;;;
-(autoload 'enable-paredit-mode "paredit"
-  "Turn on pseudo-structural editing of Lisp code."
-  t)
-(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-(add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
-(add-hook 'clojure-mode-hook 'enable-paredit-mode)
-(add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
-
-;;Stop SLIME's REPL from grabbing DEL, which is annoying when backspacing over a '('
-(defun override-slime-repl-bindings-with-paredit ()
-  (define-key slime-repl-mode-map
-    (read-kbd-macro paredit-backward-delete-key)
-    nil))
-(add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
-
+;(require 'init-lisp)
 
 ;;;;;;;; expand-region ;;;;;;;;;;;;;;;
 (require 'expand-region)
@@ -129,11 +87,7 @@
 (delete-selection-mode 1)
 
 
-;;;;;;;; exec-path-from-shell ;;;;;;;;;;;;;;;;;
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOPATH"))
-
+(require 'shell)
 
 ;;;;;; Styling and Themes ;;;;;;;
 (load-theme 'monokai t)
@@ -265,219 +219,25 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 
-;;;;;;;;;; JAVA-jdee ;;;;;;;;;;
-(let ((ACpath (file-name-as-directory (car ac-dictionary-directories))))
-  (if (not (file-exists-p (concat ACpath "jdee-mode")))
-      (shell-command (concat "ln -s " ACpath "java-mode " ACpath "jdee-mode"))))
-(load "jdee")
-(setq jdee-server-dir "~/.emacs.d/plugins/jdee-server/")
+(require 'init-java)
 
+(require 'init-python)
 
-;;;;;;;;pythono-mode;;;;;;;;;;;;;;;;;;
-(elpy-enable)
-(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "--simple-prompt --pprint")
+(require 'init-golang)
 
-; M-. conflict with helm-gtags, and helm-gtags is better
-(define-key elpy-mode-map (kbd "M-.") nil)
+(require 'init-swift)
 
-;; enable autopep8 formatting on save
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(require 'init-haskell)
 
+(require 'init-typescript)
 
-;;;;;;;;; Golang ;;;;;;;;;;;;;;;;;;;;
-(require 'go-mode)
-;;(require 'go-autocomplete) add this line to autocomplete config
-(with-eval-after-load 'go-mode
-   (require 'go-autocomplete))
+(require 'init-web-n-php)
 
-(defun my-go-mode-hook ()
-  (setq gofmt-command "goimports") ; Use goimports instead of go-fmt
-  (add-hook 'before-save-hook 'gofmt-before-save) ; Call Gofmt before saving
-  (if (not (string-match "go" compile-command))
-      (set (make-local-variable 'compile-command)
-           "go generate && go build -v && go test -v && go vet")) ; Customize gofmt command to run go build
-  (setq tab-width 4)
-  ;(local-set-key (kbd "M-.") 'godef-jump); Godef jump key binding, rewrite by helm-gtags
-  ;(local-set-key (kbd "M-*") 'pop-tag-mark) ;rewrite by helm-gtags
-  (local-set-key (kbd "C-c C-c") 'compile)
-  (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
-  (local-set-key (kbd "C-c i") 'go-goto-imports)
-  ;; update imenu regex expression to match two-lines funtion declare
-  (setq imenu-generic-expression
-        '(("type" "^[ \t]*type *\\([^ \t\n\r\f]*[ \t]*\\(struct\\|interface\\)\\)" 1)
-          ("func" "^func *\\(.*\\)" 1)))
-  ;;(setq helm-gtags--update-tags-command (lambda (how-to) '("global" "-u")))
-  )
-  
-(add-hook 'go-mode-hook 'my-go-mode-hook)
+(require 'init-js)
 
+(require 'init-scala)
 
-;;;;;;;;; swift ;;;;;;;;;;;;;;;;
-(require 'swift-mode)
-;;Because swift-mode cannot load from ad-modes automatically even add swift-mode to ac-modes aoready. So need addition sentence next make sure swift mode load auto-complete
-(add-hook 'swift-mode-hook
-          (lambda ()
-            (add-to-list 'ac-modes 'swift-mode)
-            (define-key (current-local-map) (kbd "\C-c\C-k") 'swift-mode:send-buffer)
-            (setq swift-indent-offset 4)))
-
-
-;;;;;;;;; Haskell ;;;;;;;;;;;;;
-(require 'haskell-mode)
-(require 'hindent)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'hindent-mode)
-(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-(define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
-(define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
-(define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
-(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
-(define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
-(define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
-
-
-;;;;;;;;; Clojure ;;;;;;;;;;;;
-(require 'clojure-mode)
-(require 'cider-mode)
-(require 'ac-cider)
-
-(add-hook 'clojure-mode-hook (lambda ()
-                             (define-key (current-local-map) (kbd "\C-c\C-z") 'cider-jack-in)))
-(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-(add-hook 'cider-mode-hook 'ac-cider-setup)
-(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-
-(eval-after-load "auto-complete"
-       '(progn
-          (add-to-list 'ac-modes 'cider-mode)
-          (add-to-list 'ac-modes 'cider-repl-mode)))
-
-
-;;;;;;; slime ;;;;;;;;;
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
-(setq slime-contribs '(slime-fancy))
-
-
-;;;;;;; typescript mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1))
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-
-(setq tide-format-options
-      '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions
-        t
-        :placeOpenBraceOnNewLineForFunctions
-        nil))
-
-(setq tide-tsserver-executable "/usr/local/bin/tsserver")
-
-
-;;;;;;; web mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-
-(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.blade\\.php\\'" . web-mode))
-
-(setq web-mode-enable-auto-closing t)
-(setq web-mode-enable-auto-pairing t)
-(setq web-mode-enable-current-element-highlight t)
-
-(add-hook 'web-mode-hook
-          '(lambda ()
-             (define-key web-mode-map (kbd "C-c s") 'toggle-php-flavor-mode)
-             (define-key web-mode-map (kbd "C-c C-;") 'web-mode-comment-or-uncomment)))
-
-;; for typescript mode
-(add-hook 'web-mode-hook
-          (lambda ()
-            (when (string-equal "tsx" (file-name-extension buffer-file-name))
-              (setup-tide-mode))
-            (when (string-equal "jsx" (file-name-extension buffer-file-name))
-              (setup-tide-mode))))
-
-
-;;;;;;; PHP mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'php-mode)
-(require 'ac-php)
-
-(defun toggle-php-flavor-mode ()
-  (interactive)
-  (cond ((string-prefix-p "PHP" mode-name)
-         (web-mode))
-        ((string-prefix-p "Web" mode-name)
-         (php-mode))))
-(global-set-key (kbd "") 'toggle-php-flavor-mode)
-
-(add-hook 'php-mode-hook
-          '(lambda ()
-             (define-key php-mode-map (kbd "M-.") 'ac-php-find-symbol-at-point)
-             (define-key php-mode-map (kbd "C-c s") 'toggle-php-flavor-mode)
-             ))
-
-
-;;;;;;;; Javascript mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-(add-hook 'js-mode-hook 'js2-minor-mode)
-(add-hook 'js2-mode-hook #'setup-tide-mode) ; for typescript mode
-
-
-;;;;;;;; Scala mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'scala-mode)
-(require 'ensime)
-(require 'sbt-mode)
-
-
-;;;;;;;; Rust ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'rust-mode)
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'flycheck-rust-setup)
-
-;; maybe future, add hook lsp-rust-enable to rust-mode make racer-mode..
-;; cannot work, it looks I need define lsp-rust-enable by myself
-(lsp-define-stdio-client
- ;; This can be a symbol of your choosing. It will be used as a the
- ;; prefix for a dynamically generated function "-enable"; in this
- ;; case: lsp-prog-major-mode-enable
- lsp-rust
- "rust"
- ;; This will be used to report a project's root directory to the LSP
- ;; server.
- (lambda () default-directory)
- ;; This is the command to start the LSP server. It may either be a
- ;; string containing the path of the command, or a list wherein the
- ;; car is a string containing the path of the command, and the cdr
- ;; are arguments to that command.
- '("rustup" "run" "nightly" "rls"))
-(setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
-;(add-hook 'rust-mode-hook #'lsp-rust-enable)
-
-(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-(setq company-tooltip-align-annotations t)
-(setq rust-format-on-save t)
+(require 'init-rust)
 
 
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
