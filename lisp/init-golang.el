@@ -1,5 +1,5 @@
 (require 'go-mode)
-;;(require 'go-autocomplete) add this line to autocomplete config
+(require 'go-autocomplete)
 (with-eval-after-load 'go-mode
    (require 'go-autocomplete))
 

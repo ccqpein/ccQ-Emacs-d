@@ -6,4 +6,4 @@
 !plugins/
 !packages
 !install-packages.el
-!languages/
+!lisp/

@@ -23,4 +23,4 @@
 (define-key treemacs-mode-map (kbd "M-p") 'treemacs-previous-project)
 (define-key treemacs-mode-map (kbd "M-n") 'treemacs-next-project)
 
-(provide 'treemacs)
+(provide 'init-treemacs)
