@@ -11,6 +11,7 @@
                 ))
   (add-to-list 'load-path path))
 
+(setq package-enable-at-startup nil)
 (package-initialize)
 
 
@@ -33,6 +34,10 @@
 
 ;;;;;; Styling and Themes ;;;;;;;
 (load-theme 'monokai t)
+
+
+;;;;;; use-package ;;;;;;;;;;;;
+(eval-when-compile (require 'use-package))
 
 
 ;;;;;;; lsp support ;;;;;;;
