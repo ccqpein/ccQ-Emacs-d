@@ -14,15 +14,18 @@
   
   :hook
   (before-save . gofmt-before-save)
-  (go-mode . redefine-complie-command)
+  (go-mode . my-hook)
   
   :config
   (require 'go-autocomplete))
 
-(defun redefine-complie-command ()
+(defun my-hook ()
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
-           "go generate && go build -v && go test -v && go vet")))
+           "go generate && go build -v && go test -v && go vet"))
+  (when (memq window-system '(mac ns x))
+	(exec-path-from-shell-initialize)
+	(exec-path-from-shell-copy-env "GOPATH")))
 
 (provide 'init-golang)
 
