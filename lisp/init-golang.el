@@ -22,10 +22,7 @@
 (defun my-hook ()
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
-           "go generate && go build -v && go test -v && go vet"))
-  (when (memq window-system '(mac ns x))
-	(exec-path-from-shell-initialize)
-	(exec-path-from-shell-copy-env "GOPATH")))
+           "go generate && go build -v && go test -v && go vet")))
 
 (provide 'init-golang)
 
