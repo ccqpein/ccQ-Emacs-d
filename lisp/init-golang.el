@@ -1,5 +1,7 @@
 ;;;;;; go-mode ;;;;;
-(use-package go
+(use-package go-mode
+  :ensure t
+
   :custom
   (gofmt-command "goimports")
   (tab-width 4)
@@ -9,15 +11,16 @@
   
   :bind
   (("C-c C-c" . compile)
-	("C-c i" . go-goto-imports)
-	)
+   ("C-c i" . go-goto-imports)
+   )
   
   :hook
   (before-save . gofmt-before-save)
   (go-mode . my-hook)
   
   :config
-  (require 'go-autocomplete))
+  (require 'go-autocomplete)
+  )
 
 (defun my-hook ()
   (if (not (string-match "go" compile-command))
