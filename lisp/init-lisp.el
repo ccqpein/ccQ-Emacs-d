@@ -1,7 +1,5 @@
 ;;;;;;;; Paredit ;;;;;;;;;;
-(autoload 'enable-paredit-mode "paredit"
-  "Turn on pseudo-structural editing of Lisp code."
-  t)
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
@@ -23,15 +21,31 @@
 
 
 ;;;;;;;;; Clojure ;;;;;;;;;;;;
-(require 'clojure-mode)
-(require 'cider-mode)
-(require 'ac-cider)
+(use-package clojure-mode
+  :ensure t
 
-(add-hook 'clojure-mode-hook (lambda ()
-                             (define-key (current-local-map) (kbd "\C-c\C-z") 'cider-jack-in)))
-(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-(add-hook 'cider-mode-hook 'ac-cider-setup)
-(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+  :bind
+  (("\C-c\C-z" . cider-jack-in))
+  
+  :hook
+  (cider-mode-hook . ac-flyspell-workaround)
+  (cider-mode-hook . ac-cider-setup)
+  (cider-repl-mode-hook . ac-cider-setup)
+  
+  :config
+  (require 'cider-mode)
+  (require 'ac-cider)
+  )
+
+;(require 'clojure-mode)
+;(require 'cider-mode)
+;(require 'ac-cider)
+;
+;(add-hook 'clojure-mode-hook (lambda ()
+;                             (define-key (current-local-map) (kbd "\C-c\C-z") 'cider-jack-in)))
+;(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+;(add-hook 'cider-mode-hook 'ac-cider-setup)
+;(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 
 (eval-after-load "auto-complete"
        '(progn

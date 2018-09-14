@@ -109,7 +109,8 @@
 
 (require 'init-lisp)
 
-(require 'init-shell)
+;:= TODO: use use-package
+;(require 'init-shell)
 
 (require 'init-helm)
 
@@ -121,7 +122,7 @@
 
 (require 'init-markdown)
 
-(require 'init-java)
+;(require 'init-java)
 
 (require 'init-python)
 
@@ -135,9 +136,11 @@
 
 (require 'init-web-n-php)
 
-(require 'init-js)
+;:= TODO: use use-package
+;(require 'init-js)
 
-(require 'init-scala)
+;:= TODO: use use-package
+;(require 'init-scala)
 
 (require 'init-rust)
 
