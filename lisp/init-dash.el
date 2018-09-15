@@ -4,7 +4,7 @@
 
 ;; Dash intergration does not have some keys' words connection, add code below to make it happen
 (dolist (queryS '((swift-mode . "swift")
-		  (swift-repl-mode . "swift")
+				  (swift-repl-mode . "swift")
                   (lisp-mode . "lisp")
                   (slime-repl-mode . "lisp")
                   (lisp-interaction-mode . "elisp")
@@ -12,8 +12,8 @@
                   (haskell-interactive-mode . "haskell")
                   (cider-repl-mode . "clojure")
                   (jdee-mode . "java")
-		  (scala-mode . "scala")
-		  (inferior-python-mode . "python")))
+				  (scala-mode . "scala")
+				  (inferior-python-mode . "python")))
   (add-to-list 'dash-at-point-mode-alist-legacy queryS)
   (add-to-list 'dash-at-point-mode-alist queryS)
   )

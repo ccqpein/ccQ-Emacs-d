@@ -6,8 +6,8 @@
   (add-to-list 'package-archives url t))
 
 (dolist (path '("~/.emacs.d/elpa"
-		"~/.emacs.d/plugins/"
-		"~/.emacs.d/lisp/"
+				"~/.emacs.d/plugins/"
+				"~/.emacs.d/lisp/"
                 ))
   (add-to-list 'load-path path))
 
@@ -41,9 +41,9 @@
 
 
 ;;;;;;; lsp support ;;;;;;;
-(require 'lsp-mode)
-(require 'lsp-imenu)
-(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
+;(require 'lsp-mode)
+;(require 'lsp-imenu)
+;(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
 
 
 ;;;;;;; autocomplete ;;;;;;
@@ -109,8 +109,7 @@
 
 (require 'init-lisp)
 
-;:= TODO: use use-package
-;(require 'init-shell)
+(require 'init-shell)
 
 (require 'init-helm)
 
@@ -132,14 +131,12 @@
 
 (require 'init-haskell)
 
-(require 'init-typescript)
+;(require 'init-typescript)
 
 (require 'init-web-n-php)
 
-;:= TODO: use use-package
 ;(require 'init-js)
 
-;:= TODO: use use-package
 ;(require 'init-scala)
 
 (require 'init-rust)

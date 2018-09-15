@@ -6,8 +6,8 @@
   
   :bind
   (:map treemacs-mode-map
-   ("M-p" . treemacs-previous-project)
-   ("M-n" . treemacs-next-project))
+		("M-p" . treemacs-previous-project)
+		("M-n" . treemacs-next-project))
   
   :custom
   (treemacs-follow-after-init          t)
