@@ -20,36 +20,37 @@
   )
 
 
-(use-package helm-gtags-mode
+(use-package helm-gtags
+
+  :hook
+  ((dired-mode . helm-gtags-mode)
+   (eshell-mode . helm-gtags-mode)
+   (c-mode . helm-gtags-mode)
+   (c++-mode . helm-gtags-mode)
+   (emacs-lisp-mode . helm-gtags-mode)
+   (lisp-mode . helm-gtags-mode)
+   (lisp-interaction-mode . helm-gtags-mode)
+   (slime-repl-mode . helm-gtags-mode)
+   (clojure-mode . helm-gtags-mode)
+   (cider-repl-mode . helm-gtags-mode)
+   (python-mode . helm-gtags-mode)
+   (elpy-mode . helm-gtags-mode)
+   (web-mode . helm-gtags-mode)
+   (swift-mode . helm-gtags-mode)
+   (haskell-mode . helm-gtags-mode)
+   (scala-mode . helm-gtags-mode)
+   (go-mode . helm-gtags-mode)
+   )
+
   :bind
-  (("C-c g a" . helm-gtags-tags-in-this-function)
+  (:map helm-gtags-mode-map
+   ("C-c g a" . helm-gtags-tags-in-this-function)
    ("C-c g j" . helm-gtags-select)
    ("M-." . helm-gtags-dwim)
    ("M-," . helm-gtags-pop-stack)
    ("C-c <" . helm-gtags-previous-history)
    ("C-c >" . helm-gtags-next-history))
 
-  :hook
-  (
-   dired-mode
-   eshell-mode
-   c-mode
-   c++-mode
-   emacs-lisp-mode
-   lisp-mode
-   lisp-interaction-mode
-   slime-repl-mode
-   clojure-mode
-   cider-repl-mode
-   python-mode
-   elpy-mode
-   web-mode
-   swift-mode
-   haskell-mode
-   scala-mode
-   go-mode
-   )
-  
   :custom
   (helm-gtags-ignore-case t)
   (helm-gtags-auto-update t)
@@ -57,6 +58,7 @@
   (helm-gtags-pulse-at-cursor t)
   (helm-gtags-prefix-key "\C-cg")
   (helm-gtags-suggested-key-mapping t)
+
   )
 
 
