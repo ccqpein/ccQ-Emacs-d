@@ -21,6 +21,7 @@
 (global-hl-line-mode 1)
 (global-linum-mode t) ;; enable line numbers globally
 ;; close bars
+;; settings below might just works when emacs installed with-cocoa (by brewcask)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
