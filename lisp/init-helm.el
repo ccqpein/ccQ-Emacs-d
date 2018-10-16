@@ -61,6 +61,18 @@
 
   )
 
+(use-package helm-swoop
+  :custom
+  (helm-multi-swoop-edit-save t)
+  (helm-swoop-split-with-multiple-windows nil)
+  (helm-swoop-split-direction 'split-window-vertically)
+  (helm-swoop-speed-or-color nil)
+  (helm-swoop-move-to-line-cycle t)
+  (helm-swoop-use-line-number-face t)
+  (helm-swoop-use-fuzzy-match t))
+
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
 
 ;(require 'helm)
 ;(require 'helm-config)
