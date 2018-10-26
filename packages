@@ -2,7 +2,6 @@ yaml-mode
 helm-swoop
 use-package
 restclient
-go-autocomplete
 treemacs
 flycheck-rust
 lsp-mode
