@@ -17,7 +17,7 @@
 
 ;;;;;;;;;; set frame default ;;;;;;;;;;;;;;;
 (add-to-list 'default-frame-alist '(width . 110))
-(add-to-list 'default-frame-alist '(height . 60))
+(add-to-list 'default-frame-alist '(height . 71))
 (global-hl-line-mode 1)
 (global-linum-mode t) ;; enable line numbers globally
 ;; close bars
