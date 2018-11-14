@@ -101,6 +101,7 @@
 
 
 ;;;;;; Magit ;;;;;;;
+(require 'magit)
 (global-set-key (kbd "C-x M-G") 'magit-dispatch-popup)
 (global-set-key (kbd "C-x M-g") 'magit-status)
 
