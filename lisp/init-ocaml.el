@@ -8,7 +8,7 @@
   (tuareg-mode-hook caml-mode-hook)
   )
 
-(use-package tuareg-mode
+(use-package tuareg
   :hook
   (tuareg-mode-hook . (lambda()
 						(setq show-trailing-whitespace t)
