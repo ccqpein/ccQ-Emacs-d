@@ -15,8 +15,8 @@
    )
   
   :hook
-  (before-save . gofmt-before-save)
-  (go-mode . my-hook)
+  ((before-save . gofmt-before-save)
+   (go-mode . my-hook))
   
   :config
   (require 'go-autocomplete)

@@ -8,7 +8,7 @@
 (dolist (path '("~/.emacs.d/elpa"
 				"~/.emacs.d/plugins/"
 				"~/.emacs.d/lisp/"
-				"~/.opam/default/share/emacs/site-lisp/" ;;merlin path
+				"~/.opam/default/share/emacs/site-lisp/" ;;Opem path
                 ))
   (add-to-list 'load-path path))
 

@@ -5,15 +5,22 @@
 
 (use-package merlin-mode
   :hook
-  (tuareg-mode-hook caml-mode-hook)
+  (tuareg-mode caml-mode)
   )
+
+;;need autoload first
+(autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
 
 (use-package tuareg
   :hook
-  (tuareg-mode-hook . (lambda()
-						(setq show-trailing-whitespace t)
-						(setq indicate-empty-lines t))
-  ))
+  ((tuareg-mode . my-hook)
+   (tuareg-mode . utop-minor-mode)
+   )
+  )
+
+(defun my-hook ()
+  (setq show-trailing-whitespace t)
+  (setq indicate-empty-lines t))
 
 
 (provide 'init-ocaml)
