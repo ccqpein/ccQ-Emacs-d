@@ -9,7 +9,7 @@
   )
 
 ;;need autoload first
-(autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
+;;(autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
 
 (use-package tuareg
   :hook
