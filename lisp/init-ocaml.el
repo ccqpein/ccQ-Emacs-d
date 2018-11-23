@@ -20,7 +20,7 @@
 
 (defun my-hook ()
   (setq show-trailing-whitespace t)
-  (setq indicate-empty-lines t))
+  )
 
 
 (provide 'init-ocaml)
