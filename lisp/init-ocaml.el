@@ -6,6 +6,8 @@
 (use-package merlin-mode
   :hook
   (tuareg-mode caml-mode)
+  :config
+  (setq merlin-command 'opam)
   )
 
 ;;need autoload first
@@ -13,13 +15,14 @@
 
 (use-package tuareg
   :hook
-  ((tuareg-mode . my-hook)
-   (tuareg-mode . utop-minor-mode)
+  ((tuareg-mode . utop-minor-mode)
+   (tuareg-mode . my-hook)
    )
   )
 
 (defun my-hook ()
   (setq show-trailing-whitespace t)
+  (local-set-key (kbd "C-c C-e") 'utop-eval-phrase)
   )
 
 
