@@ -5,7 +5,7 @@ Personal Emacs configure
 My environment:
 
   * Emacs 26
-  * macOS 10.13
+  * macOS 10.14
 
 All configure files store in `~/.emacs.d` that Emacs default path.
 
@@ -41,19 +41,25 @@ List all languages support and the dependencies that need install in system. All
 + Tex
     - mactex
 + Markdown
-+ Java
++ Java (not write for a long while)
     - jdk
 + Python
 	- ipython
 	- autopep8
 + Golang
-+ Swift
++ Swift (not write for a long while)
 + Haskell
 	- cabal
-+ Scala (still working on)
++ Scala (not write for a long while)
 	- sbt 
 + Rust
 + HTML & PHP
++ Ocaml
+	- opam
+   
+## About ispell
+
+I use `aspell` as `ispell` backend which installed by homebrew in my local machine. `Flyspell` config does not have single .el file, its require rule in `/lisp/init-markdown.el` 
 
 ## About org-mode
 `org-agenda-files` is be set by environment variable `$ORG_PATH`
