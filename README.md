@@ -47,6 +47,7 @@ List all languages support and the dependencies that need install in system. All
 	- ipython
 	- autopep8
 + Golang
+	- [gocode](https://github.com/mdempsky/gocode)
 + Swift (not write for a long while)
 + Haskell
 	- cabal
