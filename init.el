@@ -8,7 +8,10 @@
 (dolist (path '("~/.emacs.d/elpa"
 				"~/.emacs.d/plugins/"
 				"~/.emacs.d/lisp/"
-				;;"~/.opam/ocaml-system.4.07.1/share/emacs/site-lisp/" ;;Opem path
+				;; opam_link is local alias be created by opam switch.
+				;; so I do not need to change site-lisp after update opam switch
+				;; opam switch link <switch version> ~/.emacs.d/opam_link
+				"~/.emacs.d/opam_link/_opam/share/emacs/site-lisp/"
                 ))
   (add-to-list 'load-path path))
 
