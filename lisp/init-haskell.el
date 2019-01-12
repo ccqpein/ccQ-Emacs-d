@@ -19,7 +19,8 @@
   :hook
   (
    (haskell-mode . hindent-mode)
-   (haskell-mode . interactive-haskell-mode))
+   (haskell-mode . interactive-haskell-mode)
+   (haskell-mode . haskell-process))
   )
 
 (provide 'init-haskell)
