@@ -15,6 +15,7 @@
 
   :config
   (require 'hindent)
+  (setq haskell-stylish-on-save t)
 
   :hook
   (
