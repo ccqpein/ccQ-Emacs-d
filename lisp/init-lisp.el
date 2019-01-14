@@ -25,7 +25,8 @@
   :ensure t
 
   :bind
-  (("\C-c\C-z" . cider-jack-in))
+  (:map clojurec-mode-map
+   ("\C-c\C-z" . cider-jack-in))
   
   :hook
   (cider-mode-hook . ac-flyspell-workaround)

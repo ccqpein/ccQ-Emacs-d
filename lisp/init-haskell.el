@@ -6,6 +6,7 @@
   (:map haskell-mode-map
 	("C-c C-l" . haskell-process-load-or-reload)
 	("C-`" . haskell-interactive-bring)
+	("C-c C-z" . haskell-interactive-bring)
 	("C-c C-t" . haskell-process-do-type)
 	("C-c C-i" . haskell-process-do-info)
 	("C-c C-c" . haskell-process-cabal-build)
