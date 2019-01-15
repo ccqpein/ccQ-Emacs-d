@@ -15,14 +15,13 @@
 		("C-;" . comment-dwim))
 
   :config
-  (require 'hindent)
   (setq haskell-stylish-on-save t)
   
   :hook
   (
    (haskell-mode . hindent-mode)
-   ;;(haskell-mode . interactive-haskell-mode)
-   (haskell-mode . haskell-process))
+   (haskell-mode . interactive-haskell-mode)
+   )
   )
 
 (provide 'init-haskell)
