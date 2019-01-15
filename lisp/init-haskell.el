@@ -4,19 +4,20 @@
 
   :bind
   (:map haskell-mode-map
-	("C-c C-l" . haskell-process-load-or-reload)
-	("C-`" . haskell-interactive-bring)
-	("C-c C-z" . haskell-interactive-bring)
-	("C-c C-t" . haskell-process-do-type)
-	("C-c C-i" . haskell-process-do-info)
-	("C-c C-c" . haskell-process-cabal-build)
-	("C-c C-k" . haskell-interactive-mode-clear)
-	("C-c c" . haskell-process-cabal)
-	("C-;" . comment-dwim))
+		("C-c C-l" . haskell-process-load-or-reload)
+		("C-`" . haskell-interactive-bring)
+		("C-c C-z" . haskell-interactive-bring)
+		("C-c C-t" . haskell-process-do-type)
+		("C-c C-i" . haskell-process-do-info)
+		("C-c C-c" . haskell-process-cabal-build)
+		("C-c C-k" . haskell-interactive-mode-clear)
+		("C-c c" . haskell-process-cabal)
+		("C-;" . comment-dwim))
 
   :config
   (require 'hindent)
   (setq haskell-stylish-on-save t)
+  (setq haskell-process-auto-import-loaded-modules nil)
 
   :hook
   (

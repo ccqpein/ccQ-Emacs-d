@@ -12,6 +12,7 @@
 				;; so I do not need to change site-lisp after update opam switch
 				;; opam switch link <switch version> ~/.emacs.d/opam_link
 				"~/.emacs.d/opam_link/_opam/share/emacs/site-lisp/"
+				"/usr/local/share/emacs/site-lisp/"
                 ))
   (add-to-list 'load-path path))
 
