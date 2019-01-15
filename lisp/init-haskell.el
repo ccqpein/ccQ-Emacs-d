@@ -17,12 +17,11 @@
   :config
   (require 'hindent)
   (setq haskell-stylish-on-save t)
-  (setq haskell-process-auto-import-loaded-modules nil)
-
+  
   :hook
   (
    (haskell-mode . hindent-mode)
-   (haskell-mode . interactive-haskell-mode)
+   ;;(haskell-mode . interactive-haskell-mode)
    (haskell-mode . haskell-process))
   )
 
