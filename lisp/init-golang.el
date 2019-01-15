@@ -27,6 +27,9 @@
       (set (make-local-variable 'compile-command)
            "go generate && go build -v && go test -v && go vet")))
 
+;; go mode need `gocode (https://github.com/mdempsky/gocode)`, need update regularly
+;; `go get -u github.com/mdempsky/gocode`
+
 (provide 'init-golang)
 
 
