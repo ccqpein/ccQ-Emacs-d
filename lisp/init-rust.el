@@ -1,20 +1,23 @@
 ;;;;;;;; Rust ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package rust-mode
   :ensure t
-  
-  :bind
-  (:map rust-mode-map
-		("TAB" . company-indent-or-complete-common))
-  
+     
   :hook
   (rust-mode . racer-mode)
   (racer-mode . eldoc-mode)
   (racer-mode . flycheck-rust-setup)
+  (racer-mode . company-mode)
+
+  :bind
+  (:map rust-mode-map
+		("TAB" . company-indent-or-complete-common))
+  
 
   :custom
   (company-tooltip-align-annotations t)
   (rust-format-on-save t)
-)
+  )
+
 
 ;(require 'rust-mode)
 ;(add-hook 'rust-mode-hook #'racer-mode)

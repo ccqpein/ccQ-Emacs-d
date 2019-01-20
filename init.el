@@ -56,12 +56,7 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
-(let ((ACpath (file-name-as-directory (car ac-dictionary-directories)))
-      (user-modes '("swift-mode" "lisp-mode" "rust-mode")))
-  (dolist (user-mode-name user-modes)
-    (if (not (file-exists-p (concat ACpath user-mode-name)))
-        (shell-command (concat "ln -s " "~/.emacs.d/plugins/" user-mode-name " " ACpath user-mode-name)))
-    (add-to-list 'ac-modes (make-symbol user-mode-name))))
+
 (global-auto-complete-mode t)
 
 
@@ -70,7 +65,9 @@
 
 
 ;;;;;;; company ;;;;;;;;
-(global-company-mode)
+;; looks like company mode do not need to load as global
+;; most of modes have already load it in backend
+;(global-company-mode)
 
 
 ;;;;;;; yasnippet ;;;;;;
@@ -172,7 +169,7 @@
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
    (quote
-	(merlin utop tuareg yaml-mode helm-swoop use-package restclient treemacs flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+	(ac-slime merlin utop tuareg yaml-mode helm-swoop use-package restclient treemacs flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
  '(recentf-max-saved-items 10)
  '(visible-bell nil))
 (custom-set-faces

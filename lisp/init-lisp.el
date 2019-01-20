@@ -19,6 +19,12 @@
     nil))
 (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
 
+;; slime auto-complete
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'slime-repl-mode))
+
 
 ;;;;;;;;; Clojure ;;;;;;;;;;;;
 (use-package clojure-mode

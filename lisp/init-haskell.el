@@ -1,4 +1,5 @@
 ;;;;;;;;; Haskell ;;;;;;;;;;;;;
+;; need installed `hindent` `stylish-haskell`
 (use-package haskell-mode
   :ensure t
 
