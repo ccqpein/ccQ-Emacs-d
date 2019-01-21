@@ -1,4 +1,8 @@
 ;;;;;;;; Rust ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package racer
+  :config
+  (define-key racer-mode-map (kbd "M-.") #'helm-gtags-dwim))
+
 (use-package rust-mode
   :ensure t
      
