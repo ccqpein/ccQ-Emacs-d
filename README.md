@@ -38,6 +38,7 @@ List all languages support and the dependencies that need install in system. All
     - SBCL 
 + Clojure
     - lein
+	- clojure
 + Tex
     - mactex
 + Markdown
@@ -51,9 +52,16 @@ List all languages support and the dependencies that need install in system. All
 + Swift (not write for a long while)
 + Haskell
 	- cabal
+	- stylish-haskell (installed by cabal)
+	- hasktags
+	- hindent
 + Scala (not write for a long while)
 	- sbt 
 + Rust
+	- cargo
+	- cargo-fmt
+	- racer
+	- rustfmt
 + HTML & PHP
 + Ocaml
 	- opam
