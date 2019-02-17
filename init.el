@@ -1,9 +1,17 @@
 ;;; init file
 (require 'package)
-(dolist (url '(("melpa" . "https://melpa.org/packages/")
-	       ("melpa-stable" . "http://stable.melpa.org/packages/")
-	       ))
-  (add-to-list 'package-archives url t))
+
+;; (dolist (url '(("melpa" . "https://melpa.org/packages/")
+;; 			   ("melpa-stable" . "https://stable.melpa.org/packages/")
+;; 			   ))
+;;   (add-to-list 'package-archives url t))
+
+;; update 2/16/2019, temporary delete default gnu source because cannot refresh
+(setq package-archives '(
+ ("melpa" . "https://melpa.org/packages/")
+ ("melpa-stable" . "https://stable.melpa.org/packages/")
+ ;; ("gnu" . "https://elpa.gnu.org/packages/")
+ ))
 
 (dolist (path '("~/.emacs.d/elpa"
 				"~/.emacs.d/plugins/"
@@ -169,7 +177,7 @@
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
    (quote
-	(ac-slime merlin utop tuareg yaml-mode helm-swoop use-package restclient treemacs flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+	(cargo ac-slime merlin utop tuareg yaml-mode helm-swoop use-package restclient treemacs flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit neotree js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
  '(recentf-max-saved-items 10)
  '(visible-bell nil))
 (custom-set-faces

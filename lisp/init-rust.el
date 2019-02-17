@@ -11,6 +11,7 @@
   (racer-mode . eldoc-mode)
   (racer-mode . flycheck-rust-setup)
   (racer-mode . company-mode)
+  (rust-mode . cargo-minor-mode)
 
   :bind
   (:map rust-mode-map

@@ -25,7 +25,7 @@
 (defun my-hook ()
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
-           "go generate && go build -v && go test -v && go vet")))
+           "go build")))
 
 ;; go mode need `gocode (https://github.com/mdempsky/gocode)`, need update regularly
 ;; `go get -u github.com/mdempsky/gocode`
