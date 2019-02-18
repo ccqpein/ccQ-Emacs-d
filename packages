@@ -24,7 +24,6 @@ cider
 clojure-mode
 auctex
 magit
-neotree
 js2-mode
 web-mode
 swiper
