@@ -26,6 +26,8 @@
   (treemacs-never-persist              nil)
   (treemacs-is-never-other-window      nil)
   (treemacs-goto-tag-strategy          'refetch-index)
+
+  (treemacs-persist-file "~/.emacs.d/treemacs-persist")
 )
 
 (provide 'init-treemacs)
