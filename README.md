@@ -5,7 +5,7 @@ Personal Emacs configure
 My environment:
 
   * Emacs 26
-  * macOS 10.14
+  * macOS
 
 All configure files store in `~/.emacs.d` that Emacs default path.
 
