@@ -8,6 +8,7 @@
   (imenu-generic-expression
    '(("type" "^[ \t]*type *\\([^ \t\n\r\f]*[ \t]*\\(struct\\|interface\\)\\)" 1)
      ("func" "^func *\\(.*\\)" 1)))
+  (compile-command "go build")
   
   :bind
   (("C-c C-c" . compile)
@@ -15,17 +16,13 @@
    )
   
   :hook
-  ((before-save . gofmt-before-save)
-   (go-mode . my-hook))
+  ((before-save . gofmt-before-save))
   
   :config
   (require 'go-autocomplete)
+  (set (make-local-variable 'compile-command)
+           "go build")
   )
-
-(defun my-hook ()
-  (if (not (string-match "go" compile-command))
-      (set (make-local-variable 'compile-command)
-           "go build")))
 
 ;; go mode need `gocode (https://github.com/mdempsky/gocode)`, need update regularly
 ;; `go get -u github.com/mdempsky/gocode`
