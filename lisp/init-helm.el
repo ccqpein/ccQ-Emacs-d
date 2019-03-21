@@ -19,7 +19,7 @@
   (helm-autoresize-mode t)
   )
 
-
+;;; helm gtags use global be backend, here is ~/.globalrc example
 (use-package helm-gtags
 
   :hook
