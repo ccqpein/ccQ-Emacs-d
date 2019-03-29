@@ -9,6 +9,10 @@
   (org-agenda-files (list (getenv "ORG_PATH")))
   (org-log-done t)
   (org-hide-leading-stars t)
+  (org-babel-load-languages
+   '((emacs-lisp . t)
+	 (dot . t)
+	 (python . t)))
   )
 
 (provide 'init-org)

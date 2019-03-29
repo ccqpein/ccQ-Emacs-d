@@ -16,6 +16,7 @@
 (dolist (path '("~/.emacs.d/elpa"
 				"~/.emacs.d/plugins/"
 				"~/.emacs.d/lisp/"
+				
 				;; opam_link is local alias be created by opam switch.
 				;; so I do not need to change site-lisp after update opam switch
 				;; opam switch link <switch version> ~/.emacs.d/opam_link
