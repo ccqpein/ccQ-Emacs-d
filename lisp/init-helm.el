@@ -12,6 +12,8 @@
   (helm-imenu-fuzzy-match                t)
   (helm-scroll-amount                    8)
   (helm-ff-file-name-history-use-recentf t)
+  (helm-grep-default-command "grep --color=always -d skip %e -n%cH -e %p %f")
+  (helm-grep-default-recurse-command "grep --color=always -d recurse %e -n%cH -e %p %f")
 
   :config
   (require 'helm-config)
