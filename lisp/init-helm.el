@@ -12,14 +12,24 @@
   (helm-imenu-fuzzy-match                t)
   (helm-scroll-amount                    8)
   (helm-ff-file-name-history-use-recentf t)
-  (helm-grep-default-command "grep --color=always -d skip %e -n%cH -e %p %f")
-  (helm-grep-default-recurse-command "grep --color=always -d recurse %e -n%cH -e %p %f")
+  
+  (helm-grep-ag-command
+   "ag --line-numbers -S \\
+--hidden \\
+--color --color-match '31;43' \\
+--ignore-dir .git \\
+--nogroup %s %s %s")
 
   :config
   (require 'helm-config)
   (helm-mode 1)
   (helm-autoresize-mode t)
+
+  :bind
+  (("C-c h s" . helm-do-grep-ag)
+   )
   )
+
 
 ;;; helm gtags use global be backend, here is ~/.globalrc example
 (use-package helm-gtags

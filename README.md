@@ -81,3 +81,7 @@ The custom setting configure at the bottle of `init.el`. Focus on `jdee-jdk-regi
 
 Some scripts or tools. Get more detail in plugins [README](./plugins/README.md)
 
+## About Ag ##
+
+`helm` uses [Ag](https://github.com/ggreer/the_silver_searcher) be "grep" implement. So I install `ag` in my local and define command in `init-helm.el`.
+
