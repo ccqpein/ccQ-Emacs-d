@@ -14,6 +14,8 @@
   (web-mode-enable-auto-closing t)
   (web-mode-enable-auto-pairing t)
   (web-mode-enable-current-element-highlight t)
+  (web-mode-markup-indent-offset 2)
+	(indent-tabs-mode nil)
   )
 
 ;(require 'web-mode)
