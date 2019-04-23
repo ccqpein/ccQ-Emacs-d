@@ -1,11 +1,6 @@
 ;;; init file
 (require 'package)
 
-;; (dolist (url '(("melpa" . "https://melpa.org/packages/")
-;; 			   ("melpa-stable" . "https://stable.melpa.org/packages/")
-;; 			   ))
-;;   (add-to-list 'package-archives url t))
-
 ;; update 2/16/2019, temporary delete default gnu source because cannot refresh
 (setq package-archives '(
  ("melpa" . "https://melpa.org/packages/")
@@ -148,7 +143,7 @@
 
 (require 'init-web-n-php)
 
-;(require 'init-js)
+(require 'init-js)
 
 ;(require 'init-scala)
 
