@@ -1,3 +1,3 @@
 #! /usr/local/bin/zsh
 
-emacsclient -a "" -c $1 &
+/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -a "" -c $1 &
