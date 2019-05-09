@@ -7,4 +7,5 @@
 !packages
 !install-packages.el
 !lisp/
+!install.sh
 *\.elc
