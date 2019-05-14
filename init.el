@@ -5,7 +5,6 @@
 (setq package-archives '(
  ("melpa" . "https://melpa.org/packages/")
  ("melpa-stable" . "https://stable.melpa.org/packages/")
- ;; ("gnu" . "https://elpa.gnu.org/packages/")
  ))
 
 (dolist (path '("~/.emacs.d/elpa"
@@ -28,15 +27,16 @@
 (add-to-list 'default-frame-alist '(width . 110))
 (add-to-list 'default-frame-alist '(height . 71))
 (global-hl-line-mode 1)
-(global-linum-mode t) ;; enable line numbers globally
+(global-display-line-numbers-mode)
 ;; close bars
 ;; settings below might just works when emacs installed with-cocoa (by brewcask)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
-(show-paren-mode 1)
 (blink-cursor-mode 1)
-(setq show-paren-style 'mix)
+(progn
+  (show-paren-mode 1)
+  (setq show-paren-style 'mixed))
 
 (setq backup-directory-alist '(("" . "~/.emacs.d/backups")))
 (defalias 'list-buffers 'ibuffer) ; make ibuffer default
@@ -166,15 +166,15 @@
  '(haskell-process-suggest-remove-import-lines t)
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
- '(jdee-compiler (quote ("javac")))
- '(jdee-jdk-registry (quote (("1.8" . "/Library/Java/Home"))))
- '(magit-diff-arguments (quote ("--no-ext-diff" "--stat")))
+ '(jdee-compiler '("javac"))
+ '(jdee-jdk-registry '(("1.8" . "/Library/Java/Home")))
+ '(magit-diff-arguments '("--no-ext-diff" "--stat"))
  '(markdown-command "~/.emacs.d/plugins/open-markdown-to-web.sh")
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
-   (quote
-	(graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode helm-swoop use-package restclient treemacs flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php)))
+   '(graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode helm-swoop use-package restclient treemacs flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
  '(recentf-max-saved-items 10)
+ '(send-mail-function 'mailclient-send-it)
  '(visible-bell nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
