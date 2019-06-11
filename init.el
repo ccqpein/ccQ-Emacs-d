@@ -135,7 +135,7 @@
 
 (require 'init-golang)
 
-(require 'init-swift)
+;(require 'init-swift)
 
 (require 'init-haskell)
 
