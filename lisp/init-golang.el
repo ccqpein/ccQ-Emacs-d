@@ -16,7 +16,8 @@
    )
   
   :hook
-  ((before-save . gofmt-before-save))
+  ((before-save . gofmt-before-save)
+   (go-mode . hs-minor-mode))
   
   :config
   (require 'go-autocomplete)

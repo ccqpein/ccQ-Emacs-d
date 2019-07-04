@@ -12,6 +12,7 @@
   (racer-mode . flycheck-rust-setup)
   (racer-mode . company-mode)
   (rust-mode . cargo-minor-mode)
+  (rust-mode . hs-minor-mode)
 
   :bind
   (:map rust-mode-map
