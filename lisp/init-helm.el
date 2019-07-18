@@ -20,6 +20,11 @@
 --ignore-dir .git \\
 --nogroup %s %s %s")
 
+  ;; https://github.com/emacs-helm/helm/issues/2175
+  ;; back helm to old age
+  :custom
+  (helm-ff-lynx-style-map t)
+  
   :config
   (require 'helm-config)
   (helm-mode 1)
