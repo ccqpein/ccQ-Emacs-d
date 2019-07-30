@@ -65,6 +65,7 @@ List all languages support and the dependencies that need install in system. All
 + HTML & PHP
 + Ocaml
 	- opam
++ coq 
    
 ## About ispell
 
