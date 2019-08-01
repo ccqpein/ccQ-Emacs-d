@@ -3,8 +3,8 @@
 
 ;; update 2/16/2019, temporary delete default gnu source because cannot refresh
 (setq package-archives '(
- ("melpa" . "https://melpa.org/packages/")
- ("melpa-stable" . "https://stable.melpa.org/packages/")
+ ("melpa" . "http://melpa.org/packages/")
+ ("melpa-stable" . "http://stable.melpa.org/packages/")
  ))
 
 (dolist (path '("~/.emacs.d/elpa"
