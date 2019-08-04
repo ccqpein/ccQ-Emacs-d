@@ -112,6 +112,9 @@
 (global-set-key (kbd "C-x M-g") 'magit-status)
 
 
+(require 'ace-window)
+(global-set-key (kbd "M-o") 'ace-window)
+
 ;;; languages
 (require 'init-treemacs)
 
