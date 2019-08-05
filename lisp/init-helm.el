@@ -24,6 +24,14 @@
   ;; back helm to old age
   :custom
   (helm-ff-lynx-style-map t)
+  (helm-imenu-lynx-style-map t)
+  (helm-semantic-lynx-style-map t)
+  (helm-occur-use-ioccur-style-keys t)
+
+  :bind
+  (:map helm-map
+        ("<left>" . helm-previous-source)
+        ("<right>" . helm-next-source))
   
   :config
   (require 'helm-config)
