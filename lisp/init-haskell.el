@@ -22,6 +22,7 @@
   (
    (haskell-mode . hindent-mode)
    (haskell-mode . interactive-haskell-mode)
+   (haskell-mode . flycheck-haskell-setup)
    )
   )
 
