@@ -15,6 +15,9 @@
 		("C-c c" . haskell-process-cabal)
 		("C-;" . comment-dwim))
 
+  :custom
+  (haskell-process-type 'cabal-new-repl)
+  
   :config
   (setq haskell-stylish-on-save t)
   
