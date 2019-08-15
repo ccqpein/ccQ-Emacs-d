@@ -158,6 +158,8 @@
 
 (require 'init-coq)
 
+(require 'init-gc)
+
 
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
