@@ -8,10 +8,10 @@
 
 ;;; load package module
 (require 'package)
-(dolist (url '(("melpa" . "https://melpa.org/packages/")
-	       ("melpa-stable" . "http://stable.melpa.org/packages/")
-	       ))
-  (add-to-list 'package-archives url t))
+(setq package-archives '(
+ ("melpa" . "http://melpa.org/packages/")
+ ("melpa-stable" . "http://stable.melpa.org/packages/")
+ ))
 (package-initialize)
 
 ;;; read package list from `packages` file
