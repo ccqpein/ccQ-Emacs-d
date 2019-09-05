@@ -66,6 +66,8 @@ List all languages support and the dependencies that need install in system. All
 + Ocaml
 	- opam
 + coq 
++ elm
+  - elm-oracle
    
 ## About ispell
 
