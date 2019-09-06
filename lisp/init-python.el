@@ -5,7 +5,7 @@
 
   :custom
   (python-shell-interpreter "ipython")
-  (python-shell-interpreter-args "--simple-prompt --pprint")
+  (python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i --pprint")
 
   :bind
   (:map elpy-mode-map
