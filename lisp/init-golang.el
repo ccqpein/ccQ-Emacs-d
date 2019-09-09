@@ -22,7 +22,8 @@
   :config
   (require 'go-autocomplete)
   (set (make-local-variable 'compile-command)
-           "go build")
+       "go build")
+  (setq-default flycheck-disabled-checkers '(go-staticcheck))
   )
 
 ;; go mode need `gocode (https://github.com/mdempsky/gocode)`, need update regularly
