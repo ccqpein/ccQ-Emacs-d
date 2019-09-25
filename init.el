@@ -34,9 +34,8 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (blink-cursor-mode 1)
-(progn
-  (show-paren-mode 1)
-  (setq show-paren-style 'mixed))
+(show-paren-mode 1)
+(setq show-paren-style 'parenthesis)
 
 (setq backup-directory-alist '(("" . "~/.emacs.d/backups")))
 (defalias 'list-buffers 'ibuffer) ; make ibuffer default

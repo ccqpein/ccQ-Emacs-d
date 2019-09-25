@@ -4,4 +4,7 @@
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'js2-mode-hook #'setup-tide-mode) ; for typescript mode
 
+(add-hook 'js-mode-hook 'paredit-mode-hook)
+(add-hook 'js-mode-hook 'hs-minor-mode-hook)
+
 (provide 'init-js)
