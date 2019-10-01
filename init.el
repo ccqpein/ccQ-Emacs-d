@@ -141,7 +141,7 @@
 
 (require 'init-haskell)
 
-;(require 'init-typescript)
+(require 'init-typescript)
 
 (require 'init-web-n-php)
 
