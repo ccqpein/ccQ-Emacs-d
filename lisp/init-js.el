@@ -5,6 +5,7 @@
    (js-mode . hs-minor-mode)
    (js-mode . paredit-mode)
    (js-mode . js2-minor-mode)
+   (js-mode . (lambda () (setq js-indent-level 2)))
    )
   
   :config
