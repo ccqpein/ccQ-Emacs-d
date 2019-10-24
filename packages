@@ -21,7 +21,6 @@ restclient
 treemacs
 flycheck-rust
 lsp-mode
-lsp-rust
 racer
 rust-mode
 highlight-symbol
