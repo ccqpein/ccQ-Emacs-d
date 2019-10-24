@@ -49,12 +49,6 @@
 (eval-when-compile (require 'use-package))
 
 
-;;;;;;; lsp support ;;;;;;;
-;(require 'lsp-mode)
-;(require 'lsp-imenu)
-;(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
-
-
 ;;;;;;; autocomplete ;;;;;;
 (require 'auto-complete)
 (require 'auto-complete-config)
@@ -163,6 +157,8 @@
 
 (require 'init-groovy)
 
+(require 'init-lsp)
+
 
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
@@ -182,7 +178,7 @@
  '(markdown-command "~/.emacs.d/plugins/open-markdown-to-web.sh")
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
-   '(groovy-mode elm-mode flycheck-elm flycheck-haskell company-coq proof-general graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode helm-swoop use-package restclient treemacs flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
+   '(helm-lsp lsp-treemacs company-lsp lsp-ui groovy-mode elm-mode flycheck-elm flycheck-haskell company-coq proof-general graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode helm-swoop use-package restclient treemacs flycheck-rust lsp-mode lsp-rust racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex magit js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
  '(recentf-max-saved-items 10)
  '(send-mail-function 'mailclient-send-it)
  '(visible-bell nil))
