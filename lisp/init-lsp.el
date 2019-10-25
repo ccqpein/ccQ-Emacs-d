@@ -1,8 +1,8 @@
 (use-package lsp-mode
   :hook
   ((go-mode . lsp-deferred)
-   (rust-mode . lsp-deferred))
-
+   ;;(rust-mode . lsp-deferred) ;; don't start rust auto
+   ) 
   :commands (lsp lsp-deferred)
 
   :config
