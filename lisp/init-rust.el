@@ -7,21 +7,21 @@
   :ensure t
      
   :hook
-  (rust-mode . racer-mode)
-  (racer-mode . eldoc-mode)
-  (racer-mode . flycheck-rust-setup)
-  (racer-mode . company-mode)
+  ;;(rust-mode . racer-mode)
+  (rust-mode . eldoc-mode)
+  (rust-mode . flycheck-rust-setup)
+  (rust-mode . company-mode)
   (rust-mode . cargo-minor-mode)
   (rust-mode . hs-minor-mode)
 
   :bind
   (:map rust-mode-map
-		("TAB" . company-indent-or-complete-common))
-  
+    	("TAB" . company-indent-or-complete-common))
 
   :custom
   (company-tooltip-align-annotations t)
   (rust-format-on-save t)
+  
   )
 
 
