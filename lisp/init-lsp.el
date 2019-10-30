@@ -1,6 +1,8 @@
 (use-package lsp-mode
   :hook
   ((go-mode . lsp-deferred)
+   (js-mode . lsp-deferred)
+   (tide-mode . lsp-deferred)
    )
   :commands (lsp lsp-deferred)
   )

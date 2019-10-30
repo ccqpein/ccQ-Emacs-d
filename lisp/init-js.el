@@ -1,5 +1,8 @@
 ;;;;;;;; Javascript mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package js-mode
+  :mode (("\\.js\\'" . js2-mode)
+         ("\\.jsx\\'" . js2-mode)
+         ("node" . js2-mode))
   :hook
   (
    (js-mode . hs-minor-mode)
@@ -8,9 +11,9 @@
    )
   
   :config
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
+  ;;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  ;;(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+  ;;(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-mode))
   )
 
 
