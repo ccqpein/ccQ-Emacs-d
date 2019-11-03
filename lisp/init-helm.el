@@ -63,6 +63,7 @@
    (go-mode . helm-gtags-mode)
    (tuareg-mode . helm-gtags-mode)
    (rust-mode . helm-gtags-mode)
+   (js-mode . helm-gtags-mode)
    )
 
   :bind
