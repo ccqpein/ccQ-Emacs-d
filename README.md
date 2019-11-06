@@ -69,6 +69,18 @@ List all languages support and the dependencies that need install in system. All
 + elm
   - elm-oracle
    
+## About LSP ##
+
+LSP configuration in `lisp/init-lsp.el`
+
+**Golang**
+
+Use [Gopls](https://github.com/golang/tools/tree/master/gopls) be my LSP
+
+**Javascript/Typescript**
+
+Use [typescript-language-server](https://github.com/theia-ide/typescript-language-server) be my LSP
+
 ## About ispell
 
 I use `aspell` as `ispell` backend which installed by homebrew in my local machine. `Flyspell` config does not have single .el file, its require rule in `/lisp/init-markdown.el` 
