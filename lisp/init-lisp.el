@@ -1,28 +1,28 @@
-;;;;;;;; Paredit ;;;;;;;;;;
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-mode-hook 'hs-minor-mode)
-(add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-(add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
-(add-hook 'clojure-mode-hook 'enable-paredit-mode)
-(add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
-
-
 ;;;;;;; slime ;;;;;;;;;
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
-(setq slime-contribs '(slime-fancy))
+(use-package slime
+  :config
+  (setq
+   slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog)
+   inferior-lisp-program "/usr/local/bin/sbcl"
+   )
+  
+  (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook 'hs-minor-mode)
+  (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+  (add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
+  (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
+  (add-hook 'slime-mode-hook 'set-up-slime-ac)
+  (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+  )
 
 ;;Stop SLIME's REPL from grabbing DEL, which is annoying when backspacing over a '('
 (defun override-slime-repl-bindings-with-paredit ()
   (define-key slime-repl-mode-map
     (read-kbd-macro paredit-backward-delete-key)
     nil))
-(add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
 
-;; slime auto-complete
-(add-hook 'slime-mode-hook 'set-up-slime-ac)
-(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
 
@@ -39,21 +39,13 @@
   (cider-mode-hook . ac-flyspell-workaround)
   (cider-mode-hook . ac-cider-setup)
   (cider-repl-mode-hook . ac-cider-setup)
+  (cider-repl-mode-hook . enable-paredit-mode)
+  (clojure-mode-hook . enable-paredit-mode)
   
   :config
   (require 'cider-mode)
   (require 'ac-cider)
   )
-
-;(require 'clojure-mode)
-;(require 'cider-mode)
-;(require 'ac-cider)
-;
-;(add-hook 'clojure-mode-hook (lambda ()
-;                             (define-key (current-local-map) (kbd "\C-c\C-z") 'cider-jack-in)))
-;(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-;(add-hook 'cider-mode-hook 'ac-cider-setup)
-;(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 
 (eval-after-load "auto-complete"
        '(progn
