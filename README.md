@@ -4,7 +4,7 @@ Personal Emacs configure
 
 My environment:
 
-  * Emacs 26
+  * Emacs 27
   * macOS
 
 All configure files store in `~/.emacs.d` that Emacs default path.
@@ -13,18 +13,10 @@ All configure files store in `~/.emacs.d` that Emacs default path.
 
 ### Install
 
-First, clone to emacs.d folder
-
-`git clone https://github.com/ccqpein/ccQ-Emacs-d.git ~/.emacs.d`
-
 Install emacs, I install from source code by using `install.sh` of this repo:
 
 ```
-git clone git@github.com:emacs-mirror/emacs.git
-
-cd emacs
-
-{this_repo's path}/install.sh
+./install.sh
 ```
 
 Run script to install all packages 

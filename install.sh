@@ -1,8 +1,12 @@
-# cd emacs source code and run this 
-brew update && brew install autoconf automake texinfo gnutls pkg-config libxml2
+set -e
 
- export PKG_CONFIG_PATH="/usr/local/opt/libxml2/lib/pkgconfig"
+wget -v https://github.com/emacs-mirror/emacs/archive/master.zip || exit 1
+unzip master.zip && cd emacs-master || exit 1
 
-./autogen.sh
+brew update && brew upgrade && brew install autoconf automake texinfo gnutls pkg-config libxml2 || exit 1
 
-./configure && gmake && gmake install && open ./nextstep
+export PKG_CONFIG_PATH="/usr/local/opt/libxml2/lib/pkgconfig" || exit 1
+
+./autogen.sh || exit 1
+
+./configure && gmake && gmake install && open ./nextstep || exit 1
