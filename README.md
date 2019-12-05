@@ -16,7 +16,7 @@ All configure files store in `~/.emacs.d` that Emacs default path.
 Install emacs, I install from source code by using `install.sh` of this repo:
 
 ```
-./install.sh
+sbcl --load ./install.lisp
 ```
 
 Run script to install all packages 
