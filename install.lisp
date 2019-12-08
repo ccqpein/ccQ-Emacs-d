@@ -39,8 +39,8 @@
 
 
 (defun clean-up ()
-  (if (yes-or-no-p "Wanna cleanup")
-      (if (/= 0 (run-command "rm" "-rf" "./emacs.zip" "./emacs-master"))
+  (if (yes-or-no-p "Wanna cleanup? This will clean zip and emacs_source folder")
+      (if (run-command "rm" "-rf" "./emacs.zip" "./emacs_source")
           (progn
             (format t "Clean up failed")
             (sb-ext:exit))
@@ -61,15 +61,15 @@
    nil)
   
   (check-if-or-yes
-   (probe-file "./emacs-master")
-   "emacs-master already exist, wanna unzip it anyway?"
-   (if (run-command "unzip" "emacs.zip")
+   (probe-file "./emacs_source")
+   "emacs_source already exist, wanna unzip it anyway?"
+   (if (run-command "unzip" "-o" "emacs.zip" "-d" "emacs_source")
        (sb-ext:exit :code 1))
    nil)
 
   ;;(run-command *global-output-stream* "brew" "install" "autoconf" "automake" "texinfo" "gnutls" "pkg-config" "libxml2")
 
-  (if (/= 0 (sb-posix:chdir "./emacs-master"))
+  (if (/= 0 (sb-posix:chdir "./emacs_source/emacs-master"))
       (sb-ext:exit :code 1))
   
   (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./autogen.sh")
@@ -80,7 +80,7 @@
 
   (run-command "open" "./nextstep")
 
-  (if (/= 0 (sb-posix:chdir ".."))
+  (if (/= 0 (sb-posix:chdir "../../"))
       (sb-ext:exit :code 1))
 
   (clean-up)
