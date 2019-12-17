@@ -65,7 +65,7 @@
   (check-if-or-yes
    (probe-file "./emacs.zip")
    "emacs.zip already exist, wanna download it again?"
-   (if (run-command "wget" (if-has-argv "-—no-check-certificate") "-v" "https://github.com/emacs-mirror/emacs/archive/master.zip" "-O" "emacs.zip")
+   (if (run-command "wget" (if-has-argv "--no-check-certificate") "-v" "https://github.com/emacs-mirror/emacs/archive/master.zip" "-O" "emacs.zip")
        (sb-ext:exit :code 1))
    nil)
   
