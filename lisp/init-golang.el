@@ -21,8 +21,6 @@
   
   :config
   (require 'go-autocomplete)
-  (set (make-local-variable 'compile-command)
-       "go build")
   (setq-default flycheck-disabled-checkers '(go-staticcheck))
   )
 
