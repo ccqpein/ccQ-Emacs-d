@@ -9,10 +9,8 @@
 
 (defun run-command (com &rest argvs)
   (format t "Start run command ~a ~{~a ~}~%" com argvs)
-  (if (/= 0 (sb-ext:process-exit-code
-             (sb-ext:run-program com argvs :search t :wait t :output *global-output-stream*)))
-      1
-      nil))
+  (sb-ext:process-error
+   (sb-ext:run-program com argvs :search t :wait t :output *global-output-stream*)))
 
 
 (defun check-this-dir ()
