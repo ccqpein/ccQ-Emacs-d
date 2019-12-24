@@ -59,6 +59,7 @@
 
 ;;;;;;; flycheck ;;;;;;;
 (global-flycheck-mode)
+(remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
 
 ;;;;;;; company ;;;;;;;;

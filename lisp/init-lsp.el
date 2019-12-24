@@ -3,6 +3,7 @@
   ((go-mode . lsp-deferred)
    (js-mode . lsp-deferred)
    (tide-mode . lsp-deferred)
+   ;;(rust-mode . lsp-deferred)
    )
   :commands (lsp lsp-deferred)
   )
