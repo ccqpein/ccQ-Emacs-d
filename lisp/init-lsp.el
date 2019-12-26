@@ -4,6 +4,7 @@
    (js-mode . lsp-deferred)
    (tide-mode . lsp-deferred)
    ;;(rust-mode . lsp-deferred)
+   (swift-mode . lsp-deferred)
    )
   :commands (lsp lsp-deferred)
   )
