@@ -4,6 +4,7 @@
 !.gitignore
 !init.el
 !plugins/
+plugins/jdee-server/
 !packages
 !install-packages.el
 !lisp/
