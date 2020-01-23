@@ -95,6 +95,12 @@
   (helm-swoop-use-line-number-face t)
   (helm-swoop-use-fuzzy-match t))
 
+(use-package projectile
+  :config
+  (defun projectile-ag (arg)
+    (interactive "P")
+    (helm-grep-ag (projectile-project-root) arg)))
+
 (global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
 
