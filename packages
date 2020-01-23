@@ -27,11 +27,9 @@ racer
 rust-mode
 highlight-symbol
 monokai-theme
-ensime
 tide
 helm
 helm-gtags
-ac-cider
 cider
 clojure-mode
 auctex
