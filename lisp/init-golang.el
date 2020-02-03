@@ -23,8 +23,6 @@
   (setq-default flycheck-disabled-checkers '(go-staticcheck))
   )
 
-
-
 (provide 'init-golang)
 
 ;; 2020-02-03
