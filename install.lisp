@@ -60,39 +60,47 @@
   (if (not (check-this-dir))
       (sb-ext:exit))
   
-  (check-if-or-yes
-   (probe-file "./emacs.zip")
-   "emacs.zip already exist, wanna download it again?"
-   (if (run-command "wget" (if-has-argv "--no-check-certificate") "-v" "https://github.com/emacs-mirror/emacs/archive/master.zip" "-O" "emacs.zip")
-       (sb-ext:exit :code 1))
-   nil)
-  
-  (check-if-or-yes
-   (probe-file "./emacs_source")
-   "emacs_source already exist, wanna unzip it anyway?"
-   (if (run-command "unzip" "-o" "emacs.zip" "-d" "emacs_source")
-       (sb-ext:exit :code 1))
-   nil)
+  (let* ((version "master")
+         (new-version? (progn
+                         (format t "Which branch you want to download? Default is ~s~%" version)
+                         (read-line))))
 
-  ;;(run-command *global-output-stream* "brew" "install" "autoconf" "automake" "texinfo" "gnutls" "pkg-config" "libxml2")
+    (if (/= 0 (length new-version?)) (setf version new-version?)) ;; if new-version is not empty
 
-  (if (/= 0 (sb-posix:chdir "./emacs_source/emacs-master"))
-      (sb-ext:exit :code 1))
-  
-  (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./autogen.sh")
+    (check-if-or-yes
+     (probe-file "./emacs.zip")
+     "emacs.zip already exist, wanna download it again?"
+     (if (run-command "wget" (if-has-argv "--no-check-certificate") "-v"
+                      (format nil "https://github.com/emacs-mirror/emacs/archive/~a.zip" version) "-O" "emacs.zip")
+         (sb-ext:exit :code 1))
+     nil)
+       
+    (check-if-or-yes
+     (probe-file "./emacs_source")
+     "emacs_source already exist, wanna unzip it anyway?"
+     (if (run-command "unzip" "-o" "emacs.zip" "-d" "emacs_source")
+         (sb-ext:exit :code 1))
+     nil)
 
-  (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./configure")
+    ;;(run-command *global-output-stream* "brew" "install" "autoconf" "automake" "texinfo" "gnutls" "pkg-config" "libxml2")
 
-  (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "gmake" "install")
+    (if (/= 0 (sb-posix:chdir (format nil "./emacs_source/emacs-~a" version)))
+        (sb-ext:exit :code 1))
+       
+    (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./autogen.sh")
 
-  (run-command "open" "./nextstep")
+    (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./configure")
 
-  (if (/= 0 (sb-posix:chdir "../../"))
-      (sb-ext:exit :code 1))
+    (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "gmake" "install")
 
-  (clean-up)
+    (run-command "open" "./nextstep")
 
-  (sb-ext:exit)
+    (if (/= 0 (sb-posix:chdir "../../"))
+        (sb-ext:exit :code 1))
+
+    (clean-up)
+
+    (sb-ext:exit))
   )
 
 (main)

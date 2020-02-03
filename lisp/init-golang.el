@@ -20,15 +20,16 @@
    (go-mode . hs-minor-mode))
   
   :config
-  (require 'go-autocomplete)
   (setq-default flycheck-disabled-checkers '(go-staticcheck))
   )
 
-;; go mode need `gocode (https://github.com/mdempsky/gocode)`, need update regularly
-;; `go get -u github.com/mdempsky/gocode`
+
 
 (provide 'init-golang)
 
+;; 2020-02-03
+;; gocode is not fluency, use gopls & lsp replace it
+;; go mode need `gocode (go get -u github.com/stamblerre/gocode)`, need update regularly
 
 ;;; 2018-09-13
 ;;; because I choice to use `use-package` to loading package
