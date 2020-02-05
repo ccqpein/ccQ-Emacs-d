@@ -17,7 +17,8 @@
   
   :hook
   ((before-save . gofmt-before-save)
-   (go-mode . hs-minor-mode))
+   (go-mode . hs-minor-mode)
+   (go-mode . (lambda () (funcall 'auto-complete-mode -1))))
   
   :config
   (setq-default flycheck-disabled-checkers '(go-staticcheck))

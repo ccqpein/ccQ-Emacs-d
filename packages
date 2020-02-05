@@ -1,3 +1,4 @@
+magit
 json-mode
 projectile
 lsp-sourcekit
@@ -35,7 +36,6 @@ helm-gtags
 cider
 clojure-mode
 auctex
-magit
 js2-mode
 web-mode
 swiper
