@@ -15,10 +15,10 @@
 		("C-c c" . haskell-process-cabal)
 		("C-;" . comment-dwim))
 
-  :custom
+  ;;:custom
   ;;(haskell-process-type 'cabal-new-repl)
   ;;(haskell-process-type 'cabal-repl)
-  (haskell-process-type 'ghci)
+  ;;(haskell-process-type 'ghci)
   
   :config
   (setq haskell-stylish-on-save t)
