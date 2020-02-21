@@ -36,11 +36,11 @@
    ("\C-c\C-z" . cider-jack-in))
   
   :hook
-  (cider-mode-hook . ac-flyspell-workaround)
-  (cider-mode-hook . ac-cider-setup)
-  (cider-repl-mode-hook . ac-cider-setup)
-  (cider-repl-mode-hook . enable-paredit-mode)
-  (clojure-mode-hook . enable-paredit-mode)
+  (cider-mode . ac-flyspell-workaround)
+  (cider-mode . ac-cider-setup)
+  (cider-repl-mode . ac-cider-setup)
+  (cider-repl-mode . enable-paredit-mode)
+  (clojure-mode . enable-paredit-mode)
   
   :config
   (require 'cider-mode)
