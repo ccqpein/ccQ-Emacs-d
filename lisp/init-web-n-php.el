@@ -4,11 +4,20 @@
   (web-mode . (lambda ()
 				(define-key web-mode-map (kbd "C-c s") 'toggle-php-flavor-mode)
 				(define-key web-mode-map (kbd "C-c C-;") 'web-mode-comment-or-uncomment)))
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; for tsx and jsx
   (web-mode . (lambda ()
 				(when (string-equal "tsx" (file-name-extension buffer-file-name))
-				  (setup-tide-mode))
-				(when (string-equal "jsx" (file-name-extension buffer-file-name))
-				  (setup-tide-mode))))
+				  (progn
+                    (setup-tide-mode)
+                    (flycheck-add-mode 'typescript-tslint 'web-mode)))
+                
+			    (when (string-equal "jsx" (file-name-extension buffer-file-name))
+			      (progn
+                    (setup-tide-mode)
+                    (flycheck-add-mode 'javascript-eslint 'web-mode)
+                    (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)))))
   
   :custom
   (web-mode-enable-auto-closing t)
@@ -26,11 +35,27 @@
   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  
+
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
   
   (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
   (add-to-list 'auto-mode-alist '("\\.blade\\.php\\'" . web-mode))
   )
+
+
+;; copy from https://github.com/ananthakumaran/tide#tsx
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
 
 ;(require 'web-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
