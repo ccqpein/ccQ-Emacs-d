@@ -1,5 +1,7 @@
 ;;;;;;;; Javascript mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package js-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
   :hook
   (
    (js-mode . hs-minor-mode)

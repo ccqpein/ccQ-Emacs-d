@@ -1,3 +1,8 @@
+(use-package typescript-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+  )
+
 (use-package tide
   :ensure t
   :after (typescript-mode company flycheck)
