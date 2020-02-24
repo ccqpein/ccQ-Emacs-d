@@ -44,7 +44,6 @@
   
   :config
   (require 'cider-mode)
-  (require 'ac-cider)
   )
 
 (eval-after-load "auto-complete"
