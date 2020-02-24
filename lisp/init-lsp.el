@@ -7,6 +7,8 @@
    (swift-mode . lsp-deferred)
    )
   :commands (lsp lsp-deferred)
+  :config
+  (setq lsp-idle-delay 0.500)
   )
 
 (use-package lsp-ui
@@ -23,7 +25,11 @@
 
 
 (use-package company-lsp
-  :commands company-lsp)
+  :commands company-lsp
+  :config
+  (setq company-minimum-prefix-length 1
+	company-idle-delay 0.0) ;; default is 0.2
+  )
 
 
 (use-package helm-lsp
