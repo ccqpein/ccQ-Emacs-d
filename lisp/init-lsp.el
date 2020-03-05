@@ -37,7 +37,13 @@
 
 
 (use-package lsp-treemacs
-  :commands lsp-treemacs-errors-list)
+  :commands
+  (lsp-treemacs-errors-list
+   lsp-treemacs-symbols-list
+   lsp-treemacs-references
+   lsp-treemacs-implementations
+   )
+  )
 
 
 (provide 'init-lsp)
