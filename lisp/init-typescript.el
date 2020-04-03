@@ -7,10 +7,14 @@
   :config
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (setq tide-format-options
-      '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions
-        t
-        :placeOpenBraceOnNewLineForFunctions
-        nil))
+        '(:indentSize
+          2
+          :tabSize
+          2
+          :insertSpaceAfterFunctionKeywordForAnonymousFunctions
+          t
+          :placeOpenBraceOnNewLineForFunctions
+          nil))
   (setq tide-tsserver-executable "/usr/local/bin/tsserver")
   )
 
