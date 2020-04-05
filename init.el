@@ -63,12 +63,6 @@
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
 
-;;;;;;; company ;;;;;;;;
-;; looks like company mode do not need to load as global
-;; most of modes have already load it in backend
-;(global-company-mode)
-
-
 ;;;;;;; yasnippet ;;;;;;
 (require 'yasnippet)
 (yas-global-mode 1)
