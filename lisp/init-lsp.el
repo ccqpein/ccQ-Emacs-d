@@ -3,12 +3,14 @@
   ((go-mode . lsp-deferred)
    (js-mode . lsp-deferred)
    (tide-mode . lsp-deferred)
-   ;;(rust-mode . lsp-deferred)
+   (rust-mode . lsp-deferred)
    (swift-mode . lsp-deferred)
    )
   :commands (lsp lsp-deferred)
   :config
   (setq lsp-idle-delay 0.500)
+  (setq lsp-rust-server 'rust-analyzer)
+  ;;;:= TODO: bind commands lsp-rust-analyzer-join-lines, lsp-extend-selection and lsp-rust-analyzer-expand-macro
   )
 
 (use-package lsp-ui
@@ -28,7 +30,7 @@
   :commands company-lsp
   :config
   (setq company-minimum-prefix-length 1
-	company-idle-delay 0.0) ;; default is 0.2
+	company-idle-delay 0.1) ;; default is 0.2
   )
 
 

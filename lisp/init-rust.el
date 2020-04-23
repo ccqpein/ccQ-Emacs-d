@@ -7,7 +7,7 @@
   :ensure t
      
   :hook
-  (rust-mode . racer-mode)
+  ;;(rust-mode . racer-mode)
   (rust-mode . eldoc-mode)
   (rust-mode . flycheck-rust-setup)
   (rust-mode . company-mode)
