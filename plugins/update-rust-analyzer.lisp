@@ -2,7 +2,7 @@
 
 (block nil
   (let* ((current-version (handler-case (read-line (sb-ext:process-output
-                                                    (sb-ext:run-program "rust-analyzerdd"
+                                                    (sb-ext:run-program "rust-analyzer"
                                                                         '("--version")
                                                                         :search t
                                                                         :output :stream)))
