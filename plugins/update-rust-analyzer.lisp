@@ -17,7 +17,11 @@
 
     (format t "Go get newest release data~%")
     (multiple-value-setq (whole-page statue-code head uri stream)
-      (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest"))
+      (handler-case (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest")
+        (CL+SSL::SSL-ERROR-SYSCALL (e)
+          (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest"
+                   :proxy "http://localhost:8099/"
+                   :insecure t))))
   
     (setf release-page (lquery:$ (lquery:initialize whole-page))
           newest-hash (elt (lquery:$ release-page "code" (text)) 0))
