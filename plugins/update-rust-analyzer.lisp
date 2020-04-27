@@ -8,7 +8,7 @@
                                                                         :output :stream)))
                             (error (m)
                               (format t "receive error: ~a~%" m)
-                              (if (yes-or-no-p "wanns reinstall it?") "fakehash" (return nil)))))
+                              (if (yes-or-no-p "wanns reinstall it?") " fakehash" (return nil)))))
          
          (version-hash (subseq current-version (1+ (position #\Space current-version))))
        
