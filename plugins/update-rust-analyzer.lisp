@@ -1,5 +1,15 @@
 (ql:quickload '("dexador" "lquery" "quri" "str"))
 
+
+(defun run-command (comm &rest argvs)
+  (let ((out (make-string-output-stream)))
+    (sb-ext:run-program comm
+                        argvs
+                        :search t
+                        :output out)
+    out)) ;; wanna see the output, call get-output-stream-string outside
+
+
 (block nil
   (let* ((current-version (handler-case (read-line (sb-ext:process-output
                                                     (sb-ext:run-program "rust-analyzer"
@@ -16,11 +26,13 @@
          )
 
     (format t "Go get newest release data~%")
+    
     (multiple-value-setq (whole-page statue-code head uri stream)
-      (handler-case (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest")
+      (handler-case
+          (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest")
         (CL+SSL::SSL-ERROR-SYSCALL (e)
           (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest"
-                   :proxy "http://localhost:8099/"
+                   :proxy "http://localhost:8099/" ;; local proxy
                    :insecure t))))
   
     (setf release-page (lquery:$ (lquery:initialize whole-page))
@@ -32,12 +44,19 @@
                 newest-hash current-version)
         (let ((data-tag (car (last (str:split-omit-nulls #\/ (quri:uri-path uri)))))
               download-link)
+
+          ;; make download url
           (setf download-link
                 (format nil
                         "https://github.com/rust-analyzer/rust-analyzer/releases/download/~a/rust-analyzer-mac"
                         data-tag))
-          (format t
-                  "update rust-analyzer-mac by \"wget ~a -O ~~/.cargo/bin/rust-analyzer && chmod +x ~~/.cargo/bin/rust-analyzer\"~%"
-                  download-link)))))
+          ;; (format t
+          ;;         "update rust-analyzer-mac by \"wget ~a -O ~~/.cargo/bin/rust-analyzer && chmod +x ~~/.cargo/bin/rust-analyzer\"~%"
+          ;;         download-link)
+
+          ;; start to download rust-analyzer
+          (run-command "wget" download-link "-O" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
+          (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
+          ))))
 
 (sb-ext:exit)
