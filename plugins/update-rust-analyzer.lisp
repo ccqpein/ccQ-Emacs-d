@@ -22,18 +22,23 @@
          
          (version-hash (subseq current-version (1+ (position #\Space current-version))))
        
-         whole-page statue-code head uri stream release-page newest-hash 
+         whole-page uri
+         
+         release-page newest-hash 
          )
 
     (format t "Go get newest release data~%")
-    
-    (multiple-value-setq (whole-page statue-code head uri stream)
-      (handler-case
-          (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest")
-        (CL+SSL::SSL-ERROR-SYSCALL (e)
-          (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest"
-                   :proxy "http://localhost:8099/" ;; local proxy
-                   :insecure t))))
+
+    (let ((response (multiple-value-list
+                     (handler-case
+                         (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest")
+                       (CL+SSL::SSL-ERROR-SYSCALL (e)
+                         (declare (ignore e))
+                         (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest"
+                                  :proxy "http://localhost:8099/" ;; local proxy
+                                  :insecure t))))))
+      (setf whole-page (nth 0 response)
+            uri (nth 3 response)))
   
     (setf release-page (lquery:$ (lquery:initialize whole-page))
           newest-hash (elt (lquery:$ release-page "code" (text)) 0))
@@ -54,6 +59,7 @@
           ;;         "update rust-analyzer-mac by \"wget ~a -O ~~/.cargo/bin/rust-analyzer && chmod +x ~~/.cargo/bin/rust-analyzer\"~%"
           ;;         download-link)
 
+          (format t "Start to download newest version")
           ;; start to download rust-analyzer
           (run-command "wget" download-link "-O" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
           (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
