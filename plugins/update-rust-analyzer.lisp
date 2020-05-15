@@ -63,6 +63,7 @@
           ;; start to download rust-analyzer
           (run-command "wget" download-link "-O" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
           (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
+          (format t "Download done")
           ))))
 
 (sb-ext:exit)
