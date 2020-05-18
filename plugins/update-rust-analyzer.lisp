@@ -59,7 +59,7 @@
           ;;         "update rust-analyzer-mac by \"wget ~a -O ~~/.cargo/bin/rust-analyzer && chmod +x ~~/.cargo/bin/rust-analyzer\"~%"
           ;;         download-link)
 
-          (format t "Start to download newest version")
+          (format t "Start to download newest version~%")
           ;; start to download rust-analyzer
           (run-command "wget" download-link "-O" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
           (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
