@@ -18,13 +18,15 @@
                                                                         :output :stream)))
                             (error (m)
                               (format t "receive error: ~a~%" m)
-                              (if (yes-or-no-p "wanns reinstall it?") " fakehash" (return nil)))))
+                              (if (yes-or-no-p "wanna reinstall it?") " fakehash" (return nil)))))
          
          (version-hash (subseq current-version (1+ (position #\Space current-version))))
        
          whole-page uri
          
-         release-page newest-hash 
+         release-page newest-hash
+
+         (in-proxy nil)
          )
 
     (format t "Go get newest release data~%")
@@ -34,6 +36,8 @@
                          (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest")
                        (CL+SSL::SSL-ERROR-SYSCALL (e)
                          (declare (ignore e))
+                         (format t "Use proxy here~%")
+                         (setf in-proxy t)
                          (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest"
                                   :proxy "http://localhost:8099/" ;; local proxy
                                   :insecure t))))))
@@ -60,8 +64,12 @@
           ;;         download-link)
 
           (format t "Start to download newest version~%")
+          
           ;; start to download rust-analyzer
-          (run-command "wget" download-link "-O" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
+          (run-command "wget" download-link
+                       "-O"
+                       (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME"))
+                       (if in-proxy "--no-check-certificate" ""))
           (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
           (format t "Download done")
           ))))
