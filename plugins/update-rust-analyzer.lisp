@@ -1,5 +1,6 @@
-(ql:quickload '("dexador" "lquery" "quri" "str"))
+(ql:quickload '("dexador" "yason"))
 
+(defparameter *IN-PROXY* nil)
 
 (defun run-command (comm &rest argvs)
   (let ((out (make-string-output-stream)))
@@ -9,8 +10,26 @@
                         :output out)
     out)) ;; wanna see the output, call get-output-stream-string outside
 
+(defun wrap-dex-call-in-proxy (url)
+  (setf *in-proxy* t)
+  (dex:get url
+           :proxy "http://localhost:8099/" ;; local proxy
+           :insecure t))
 
-(block nil
+(defun call-github-api (url)
+  "return whole json body"
+  (yason:parse
+   (car (multiple-value-list
+         (if *IN-PROXY*
+             (wrap-dex-call-in-proxy url)
+             (handler-case
+                 (dex:get url)
+               (CL+SSL::SSL-ERROR-SYSCALL (e)
+                 (declare (ignore e))
+                 (format t "Use proxy here~%")
+                 (wrap-dex-call-in-proxy url))))))))
+
+(defun main ()
   (let* ((current-version (handler-case (read-line (sb-ext:process-output
                                                     (sb-ext:run-program "rust-analyzer"
                                                                         '("--version")
@@ -18,60 +37,50 @@
                                                                         :output :stream)))
                             (error (m)
                               (format t "receive error: ~a~%" m)
-                              (if (yes-or-no-p "wanna reinstall it?") " fakehash" (return nil)))))
+                              (if (yes-or-no-p "wanna reinstall it?") " fakehash" (return-from main nil)))))
          
-         (version-hash (subseq current-version (1+ (position #\Space current-version))))
-       
-         whole-page uri
-         
-         release-page newest-hash
-
-         (in-proxy nil)
-         )
+         (version-hash (subseq current-version (1+ (position #\Space current-version)))))
 
     (format t "Go get newest release data~%")
 
-    (let ((response (multiple-value-list
-                     (handler-case
-                         (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest")
-                       (CL+SSL::SSL-ERROR-SYSCALL (e)
-                         (declare (ignore e))
-                         (format t "Use proxy here~%")
-                         (setf in-proxy t)
-                         (dex:get "https://github.com/rust-analyzer/rust-analyzer/releases/latest"
-                                  :proxy "http://localhost:8099/" ;; local proxy
-                                  :insecure t))))))
-      (setf whole-page (nth 0 response)
-            uri (nth 3 response)))
-  
-    (setf release-page (lquery:$ (lquery:initialize whole-page))
-          newest-hash (elt (lquery:$ release-page "code" (text)) 0))
-  
-    (format t "newest: ~a, current: ~a~%" newest-hash version-hash)
-    (if (string= newest-hash version-hash)
-        (format t "newest version ~a equal current version ~a, don't need to update~%"
-                newest-hash current-version)
-        (let ((data-tag (car (last (str:split-omit-nulls #\/ (quri:uri-path uri)))))
-              download-link)
+    (let* ((response-json-body (call-github-api
+                                "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases/latest"))
+           (tag-name (gethash "tag_name" response-json-body))
+           (tag-detail (call-github-api
+                        (format nil
+                                "https://api.github.com/repos/rust-analyzer/rust-analyzer/git/refs/tags/~a"
+                                tag-name)))
+           (newest-hash (subseq (gethash "sha" (gethash "object" tag-detail)) 0 (length version-hash)))
+           )
+      
+      (format t "newest: ~a, current: ~a~%" newest-hash version-hash)
+      
+      (if (string= version-hash newest-hash)
+          (format t "newest version ~a equal current version ~a, don't need to update~%"
+                  newest-hash current-version)
 
-          ;; make download url
-          (setf download-link
-                (format nil
-                        "https://github.com/rust-analyzer/rust-analyzer/releases/download/~a/rust-analyzer-mac"
-                        data-tag))
-          ;; (format t
-          ;;         "update rust-analyzer-mac by \"wget ~a -O ~~/.cargo/bin/rust-analyzer && chmod +x ~~/.cargo/bin/rust-analyzer\"~%"
-          ;;         download-link)
+          ;; have newer version
+          (let ((download-link (gethash "browser_download_url"
+                                        (find-if (lambda (x) (string= "rust-analyzer-mac"
+                                                                      (gethash "name" x)))
+                                                 (gethash "assets" response-json-body)))))
 
-          (format t "Start to download newest version~%")
-          
-          ;; start to download rust-analyzer
-          (run-command "wget" download-link
-                       "-O"
-                       (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME"))
-                       (if in-proxy "--no-check-certificate" ""))
-          (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
-          (format t "Download done")
-          ))))
+            ;; check
+            (if (not download-link)
+                (progn (format t "Cannot find download version, please check it out~%")
+                       (return-from main nil)))
+
+            ;; start to download rust-analyzer
+            (format t "Start to download newest version from ~a~%" download-link)
+
+            (run-command "wget" download-link
+                         "-O"
+                         (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME"))
+                         (if *in-proxy* "--no-check-certificate" ""))
+            (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
+            (format t "Download done")
+            )))))
+
+(main)
 
 (sb-ext:exit)

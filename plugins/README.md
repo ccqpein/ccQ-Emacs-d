@@ -17,15 +17,7 @@ emacsclient --eval "(kill-emacs)"
 eems.sh
 ```
 
-### go-autocomplete.el
-
-golang auto-complete feature
-
 ### jdee-server
-
-### lisp-mode & swift-mode
-
-Add dicts to auto-complete
 
 ### open-markdown-to-web.sh
 
@@ -35,4 +27,12 @@ Need change configuration to fit your environment
 
 Need Marked 2
 
+### opam-user-setup ###
 
+opam stuff
+
+### update-rust-analyzer.lisp ###
+
+common lisp script to update and install rust-analyzer.
+
+`sbcl --load update-rust-analyzer.lisp`
