@@ -30,11 +30,12 @@
                  (wrap-dex-call-in-proxy url))))))))
 
 (defun main ()
-  (let* ((current-version (handler-case (read-line (sb-ext:process-output
-                                                    (sb-ext:run-program "rust-analyzer"
-                                                                        '("--version")
-                                                                        :search t
-                                                                        :output :stream)))
+  (let* ((current-version (handler-case
+                              (read-line (sb-ext:process-output
+                                          (sb-ext:run-program "rust-analyzer"
+                                                              '("--version")
+                                                              :search t
+                                                              :output :stream)))
                             (error (m)
                               (format t "receive error: ~a~%" m)
                               (if (yes-or-no-p "wanna reinstall it?") " fakehash" (return-from main nil)))))
@@ -50,8 +51,9 @@
                         (format nil
                                 "https://api.github.com/repos/rust-analyzer/rust-analyzer/git/refs/tags/~a"
                                 tag-name)))
-           (newest-hash (subseq (gethash "sha" (gethash "object" tag-detail)) 0 (length version-hash)))
-           )
+           (newest-hash (subseq (gethash "sha"
+                                         (gethash "object" tag-detail))
+                                0 (length version-hash))))
       
       (format t "newest: ~a, current: ~a~%" newest-hash version-hash)
       
