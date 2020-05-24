@@ -4,7 +4,7 @@ Personal Emacs configure
 
 My environment:
 
-  * Emacs 27
+  * Emacs 28
   * macOS
 
 All configure files store in `~/.emacs.d` that Emacs default path.
@@ -13,7 +13,7 @@ All configure files store in `~/.emacs.d` that Emacs default path.
 
 ### Install
 
-Install emacs, I install from source code by using `install.sh` of this repo:
+Install emacs, I install from source code by using `install.lisp` of this repo:
 
 ```
 sbcl --load ./install.lisp
@@ -73,6 +73,10 @@ Use [Gopls](https://github.com/golang/tools/tree/master/gopls) be my LSP
 **Javascript/Typescript**
 
 Use [typescript-language-server](https://github.com/theia-ide/typescript-language-server) be my LSP
+
+**Rust**
+
+Use [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) be Rust LSP. Update/Install it by using `plugins/update-rust-analyzer.lisp`
 
 ## About ispell
 
