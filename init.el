@@ -51,8 +51,8 @@
 
 
 ;;;;;;; autocomplete ;;;;;;
-(require 'auto-complete)
-(require 'auto-complete-config)
+;;(require 'auto-complete)
+;;(require 'auto-complete-config)
 (ac-config-default)
 
 (global-auto-complete-mode t)
@@ -64,45 +64,45 @@
 
 
 ;;;;;;; yasnippet ;;;;;;
-(require 'yasnippet)
-(yas-global-mode 1)
+;;(require 'yasnippet)
+;;(yas-global-mode 1)
 
 
 ;;;;;;;; multiple-cursors ;;;;;;;;;;;;;;;;
-(require 'multiple-cursors)
-(global-set-key (kbd "M-\\") 'mc/edit-lines)
-(global-set-key (kbd "M-]") 'mc/mark-next-like-this)
-(global-set-key (kbd "M-[") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c M-p") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-c M-\\") 'mc/mark-all-in-region)
+;; (require 'multiple-cursors)
+;; (global-set-key (kbd "M-\\") 'mc/edit-lines)
+;; (global-set-key (kbd "M-]") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "M-[") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C-c M-p") 'mc/mark-all-like-this)
+;; (global-set-key (kbd "C-c M-\\") 'mc/mark-all-in-region)
 
 
 ;;;;;;;; highlight-symbol ;;;;;;;;;;;;;;;;;;
-(require 'highlight-symbol)
-(global-set-key (kbd "C-M-]") 'highlight-symbol-next)
-(global-set-key (kbd "C-M-[") 'highlight-symbol-prev)
+;; (require 'highlight-symbol)
+;; (global-set-key (kbd "C-M-]") 'highlight-symbol-next)
+;; (global-set-key (kbd "C-M-[") 'highlight-symbol-prev)
 
 
 ;;;;;;;; expand-region ;;;;;;;;;;;;;;;
-(require 'expand-region)
-(global-set-key (kbd "C-@") 'er/expand-region)
-(delete-selection-mode 1)
+;; (require 'expand-region)
+;; (global-set-key (kbd "C-@") 'er/expand-region)
+;; (delete-selection-mode 1)
 
 
 ;;;;;; Google ;;;;;;;;;;;;;;;;
-(require 'google-this)
-(google-this-mode 1)
-(global-set-key (kbd "C-c /") 'google-this-mode-submap)
+;; (require 'google-this)
+;; (google-this-mode 1)
+;; (global-set-key (kbd "C-c /") 'google-this-mode-submap)
 
 
 ;;;;;; Magit ;;;;;;;
-(require 'magit)
-(global-set-key (kbd "C-x M-G") 'magit-dispatch-popup)
-(global-set-key (kbd "C-x M-g") 'magit-status)
+;; (require 'magit)
+;; (global-set-key (kbd "C-x M-G") 'magit-dispatch-popup)
+;; (global-set-key (kbd "C-x M-g") 'magit-status)
 
 
-(require 'ace-window)
-(global-set-key (kbd "M-o") 'ace-window)
+;; (require 'ace-window)
+;; (global-set-key (kbd "M-o") 'ace-window)
 
 ;; windmove
 (global-set-key (kbd "s-<left>")  'windmove-left)
@@ -110,6 +110,7 @@
 (global-set-key (kbd "s-<up>")    'windmove-up)
 (global-set-key (kbd "s-<down>")  'windmove-down)
 
+(require 'init-general)
 
 ;;; languages
 (require 'init-treemacs)
@@ -183,7 +184,7 @@
  '(markdown-command "~/.emacs.d/plugins/open-markdown-to-web.sh")
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
-   '(julia-mode julia-repl magit json-mode projectile lsp-sourcekit helm-core helm-lsp lsp-treemacs company-lsp lsp-ui groovy-mode elm-mode flycheck-elm flycheck-haskell company-coq proof-general graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode helm-swoop use-package restclient treemacs flycheck-rust lsp-mode racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
+   '(julia-mode julia-repl magit json-mode projectile lsp-sourcekit helm-core helm-lsp lsp-treemacs company-lsp lsp-ui groovy-mode elm-mode flycheck-elm flycheck-haskell company-coq proof-general graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode use-package restclient treemacs flycheck-rust lsp-mode racer rust-mode highlight-symbol monokai-theme ensime tide helm-gtags helm ac-cider cider clojure-mode auctex js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
  '(recentf-max-saved-items 10)
  '(send-mail-function 'mailclient-send-it)
  '(visible-bell nil))

@@ -1,13 +1,12 @@
 ;;;;;;;; treemacs ;;;;;;;;;
 (use-package treemacs
   :ensure t
-
-  :init (bind-key "C-x M-d" #'treemacs)
   
   :bind
-  (:map treemacs-mode-map
-		("M-p" . treemacs-previous-project)
-		("M-n" . treemacs-next-project))
+  (("C-x M-d" . treemacs)
+   :map treemacs-mode-map
+   ("M-p" . treemacs-previous-project)
+   ("M-n" . treemacs-next-project))
   
   :custom
   (treemacs-follow-after-init          t)
@@ -26,9 +25,10 @@
   (treemacs-never-persist              nil)
   (treemacs-is-never-other-window      nil)
   (treemacs-goto-tag-strategy          'refetch-index)
+  (treemacs--width-is-locked           nil)
 
   (treemacs-persist-file "~/.emacs.d/treemacs-persist")
-)
+  )
 
 (provide 'init-treemacs)
 

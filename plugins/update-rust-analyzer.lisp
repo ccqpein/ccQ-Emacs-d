@@ -68,9 +68,9 @@
                                                  (gethash "assets" response-json-body)))))
 
             ;; check
-            (if (not download-link)
-                (progn (format t "Cannot find download version, please check it out~%")
-                       (return-from main nil)))
+            (when (not download-link)
+              (format t "Cannot find download version, please check it out~%")
+              (return-from main nil))
 
             ;; start to download rust-analyzer
             (format t "Start to download newest version from ~a~%" download-link)

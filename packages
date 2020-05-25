@@ -22,7 +22,6 @@ merlin
 utop
 tuareg
 yaml-mode
-helm-swoop
 use-package
 restclient
 treemacs

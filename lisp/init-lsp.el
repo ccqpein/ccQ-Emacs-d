@@ -1,4 +1,7 @@
 (use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  
   :hook
   ((go-mode . lsp-deferred)
    (js-mode . lsp-deferred)
@@ -6,7 +9,13 @@
    (rust-mode . lsp-deferred)
    (swift-mode . lsp-deferred)
    )
+
   :commands (lsp lsp-deferred)
+
+  :bind
+  (:map lsp-mode-map
+        ("C-c l g d" . lsp-find-definition)) ;; I like d => definition rather than g
+  
   :config
   (setq lsp-idle-delay 0.500)
   (setq lsp-rust-server 'rust-analyzer)
@@ -14,8 +23,6 @@
   )
 
 (use-package lsp-ui
-  :commands lsp-ui-mode
-
   :config
   (setq lsp-ui-sideline-enable t
         lsp-ui-doc-enable t
@@ -25,27 +32,23 @@
         lsp-log-io t)
   )
 
-
 (use-package company-lsp
-  :commands company-lsp
   :config
   (setq company-minimum-prefix-length 1
-	company-idle-delay 0.1) ;; default is 0.2
+	    company-idle-delay 0.1) ;; default is 0.2
   )
 
-
 (use-package helm-lsp
-  :commands helm-lsp-workspace-symbol)
-
+  :commands helm-lsp-workspace-symbol) ;;:= MAYBE: give a key bind. Shows workspace symbols
 
 (use-package lsp-treemacs
   :commands
-  (lsp-treemacs-errors-list
-   lsp-treemacs-symbols-list
+  (lsp-treemacs-symbols ;;:= MAYBE: give a key bind. Shows current file's symbols
+   lsp-treemacs-sync-mode
+   lsp-treemacs-errors-list
    lsp-treemacs-references
    lsp-treemacs-implementations
    )
   )
-
 
 (provide 'init-lsp)
