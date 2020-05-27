@@ -1,4 +1,4 @@
-(defvar *global-output-stream* (make-string-output-stream))
+(defparameter *global-output-stream* (make-string-output-stream))
 
 
 (defun run-one-time-command (com &rest argvs)
@@ -82,7 +82,7 @@
          (sb-ext:exit :code 1))
      nil)
 
-    ;;(run-command *global-output-stream* "brew" "install" "autoconf" "automake" "texinfo" "gnutls" "pkg-config" "libxml2")
+    ;;(run-command *global-output-stream* "brew" "make" "install" "autoconf" "automake" "texinfo" "gnutls" "pkg-config" "libxml2")
 
     (if (/= 0 (sb-posix:chdir (format nil "./emacs_source/emacs-~a" version)))
         (sb-ext:exit :code 1))

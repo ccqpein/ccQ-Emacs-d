@@ -51,8 +51,6 @@
 
 
 ;;;;;;; autocomplete ;;;;;;
-;;(require 'auto-complete)
-;;(require 'auto-complete-config)
 (ac-config-default)
 
 (global-auto-complete-mode t)
@@ -62,47 +60,6 @@
 (global-flycheck-mode)
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
-
-;;;;;;; yasnippet ;;;;;;
-;;(require 'yasnippet)
-;;(yas-global-mode 1)
-
-
-;;;;;;;; multiple-cursors ;;;;;;;;;;;;;;;;
-;; (require 'multiple-cursors)
-;; (global-set-key (kbd "M-\\") 'mc/edit-lines)
-;; (global-set-key (kbd "M-]") 'mc/mark-next-like-this)
-;; (global-set-key (kbd "M-[") 'mc/mark-previous-like-this)
-;; (global-set-key (kbd "C-c M-p") 'mc/mark-all-like-this)
-;; (global-set-key (kbd "C-c M-\\") 'mc/mark-all-in-region)
-
-
-;;;;;;;; highlight-symbol ;;;;;;;;;;;;;;;;;;
-;; (require 'highlight-symbol)
-;; (global-set-key (kbd "C-M-]") 'highlight-symbol-next)
-;; (global-set-key (kbd "C-M-[") 'highlight-symbol-prev)
-
-
-;;;;;;;; expand-region ;;;;;;;;;;;;;;;
-;; (require 'expand-region)
-;; (global-set-key (kbd "C-@") 'er/expand-region)
-;; (delete-selection-mode 1)
-
-
-;;;;;; Google ;;;;;;;;;;;;;;;;
-;; (require 'google-this)
-;; (google-this-mode 1)
-;; (global-set-key (kbd "C-c /") 'google-this-mode-submap)
-
-
-;;;;;; Magit ;;;;;;;
-;; (require 'magit)
-;; (global-set-key (kbd "C-x M-G") 'magit-dispatch-popup)
-;; (global-set-key (kbd "C-x M-g") 'magit-status)
-
-
-;; (require 'ace-window)
-;; (global-set-key (kbd "M-o") 'ace-window)
 
 ;; windmove
 (global-set-key (kbd "s-<left>")  'windmove-left)
