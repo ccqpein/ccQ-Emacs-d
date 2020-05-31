@@ -15,13 +15,17 @@
 		("C-c c" . haskell-process-cabal)
 		("C-;" . comment-dwim))
 
-  ;;:custom
-  ;;(haskell-process-type 'cabal-new-repl)
+  :custom
+  (haskell-process-type 'cabal-new-repl)
   ;;(haskell-process-type 'cabal-repl)
   ;;(haskell-process-type 'ghci)
   
   :config
   (setq haskell-stylish-on-save t)
+  (setq flycheck-ghc-package-databases ;; set package database to the list of package.db
+        (mapcar (lambda (p)
+                  (concat p "/package.db/"))
+                (directory-files (getenv "OLDPWD") t ".*[^.]$")))
   
   :hook
   (
