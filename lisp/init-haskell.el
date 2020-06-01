@@ -25,7 +25,7 @@
   (setq flycheck-ghc-package-databases ;; set package database to the list of package.db
         (mapcar (lambda (p)
                   (concat p "/package.db/"))
-                (directory-files (getenv "OLDPWD") t ".*[^.]$")))
+                (directory-files (concat (getenv "HOME") "/.cabal/store") t ".*[^.]$")))
   
   :hook
   (
