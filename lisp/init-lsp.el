@@ -43,12 +43,15 @@
 
 (use-package lsp-treemacs
   :commands
-  (lsp-treemacs-symbols ;;:= MAYBE: give a key bind. Shows current file's symbols
+  (lsp-treemacs-symbols
    lsp-treemacs-sync-mode
    lsp-treemacs-errors-list
    lsp-treemacs-references
    lsp-treemacs-implementations
    )
+
+  :bind
+  (("C-c l t s" . lsp-treemacs-symbols))
   )
 
 (provide 'init-lsp)
