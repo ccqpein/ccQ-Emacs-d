@@ -5,7 +5,7 @@
 (setq package-archives '(
  ("melpa" . "https://melpa.org/packages/")
  ("melpa-stable" . "https://stable.melpa.org/packages/")
- ("gnu" . "https://elpa.gnu.org/packages/")
+ ;;("gnu" . "https://elpa.gnu.org/packages/")
  ))
 
 (dolist (path '("~/.emacs.d/elpa"
@@ -25,8 +25,8 @@
 
 
 ;;;;;;;;;; set frame default ;;;;;;;;;;;;;;;
-(add-to-list 'default-frame-alist '(width . 110))
-(add-to-list 'default-frame-alist '(height . 71))
+(add-to-list 'default-frame-alist '(width . 93))
+(add-to-list 'default-frame-alist '(height . 60))
 (global-hl-line-mode 1)
 (global-display-line-numbers-mode)
 ;; close bars
