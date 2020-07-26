@@ -8,6 +8,9 @@
    (tide-mode . lsp-deferred)
    (rust-mode . lsp-deferred)
    (swift-mode . lsp-deferred)
+
+   ;; for yas
+   (lsp-mode . yas-minor-mode)
    )
 
   :commands (lsp lsp-deferred)
@@ -30,12 +33,6 @@
         lsp-ui-imenu-enable t
         lsp-ui-sideline-ignore-duplicate t
         lsp-log-io t)
-  )
-
-(use-package company-lsp
-  :config
-  (setq company-minimum-prefix-length 1
-	    company-idle-delay 0.1) ;; default is 0.2
   )
 
 (use-package helm-lsp

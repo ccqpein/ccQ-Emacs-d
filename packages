@@ -7,7 +7,6 @@ lsp-sourcekit
 helm-core
 helm-lsp
 lsp-treemacs
-company-lsp
 lsp-ui
 groovy-mode
 elm-mode
