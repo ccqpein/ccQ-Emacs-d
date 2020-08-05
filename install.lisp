@@ -91,7 +91,7 @@
 
     (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./configure")
 
-    (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "gmake" "install")
+    (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "gmake" "install" "-j6")
 
     (run-command "open" "./nextstep")
 

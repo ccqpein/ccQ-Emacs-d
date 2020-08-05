@@ -22,6 +22,7 @@
   :config
   (setq lsp-idle-delay 0.500)
   (setq lsp-rust-server 'rust-analyzer)
+  (setq lsp-print-performance t)
   ;;;:= TODO: bind commands lsp-rust-analyzer-join-lines, lsp-extend-selection and lsp-rust-analyzer-expand-macro
   )
 
