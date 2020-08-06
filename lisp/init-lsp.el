@@ -29,10 +29,17 @@
 (use-package lsp-ui
   :config
   (setq lsp-ui-sideline-enable t
+        lsp-ui-sideline-delay 0.6
+        lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-sideline-update-mode 'line
+
         lsp-ui-doc-enable t
+        lsp-ui-doc-delay 0.6
+        lsp-ui-doc-position 'top
+        
         lsp-ui-flycheck-enable t
         lsp-ui-imenu-enable t
-        lsp-ui-sideline-ignore-duplicate t
         lsp-log-io t)
   )
 
