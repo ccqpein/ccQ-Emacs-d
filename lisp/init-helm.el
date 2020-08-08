@@ -96,7 +96,8 @@
   :config
   (defun projectile-ag (arg)
     (interactive "P")
-    (helm-grep-ag (projectile-project-root) arg)))
+    (helm-grep-ag (projectile-project-root) arg))
+  )
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)

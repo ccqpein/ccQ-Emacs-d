@@ -22,7 +22,7 @@
 
   :custom
   (company-tooltip-align-annotations t)
-  (rust-format-on-save t)
+  ;;(rust-format-on-save t) ;; move this command to lsp
   )
 
 

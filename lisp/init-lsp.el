@@ -23,7 +23,11 @@
   (setq lsp-idle-delay 0.500)
   (setq lsp-rust-server 'rust-analyzer)
   (setq lsp-print-performance t)
-  ;;;:= TODO: bind commands lsp-rust-analyzer-join-lines, lsp-extend-selection and lsp-rust-analyzer-expand-macro
+  (setq lsp-print-io nil)
+  (add-hook 'before-save-hook
+            (lambda () (when (eq 'rust-mode major-mode)
+                         (lsp-format-buffer))))
+;;;:= TODO: bind commands lsp-rust-analyzer-join-lines, lsp-extend-selection and lsp-rust-analyzer-expand-macro
   )
 
 (use-package lsp-ui
