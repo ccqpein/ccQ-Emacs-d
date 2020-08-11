@@ -1,4 +1,16 @@
-(ql:quickload '("dexador" "yason"))
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  #+quicklisp(ql:quickload '("dexador" "yason") :silent t)
+  )
+
+(defpackage :ros.script.update-rust-analyzer.3806080217
+  (:use :cl))
+(in-package :ros.script.update-rust-analyzer.3806080217)
 
 (defparameter *IN-PROXY* nil)
 
@@ -82,7 +94,3 @@
             (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
             (format t "Download done")
             )))))
-
-(main)
-
-(sb-ext:exit)

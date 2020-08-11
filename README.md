@@ -13,11 +13,13 @@ All configure files store in `~/.emacs.d` that Emacs default path.
 
 ### Install
 
-Install emacs, I install from source code by using `install.lisp` of this repo:
+Install emacs, I install from source code by using `install.ros` of this repo:
 
 ```
-sbcl --load ./install.lisp
+./install.ros
 ```
+
+Of course, you need install [roswell](https://github.com/roswell/roswell) first.
 
 Run script to install all packages 
 

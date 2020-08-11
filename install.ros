@@ -1,5 +1,19 @@
-(defparameter *global-output-stream* (make-string-output-stream))
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  #+quicklisp(ql:quickload '() :silent t)
+  )
 
+(defpackage :ros.script.install.3806074880
+  (:use :cl))
+(in-package :ros.script.install.3806074880)
+
+(defparameter *global-output-stream* (make-string-output-stream))
+(defparameter *posix-argv* '())
 
 (defun run-one-time-command (com &rest argvs)
   (let ((s (make-string-output-stream)))
@@ -56,7 +70,8 @@
 
 ;;:= TODO: need another thread to print out log in *global-output-stream*
 
-(defun main ()
+(defun main (&rest argv)
+  (setf *posix-argv* argv)
   (if (not (check-this-dir))
       (sb-ext:exit))
   
@@ -102,5 +117,3 @@
 
     (sb-ext:exit))
   )
-
-(main)

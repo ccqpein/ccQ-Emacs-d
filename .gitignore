@@ -9,5 +9,5 @@ plugins/jdee-server/
 !packages
 !install-packages.el
 !lisp/
-!install.lisp
+!install.ros
 *\.elc
