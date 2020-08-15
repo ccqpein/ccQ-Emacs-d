@@ -1,6 +1,5 @@
 ;;;;;;;; Scala mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'scala-mode)
-(require 'ensime)
-(require 'sbt-mode)
+;;(require 'scala-mode)
+;;(require 'sbt-mode)
 
-(provide 'init-scala)
+;;(provide 'init-scala)
