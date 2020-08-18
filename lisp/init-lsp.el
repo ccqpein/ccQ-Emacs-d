@@ -20,10 +20,10 @@
         ("C-c l g d" . lsp-find-definition)) ;; I like d => definition rather than g
   
   :config
-  (setq lsp-idle-delay 0.500)
-  (setq lsp-rust-server 'rust-analyzer)
-  (setq lsp-print-performance t)
-  (setq lsp-print-io nil)
+  (setq lsp-idle-delay 0.500
+        lsp-rust-server 'rust-analyzer
+        lsp-print-performance t
+        lsp-log-io nil)
   (add-hook 'before-save-hook
             (lambda () (when (eq 'rust-mode major-mode)
                          (lsp-format-buffer))))
@@ -43,8 +43,7 @@
         lsp-ui-doc-position 'top
         
         lsp-ui-flycheck-enable t
-        lsp-ui-imenu-enable t
-        lsp-log-io t)
+        lsp-ui-imenu-enable t)
   )
 
 (use-package helm-lsp
