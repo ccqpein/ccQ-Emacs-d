@@ -34,10 +34,7 @@
   )
 
 ;;;;;; Magit ;;;;;;;
-(use-package magit
-  :bind
-  (("C-x M-G" . magit-dispatch-popup)
-   ("C-x M-g" . magit-status)))
+(use-package magit)
 
 (use-package ace-window
   :bind
