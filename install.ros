@@ -97,7 +97,7 @@ exec ros -Q -- $0 "$@"
          (sb-ext:exit :code 1))
      nil)
 
-    ;;(run-command *global-output-stream* "brew" "make" "install" "autoconf" "automake" "texinfo" "gnutls" "pkg-config" "libxml2")
+    ;;(run-command *global-output-stream* "brew" "install" "make" "autoconf" "automake" "texinfo" "gnutls" "pkg-config" "libxml2" "jansson")
 
     (if (/= 0 (sb-posix:chdir (format nil "./emacs_source/emacs-~a" version)))
         (sb-ext:exit :code 1))
