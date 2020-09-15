@@ -3,22 +3,12 @@
   :ensure t
 
   :custom
-  (gofmt-command "goimports")
   (tab-width 4)
-  (imenu-generic-expression
-   '(("type" "^[ \t]*type *\\([^ \t\n\r\f]*[ \t]*\\(struct\\|interface\\)\\)" 1)
-     ("func" "^func *\\(.*\\)" 1)))
   (compile-command "go build")
   
-  :bind
-  (("C-c C-c" . compile)
-   ("C-c i" . go-goto-imports)
-   )
-  
   :hook
-  ((before-save . gofmt-before-save)
-   (go-mode . hs-minor-mode)
-   (go-mode . (lambda () (funcall 'auto-complete-mode -1))))
+  ((go-mode . hs-minor-mode)
+   )
   
   :config
   (setq-default flycheck-disabled-checkers '(go-staticcheck))
