@@ -102,8 +102,6 @@
 
 (require 'init-js)
 
-;(require 'init-scala)
-
 (require 'init-julia)
 
 (require 'init-rust)

@@ -49,8 +49,6 @@ List all languages support and the dependencies that need install in system. All
 	- stylish-haskell (installed by cabal)
 	- hasktags
 	- hindent
-+ Scala (not write for a long while)
-	- sbt 
 + Rust
 	- cargo
 	- cargo-fmt
@@ -78,7 +76,7 @@ Use [typescript-language-server](https://github.com/theia-ide/typescript-languag
 
 **Rust**
 
-Use [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) be Rust LSP. Update/Install it by using `plugins/update-rust-analyzer.lisp`
+Use [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) be Rust LSP. Update/Install it by using `plugins/update-rust-analyzer.ros`
 
 ## About ispell
 
