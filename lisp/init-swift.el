@@ -3,7 +3,7 @@
   (swift-indent-offset 4)
   
   :bind
-  (("\C-c\C-k" . swift-mode:send-buffer))
+  ;;(("\C-c\C-k" . swift-mode:send-buffer))
   
   :config
   (add-to-list 'ac-modes 'swift-mode)
