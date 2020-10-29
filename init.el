@@ -2,11 +2,12 @@
 (require 'package)
 
 ;; update 2/16/2019, temporary delete default gnu source because cannot refresh
-(setq package-archives '(
- ("melpa" . "https://melpa.org/packages/")
- ("melpa-stable" . "https://stable.melpa.org/packages/")
- ;;("gnu" . "https://elpa.gnu.org/packages/")
- ))
+(setq package-archives
+      '(
+        ("melpa" . "https://melpa.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ;;("gnu" . "https://elpa.gnu.org/packages/")
+        ))
 
 (dolist (path '("~/.emacs.d/elpa"
 				"~/.emacs.d/plugins/"
@@ -139,7 +140,7 @@
  '(markdown-command "~/.emacs.d/plugins/open-markdown-to-web.sh")
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
-   '(julia-mode julia-repl magit json-mode projectile lsp-sourcekit helm-core helm-lsp lsp-treemacs lsp-ui groovy-mode elm-mode flycheck-elm flycheck-haskell company-coq proof-general graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode use-package restclient treemacs flycheck-rust lsp-mode racer rust-mode highlight-symbol monokai-theme tide helm-gtags helm ac-cider cider clojure-mode auctex js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
+   '(company-jedi julia-mode julia-repl magit json-mode projectile lsp-sourcekit helm-core helm-lsp lsp-treemacs lsp-ui groovy-mode elm-mode flycheck-elm flycheck-haskell company-coq proof-general graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode use-package restclient treemacs flycheck-rust lsp-mode racer rust-mode highlight-symbol monokai-theme tide helm-gtags helm ac-cider cider clojure-mode auctex js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
  '(recentf-max-saved-items 10)
  '(send-mail-function 'mailclient-send-it)
  '(visible-bell nil))

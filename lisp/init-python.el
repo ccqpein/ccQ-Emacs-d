@@ -6,6 +6,7 @@
   :custom
   (python-shell-interpreter "ipython")
   (python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i --pprint")
+  (elpy-rpc-python-command "~/.pyenv/shims/python")
 
   :bind
   (:map elpy-mode-map
@@ -13,6 +14,7 @@
 
   :config
   (require 'py-autopep8)
+  
 
   :hook
   (elpy-mode . py-autopep8-enable-on-save)
