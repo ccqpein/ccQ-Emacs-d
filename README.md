@@ -61,6 +61,8 @@ List all languages support and the dependencies that need install in system. All
 + elm
   - elm-oracle
 + julia
++ C/Cpp
+  - gcc install by homebrew, flycheck settings in `lisp/init-c.el`
    
 ## About LSP ##
 
