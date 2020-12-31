@@ -21,7 +21,7 @@
                 ))
   (add-to-list 'load-path path))
 
-(setq package-enable-at-startup nil)
+(setq comp-deferred-compilation t)
 (package-initialize)
 
 

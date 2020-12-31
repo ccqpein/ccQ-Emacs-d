@@ -5,7 +5,7 @@ exec ros -Q -- $0 "$@"
 |#
 (progn ;;init forms
   (ros:ensure-asdf)
-  #+quicklisp(ql:quickload '() :silent t)
+  #+quicklisp(ql:quickload '(str) :silent t)
   )
 
 (defpackage :ros.script.install.3806074880
@@ -75,7 +75,7 @@ exec ros -Q -- $0 "$@"
   (if (not (check-this-dir))
       (sb-ext:exit))
   
-  (let* ((version "master")
+  (let* ((version "master") ;; "feature/native-comp"
          (new-version? (progn
                          (format t "Which branch you want to download? Default is ~s~%" version)
                          (read-line))))
@@ -97,16 +97,24 @@ exec ros -Q -- $0 "$@"
          (sb-ext:exit :code 1))
      nil)
 
-    ;;(run-command *global-output-stream* "brew" "install" "make" "autoconf" "automake" "texinfo" "gnutls" "pkg-config" "libxml2" "jansson")
-
-    (if (/= 0 (sb-posix:chdir (format nil "./emacs_source/emacs-~a" version)))
+    ;;(run-command "brew" "install" "make" "autoconf" "automake" "texinfo" "gnutls" "pkg-config" "libxml2" "jansson" "libgccjit")
+    
+    (if (/= 0 (sb-posix:chdir (format nil "./emacs_source/emacs-~a" (str:replace-all "/" "-" version))))
         (sb-ext:exit :code 1))
        
-    (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./autogen.sh")
+    (run-command "./autogen.sh")
+
+    ;; (run-command "env"
+    ;;              "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig"
+    ;;              "CFLAGS=-I/usr/local/opt/gcc/include -O2 -march=native"
+    ;;              "LDFLAGS=-L/usr/local/opt/gcc/lib/gcc/10 -L/usr/local/opt/libgccjit/lib/gcc/10 -L/usr/local/opt/gcc/lib/gcc/10/gcc/x86_64-apple-darwin20/10.2.0 -I/usr/local/opt/gcc/include -I/usr/local/opt/libgccjit/include"
+    ;;              "LIBRARY_PATH=/usr/local/opt/gcc/lib/gcc/10:/usr/local/opt/libgccjit/lib/gcc/10:/usr/local/opt/gcc/lib/gcc/10/gcc/x86_64-apple-darwin20/10.2.0:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+    ;;              "./configure"
+    ;;              "--with-nativecomp")
 
     (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./configure")
-
-    (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "gmake" "install" "-j6")
+    
+    (run-command "gmake" "install" "-j12")
 
     (run-command "open" "./nextstep")
 
