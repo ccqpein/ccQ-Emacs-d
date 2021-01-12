@@ -8,26 +8,23 @@
    ("M-p" . treemacs-previous-project)
    ("M-n" . treemacs-next-project))
   
-  :custom
-  (treemacs-follow-after-init          t)
-  (treemacs-width                      25)
-  (treemacs-indentation                2)
+  :config
+  (setq treemacs-follow-after-init          t
+        treemacs-width                      35
+        treemacs-indentation                2
   
-  (treemacs-git-integration            t)
-  (treemacs-git-mode                   'extended)
-  (treemacs-filewatch-mode             t)
+        treemacs-git-mode                   'extended
+        treemacs-filewatch-mode             t
   
-  (treemacs-collapse-dirs              3)
-  (treemacs-silent-refresh             nil)
-  (treemacs-change-root-without-asking nil)
-  (treemacs-sorting                    'alphabetic-desc)
-  (treemacs-show-hidden-files          t)
-  (treemacs-never-persist              nil)
-  (treemacs-is-never-other-window      nil)
-  (treemacs-goto-tag-strategy          'refetch-index)
-  (treemacs--width-is-locked           nil)
+        treemacs-collapse-dirs              3
+        treemacs-silent-refresh             nil
+        treemacs-sorting                    'alphabetic-desc
+        treemacs-show-hidden-files          t
+        treemacs-is-never-other-window      nil
+        treemacs-goto-tag-strategy          'refetch-index
+        treemacs--width-is-locked           nil
 
-  (treemacs-persist-file "~/.emacs.d/treemacs-persist")
+        treemacs-persist-file "~/.emacs.d/treemacs-persist")
   )
 
 (provide 'init-treemacs)
