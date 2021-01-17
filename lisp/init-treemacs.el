@@ -7,10 +7,10 @@
    :map treemacs-mode-map
    ("M-p" . treemacs-previous-project)
    ("M-n" . treemacs-next-project))
-  
+
   :config
   (setq treemacs-follow-after-init          t
-        treemacs-width                      35
+        treemacs-width                      30
         treemacs-indentation                2
   
         treemacs-git-mode                   'extended
@@ -22,9 +22,11 @@
         treemacs-show-hidden-files          t
         treemacs-is-never-other-window      nil
         treemacs-goto-tag-strategy          'refetch-index
-        treemacs--width-is-locked           nil
-
+        ;;treemacs--width-is-locked           nil
+        
         treemacs-persist-file "~/.emacs.d/treemacs-persist")
+  
+  ;;(treemacs-toggle-fixed-width)
   )
 
 (provide 'init-treemacs)
