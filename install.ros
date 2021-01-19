@@ -112,7 +112,10 @@ exec ros -Q -- $0 "$@"
     ;;              "./configure"
     ;;              "--with-nativecomp")
 
-    (run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./configure")
+    ;;(run-command "env" "PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig" "./configure")
+    (run-command "./configure"
+                 "PKG_CONFIG_PATH='/usr/local/opt/libxml2/lib/pkgconfig'"
+                 "CFLAGS='-O3'")
     
     (run-command "gmake" "install" "-j12")
 
