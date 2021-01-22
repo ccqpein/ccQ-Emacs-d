@@ -57,7 +57,7 @@ exec ros -Q -- $0 "$@"
     (format t "Go get newest release data~%")
 
     (let* ((response-json-body (call-github-api
-                                "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases/latest"))
+                                "https://api.github.com/repos/rust-analyzer/rust-analyzer/releases/tags/nightly"))
            (tag-name (gethash "tag_name" response-json-body))
            (tag-detail (call-github-api
                         (format nil
