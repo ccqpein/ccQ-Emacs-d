@@ -25,7 +25,9 @@
         lsp-print-performance t
         lsp-log-io nil)
   (add-hook 'before-save-hook
-            (lambda () (when (member major-mode '(rust-mode go-mode))
+            (lambda () (when (member major-mode '(rust-mode
+                                                  ;; go-mode ;; because lsp go-mode fmt screw up
+                                                  ))
                          (lsp-organize-imports)
                          (lsp-format-buffer))))
 ;;;:= TODO: bind commands lsp-rust-analyzer-join-lines, lsp-extend-selection and lsp-rust-analyzer-expand-macro

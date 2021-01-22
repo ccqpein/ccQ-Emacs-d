@@ -5,9 +5,12 @@
   :custom
   (tab-width 4)
   (compile-command "go build")
+  (gofmt-command "goimports") ;; because lsp go-mode fmt screw up
   
   :hook
   ((go-mode . hs-minor-mode)
+   (go-mode . (lambda () (funcall 'auto-complete-mode -1))) ;; because lsp go-mode fmt screw up
+   (before-save . gofmt-before-save) ;; because lsp go-mode fmt screw up
    )
   
   :config
