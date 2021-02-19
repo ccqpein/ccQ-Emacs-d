@@ -26,7 +26,7 @@
         lsp-log-io nil)
   (add-hook 'before-save-hook
             (lambda () (when (member major-mode '(rust-mode
-                                                  ;; go-mode ;; because lsp go-mode fmt screw up
+                                                  go-mode ;; because lsp go-mode fmt screw up
                                                   swift-mode
                                                   ))
                          (lsp-organize-imports)

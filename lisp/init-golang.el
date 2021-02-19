@@ -10,7 +10,7 @@
   :hook
   ((go-mode . hs-minor-mode)
    (go-mode . (lambda () (funcall 'auto-complete-mode -1))) ;; because lsp go-mode fmt screw up
-   (before-save . gofmt-before-save) ;; because lsp go-mode fmt screw up
+   ;;(before-save . gofmt-before-save) ;; because lsp go-mode fmt screw up
    )
   
   :config
