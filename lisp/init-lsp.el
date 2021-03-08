@@ -32,7 +32,9 @@
                          (lsp-organize-imports)
                          (lsp-format-buffer))))
   (setq lsp-rust-analyzer-diagnostics-disabled (vector "macro-error")
-        lsp-rust-analyzer-proc-macro-enable t)
+        lsp-rust-analyzer-proc-macro-enable t
+        lsp-rust-analyzer-cargo-load-out-dirs-from-check t
+        )
 ;;;:= TODO: bind commands lsp-rust-analyzer-join-lines, lsp-extend-selection and lsp-rust-analyzer-expand-macro
   )
 
