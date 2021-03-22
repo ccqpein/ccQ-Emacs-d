@@ -19,22 +19,8 @@
 --color --color-match '31;43' \\
 --ignore-dir .git \\
 --nogroup %s %s %s")
+  (helm-grep-ag-pipe-cmd-switches '("--color-match '31;43'"))
 
-  ;; https://github.com/emacs-helm/helm/issues/2175
-  ;; back helm to old age
-  ;; update on 5/24/2020: looks like he change it back..
-  ;; ..no need custom settings below anymore
-  ;; :custom
-  ;; (helm-ff-lynx-style-map t)
-  ;; (helm-imenu-lynx-style-map t)
-  ;; (helm-semantic-lynx-style-map t)
-  ;; (helm-occur-use-ioccur-style-keys t)
-
-  ;; :bind
-  ;; (:map helm-map
-  ;;       ("<left>" . helm-previous-source)
-  ;;       ("<right>" . helm-next-source))
-  
   :config
   (require 'helm-config)
   (helm-mode 1)
@@ -86,18 +72,19 @@
   (helm-gtags-suggested-key-mapping t)
   )
 
+
 (use-package projectile
-  :hook
-  ((helm-gtags-mode . projectile-mode))
+  :init
+  (projectile-mode +1)
   
-  :bind-keymap
+  :bind
   ("C-c p" . projectile-command-map)
   
   :config
-  (defun projectile-ag (arg)
-    (interactive "P")
-    (helm-grep-ag (projectile-project-root) arg))
+  (require 'helm-projectile)
+  (helm-projectile-on)
   )
+
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
