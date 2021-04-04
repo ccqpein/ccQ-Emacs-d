@@ -16,7 +16,7 @@
 		("C-;" . comment-dwim))
 
   :custom
-  (haskell-process-type 'cabal-new-repl)
+  ;;(haskell-process-type 'cabal-new-repl)
   ;;(haskell-process-type 'cabal-repl)
   ;;(haskell-process-type 'ghci)
   
