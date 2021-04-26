@@ -42,7 +42,7 @@ exec ros -Q -- $0 "$@"
                  (wrap-dex-call-in-proxy url))))))))
 
 (defun version-hash-equal (new current)
-  (let ((clean-current (car (last (str:split "-g" current)))))
+  (let ((clean-current (car (str:split " " current))))
     (str:starts-with? clean-current new)))
 
 (defun main ()
