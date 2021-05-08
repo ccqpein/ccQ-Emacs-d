@@ -21,21 +21,19 @@
   
   :config
   (setq lsp-idle-delay 0.500
-        lsp-rust-server 'rust-analyzer
-        lsp-print-performance t
         lsp-log-io nil)
   (add-hook 'before-save-hook
             (lambda () (when (member major-mode '(rust-mode
-                                                  go-mode ;; because lsp go-mode fmt screw up
+                                                  go-mode
                                                   swift-mode
                                                   ))
                          (lsp-organize-imports)
                          (lsp-format-buffer))))
-  (setq lsp-rust-analyzer-diagnostics-disabled (vector "macro-error")
-        lsp-rust-analyzer-proc-macro-enable t
-        lsp-rust-analyzer-cargo-load-out-dirs-from-check t
-        )
-;;;:= TODO: bind commands lsp-rust-analyzer-join-lines, lsp-extend-selection and lsp-rust-analyzer-expand-macro
+  (setq 
+   lsp-rust-analyzer-proc-macro-enable t
+   lsp-rust-analyzer-cargo-load-out-dirs-from-check t
+   )
+;;;:= TODO: bind commands lsp-rust-analyzer-join-lines lsp-rust-analyzer-expand-macro
   )
 
 (use-package lsp-ui
@@ -49,8 +47,7 @@
         lsp-ui-doc-enable t
         lsp-ui-doc-delay 0.6
         lsp-ui-doc-position 'top
-        
-        lsp-ui-flycheck-enable t
+   
         lsp-ui-imenu-enable t)
   )
 
