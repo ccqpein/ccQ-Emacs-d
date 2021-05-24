@@ -48,7 +48,8 @@
         lsp-ui-doc-delay 0.6
         lsp-ui-doc-position 'top
    
-        lsp-ui-imenu-enable t)
+        lsp-ui-imenu-enable t
+        lsp-ui-peek-always-show t)
   )
 
 (use-package helm-lsp
