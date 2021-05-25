@@ -79,7 +79,7 @@ exec ros -Q -- $0 "$@"
 
           ;; have newer version
           (let ((download-link (gethash "browser_download_url"
-                                        (find-if (lambda (x) (string= "rust-analyzer-mac"
+                                        (find-if (lambda (x) (string= "rust-analyzer-x86_64-apple-darwin.gz"
                                                                       (gethash "name" x)))
                                                  (gethash "assets" response-json-body)))))
 
@@ -93,8 +93,16 @@ exec ros -Q -- $0 "$@"
 
             (run-command "wget" download-link
                          "-O"
-                         (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME"))
+                         (format nil "~a/.cargo/bin/rust-analyzer-x86_64-apple-darwin.gz" (sb-ext:posix-getenv "HOME"))
                          (if *in-proxy* "--no-check-certificate" ""))
+            
+            (run-command "gunzip" "-dk" (format nil "~a/.cargo/bin/rust-analyzer-x86_64-apple-darwin.gz" (sb-ext:posix-getenv "HOME")))
+            
+            (run-command "mv"
+                         (format nil "~a/.cargo/bin/rust-analyzer-x86_64-apple-darwin" (sb-ext:posix-getenv "HOME"))
+                         (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
+            
             (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
+            
             (format t "Download done")
             )))))
