@@ -17,9 +17,12 @@
 				;; so I do not need to change site-lisp after update opam switch
 				;; opam switch link <switch version> ~/.emacs.d/opam_link
 				"~/.emacs.d/opam_link/_opam/share/emacs/site-lisp/"
-				"/usr/local/share/emacs/site-lisp/"
                 ))
   (add-to-list 'load-path path))
+
+;;; add all subdirs in load path
+(let ((default-directory "/usr/local/share/emacs/site-lisp/"))
+  (normal-top-level-add-subdirs-to-load-path))
 
 (setq comp-deferred-compilation t)
 (package-initialize)
@@ -69,6 +72,9 @@
 (global-set-key (kbd "s-<down>")  'windmove-down)
 
 (require 'init-general)
+
+;;; other modes
+(require 'init-external)
 
 ;;; languages
 (require 'init-treemacs)
