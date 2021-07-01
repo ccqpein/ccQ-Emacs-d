@@ -8,7 +8,7 @@
     (kill-region (point-min) (point-max))
     (insert
      (cond ((string= "" fmt-str)
-            (leetcode-picker-inner-get-random "#README# {title}\n\n{content}"))
+            (leetcode-picker-inner-get-random "# README # {title}\n\n[source]({source})\n\n{content}"))
            (t (leetcode-picker-inner-get-random fmt-str))))))
 
 (defun get-random-lc-quiz-with-level (fmt-str level)
@@ -21,7 +21,7 @@
      (cond ((string= "" fmt-str)
             (leetcode-picker-inner-get-random-with-level
              level
-             "#README# {title}\n\n{content}"))
+             "# README # {title}\n\n[source]({source})\n\n{content}"))
            (t (leetcode-picker-inner-get-random-with-level level fmt-str))))))
 
 (defun get-lc-quiz-snippet (lang)
