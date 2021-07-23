@@ -2,9 +2,9 @@
 (use-package org
   :bind
   (:map org-mode-map
-	("C-c l" . org-store-link)
-	("C-c a" . org-agenda)
-	)
+	    ("C-c l" . org-store-link)
+	    ("C-c a" . org-agenda)
+	    )
   :custom
   (org-agenda-files (list (getenv "ORG_PATH")))
   (org-log-done t)
@@ -13,7 +13,8 @@
   (org-babel-load-languages
    '((emacs-lisp . t)
 	 (dot . t)
-	 (python . t)))
+	 (python . t)
+     (lisp . t)))
   )
 
 (provide 'init-org)
