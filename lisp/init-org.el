@@ -4,6 +4,7 @@
   (:map org-mode-map
 	    ("C-c l" . org-store-link)
 	    ("C-c a" . org-agenda)
+        ("C-c c" . org-capture)
 	    )
   :custom
   (org-agenda-files (list (getenv "ORG_PATH")))
