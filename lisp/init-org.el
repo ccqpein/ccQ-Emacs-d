@@ -6,8 +6,10 @@
 	    ("C-c a" . org-agenda)
         ("C-c c" . org-capture)
 	    )
+
   :custom
   (org-agenda-files (list (getenv "ORG_PATH")))
+  (org-directory (getenv "ORG_PATH"))
   (org-log-done t)
   (org-hide-leading-stars t)
   (org-hide-emphasis-markers t)
@@ -17,6 +19,13 @@
 	 (dot . t)
 	 (python . t)
      (lisp . t)))
+
+  ;;; capture templates
+  (org-capture-templates
+   '(("t" "Header template version 0" plain (function buffer-file-name)
+      (file
+       "template/template_header.org" ;; relative path to org-directory
+       ))))
   )
 
 (provide 'init-org)
