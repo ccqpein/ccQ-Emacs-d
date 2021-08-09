@@ -115,7 +115,7 @@
 
 (require 'init-yaml)
 
-(require 'init-ocaml)
+;;(require 'init-ocaml)
 
 (require 'init-coq)
 
