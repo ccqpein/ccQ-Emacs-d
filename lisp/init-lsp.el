@@ -37,6 +37,14 @@
   )
 
 (use-package lsp-ui
+  :custom
+  (lsp-ui-peek-always-show t)
+
+  :bind
+  (:map lsp-mode-map
+        ("C-c l M-d" . lsp-ui-peek-find-definitions)
+        ("C-c l M-r" . lsp-ui-peek-find-references))
+  
   :config
   (setq lsp-ui-sideline-enable t
         lsp-ui-sideline-delay 0.6
@@ -49,7 +57,7 @@
         lsp-ui-doc-position 'top
    
         lsp-ui-imenu-enable t
-        lsp-ui-peek-always-show t)
+        )
   )
 
 (use-package helm-lsp
