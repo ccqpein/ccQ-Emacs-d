@@ -32,6 +32,7 @@
   (setq 
    lsp-rust-analyzer-proc-macro-enable t
    lsp-rust-analyzer-cargo-load-out-dirs-from-check t
+   lsp-go-env '((GOFLAGS . "-tags=tagthis"))
    )
 ;;;:= TODO: bind commands lsp-rust-analyzer-join-lines lsp-rust-analyzer-expand-macro
   )
