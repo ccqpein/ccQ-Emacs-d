@@ -129,6 +129,8 @@
 
 (require 'init-c)
 
+(require 'init-custom)
+
 
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
