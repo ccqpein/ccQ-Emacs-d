@@ -38,10 +38,6 @@
 
 (use-package ace-window
   :bind
-  ("M-o" . ace-window)
-
-  :config
-  (setq aw-dispatch-always t)
-  )
+  ("M-o" . ace-window))
 
 (provide 'init-general)
