@@ -1,7 +1,7 @@
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
-  
+
   :hook
   ((go-mode . lsp-deferred)
    (js-mode . lsp-deferred)
@@ -36,6 +36,31 @@
    )
 ;;;:= TODO: bind commands lsp-rust-analyzer-join-lines lsp-rust-analyzer-expand-macro
   )
+
+;;:= need to find the way to switch depending on which language is using
+(use-package dap-mode
+  :bind ("C-c l C-d" . dap-debug)
+
+  :custom
+  ;; next line make lsp mode won't start dap-mode directly
+  (lsp-enable-dap-auto-configure nil)
+  
+  ;;(dap-auto-configure-mode t "Automatically configure dap.")
+  (dap-auto-configure-features
+   '(sessions locals breakpoints expressions tooltip))
+
+  :config
+  ;; golang
+  (require 'dap-go)
+  (dap-go-setup)
+  ;;:= TODO: rust, do I need it?
+  
+  ;; (dap-ui-mode 1)
+  ;; (dap-tooltip-mode 1)
+  ;; (tooltip-mode 1)
+  ;; (dap-ui-controls-mode 1)
+  )
+
 
 (use-package lsp-ui
   :custom
