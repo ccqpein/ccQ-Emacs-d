@@ -1,3 +1,4 @@
+solarized-theme
 dap-mode
 helm-ag
 helm-projectile
@@ -34,7 +35,6 @@ lsp-mode
 racer
 rust-mode
 highlight-symbol
-monokai-theme
 tide
 helm
 helm-gtags

@@ -11,7 +11,8 @@
 
   :bind
   (:map lsp-mode-map
-        ("C-c l g d" . lsp-find-definition)) ;; I like d => definition rather than g
+        ("C-c l g d" . lsp-find-definition) ;; I like d => definition rather than g
+        )
   
   :config
   (setq lsp-idle-delay 0.500
@@ -33,21 +34,23 @@
 
 ;;:= need to find the way to switch depending on which language is using
 (use-package dap-mode
-  :bind ("C-c l C-d" . dap-debug)
-
+  :hook
+  (
+   (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
+   )
+  
   :custom
   ;; next line make lsp mode won't start dap-mode directly
-  (lsp-enable-dap-auto-configure nil)
-  
-  ;;(dap-auto-configure-mode t "Automatically configure dap.")
+  ;;(lsp-enable-dap-auto-configure nil)
+  (dap-auto-configure-mode t "Automatically configure dap.")
   (dap-auto-configure-features
    '(sessions locals breakpoints expressions tooltip))
 
   :config
-  ;; (dap-ui-mode 1)
-  ;; (dap-tooltip-mode 1)
-  ;; (tooltip-mode 1)
-  ;; (dap-ui-controls-mode 1)
+  (dap-ui-mode 1)
+  (dap-tooltip-mode 1)
+  (tooltip-mode 1)
+  (dap-ui-controls-mode 1)
   )
 
 
