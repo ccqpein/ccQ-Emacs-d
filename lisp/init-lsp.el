@@ -3,13 +3,7 @@
   (setq lsp-keymap-prefix "C-c l")
 
   :hook
-  ((go-mode . lsp-deferred)
-   (js-mode . lsp-deferred)
-   (tide-mode . lsp-deferred)
-   (rust-mode . lsp-deferred)
-   (swift-mode . lsp-deferred)
-
-   ;; for yas
+  (;; for yas
    (lsp-mode . yas-minor-mode)
    )
 
@@ -50,11 +44,6 @@
    '(sessions locals breakpoints expressions tooltip))
 
   :config
-  ;; golang
-  (require 'dap-go)
-  (dap-go-setup)
-  ;;:= TODO: rust, do I need it?
-  
   ;; (dap-ui-mode 1)
   ;; (dap-tooltip-mode 1)
   ;; (tooltip-mode 1)

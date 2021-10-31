@@ -3,7 +3,8 @@
   (swift-indent-offset 4)
 
   :hook
-  ((before-save . swift-format-before-save))
+  ((before-save . swift-format-before-save)
+   (swift-mode . lsp-deferred))
   
   :config
   (add-to-list 'ac-modes 'swift-mode)
