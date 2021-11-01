@@ -24,8 +24,14 @@
   :custom
   (company-tooltip-align-annotations t)
   ;;(rust-format-on-save t) ;; move this command to lsp
-  )
 
+  :config
+  (require 'dap-gdb-lldb)
+  (dap-gdb-lldb-setup)
+
+  (require 'dap-cpptools)
+  (dap-cpptools-setup)
+  )
 
 ;(require 'rust-mode)
 ;(add-hook 'rust-mode-hook #'racer-mode)
