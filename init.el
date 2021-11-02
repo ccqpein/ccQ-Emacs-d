@@ -47,7 +47,7 @@
 
 
 ;;;;;; Styling and Themes ;;;;;;;
-(load-theme 'solarized-dark t)
+(load-theme 'moe-dark t)
 
 
 ;;;;;; use-package ;;;;;;;;;;;;
@@ -150,7 +150,7 @@
  '(markdown-command "~/.emacs.d/plugins/open-markdown-to-web.sh")
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(package-selected-packages
-   '(solarized-theme dap-mode helm-ag helm-projectile clang-format company-jedi julia-mode julia-repl magit json-mode projectile lsp-sourcekit helm-core helm-lsp lsp-treemacs lsp-ui groovy-mode elm-mode flycheck-elm flycheck-haskell company-coq proof-general graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode use-package restclient treemacs flycheck-rust lsp-mode racer rust-mode highlight-symbol tide helm-gtags helm ac-cider cider clojure-mode auctex js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
+   '(moe-theme dap-mode helm-ag helm-projectile clang-format company-jedi julia-mode julia-repl magit json-mode projectile lsp-sourcekit helm-core helm-lsp lsp-treemacs lsp-ui groovy-mode elm-mode flycheck-elm flycheck-haskell company-coq proof-general graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode use-package restclient treemacs flycheck-rust lsp-mode racer rust-mode highlight-symbol tide helm-gtags helm ac-cider cider clojure-mode auctex js2-mode web-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
  '(recentf-max-saved-items 10)
  '(send-mail-function 'mailclient-send-it)
  '(visible-bell nil)
