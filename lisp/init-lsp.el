@@ -13,8 +13,10 @@
   (:map lsp-mode-map
         ("C-c l g d" . lsp-find-definition) ;; I like d => definition rather than g
         )
-  
+
   :config
+  (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+  
   (setq lsp-idle-delay 0.500
         lsp-log-io nil)
   (add-hook 'before-save-hook
