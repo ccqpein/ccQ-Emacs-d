@@ -5,6 +5,7 @@
    (elm-mode . elm-format-on-save-mode)
    (elm-mode . company-mode)
    (elm-mode . elm-oracle-setup-completion)
+   (elm-mode . lsp-deferred)
    )
 
   :config
