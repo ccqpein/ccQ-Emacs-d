@@ -35,4 +35,6 @@ opam stuff
 
 common lisp script to update and install rust-analyzer.
 
-`sbcl --load update-rust-analyzer.lisp`
+~~`update-rust-analyzer.ros`~~
+
+`sbcl --load update-rust-analyzer-v2.lisp`
