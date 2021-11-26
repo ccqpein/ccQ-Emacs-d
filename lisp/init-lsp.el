@@ -23,6 +23,7 @@
             (lambda () (when (member major-mode '(rust-mode
                                                   go-mode
                                                   swift-mode
+                                                  js-mode
                                                   ))
                          (lsp-organize-imports)
                          (lsp-format-buffer))))
