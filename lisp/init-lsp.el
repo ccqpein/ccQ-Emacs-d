@@ -18,7 +18,8 @@
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
   
   (setq lsp-idle-delay 0.700
-        lsp-log-io nil)
+        lsp-log-io nil
+        lsp-use-plists t)
   (add-hook 'before-save-hook
             (lambda () (when (member major-mode '(rust-mode
                                                   go-mode
