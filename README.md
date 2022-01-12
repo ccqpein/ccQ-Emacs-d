@@ -1,10 +1,20 @@
 # README
 
+- [Usage](#usage)
+  - [Install](#install)
+- [Languages Supported and System Dependency](#languages-supported-and-system-dependency)
+- [About LSP](#about-lsp)
+- [About ispell](#about-ispell)
+- [About org-mode](#about-orgmode)
+- [About custom setting](#about-custom-setting)
+- [About Plugins](#about-plugins)
+- [About Ag](#about-ag)
+
 Personal Emacs configure 
 
 My environment:
 
-  * Emacs 28
+  * Emacs master branch (check [Install](#install))
   * macOS
 
 All configure files store in `~/.emacs.d` that Emacs default path.
@@ -13,13 +23,7 @@ All configure files store in `~/.emacs.d` that Emacs default path.
 
 ### Install
 
-Install emacs, I install from source code by using `install.ros` of this repo:
-
-```
-./install.ros
-```
-
-Of course, you need install [roswell](https://github.com/roswell/roswell) first.
+Use [this repo](github.com/jimeh/build-emacs-for-macos.git) to compile emacs in my local.
 
 Run script to install all packages 
 
@@ -74,11 +78,11 @@ Use [Gopls](https://github.com/golang/tools/tree/master/gopls) be my LSP
 
 **Javascript/Typescript**
 
-Use [typescript-language-server](https://github.com/theia-ide/typescript-language-server) be my LSP
+Use [deno](https://deno.land/#installation) be my LSP
 
 **Rust**
 
-Use [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) be Rust LSP. Update/Install it by using `plugins/update-rust-analyzer.ros`
+Use [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) be Rust LSP. Update/Install it by using `sbcl --load ./plugins/update-rust-analyzer-v2.lisp`. You need has `sbcl` and `quicklisp` installed.
 
 ## About ispell
 
