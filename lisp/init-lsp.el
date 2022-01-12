@@ -19,7 +19,7 @@
   
   (setq lsp-idle-delay 0.700
         lsp-log-io nil
-        lsp-use-plists t
+        lsp-use-plists t ;;https://emacs-lsp.github.io/lsp-mode/page/performance/
         )
   (add-hook 'before-save-hook
             (lambda () (when (member major-mode '(rust-mode
