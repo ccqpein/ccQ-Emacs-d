@@ -160,9 +160,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; You can use `C-u C-x =’ to find out which faces are applied to the text at point (under the cursor).
- '(lsp-face-highlight-textual ((t (:inherit highlight :background "gray27"))))
  '(lsp-face-highlight-read ((t (:inherit highlight :background "gray27"))))
+ '(lsp-face-highlight-textual ((t (:inherit highlight :background "gray27"))))
  '(lsp-face-highlight-write ((t (:inherit highlight :background "gray27"))))
  '(region ((t (:inherit highlight :background "SkyBlue4"))))
  '(show-paren-match ((t (:foreground "#A6E22E" :inverse-video t :weight normal)))))

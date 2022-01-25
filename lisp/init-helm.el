@@ -96,10 +96,12 @@
   (helm-projectile-on)
 
   ;; golang
-  ;; (projectile-register-project-type
-  ;;  'go
-  ;;  '("go.mod")
-  ;;  :project-file "go.mod")
+  (projectile-register-project-type
+   'go
+   '("go.mod")
+   :project-file "go.mod")
+
+  ;;(setf projectile-project-types (seq-subseq projectile-project-types (- (length projectile-project-types) 3)))
   )
 
 
