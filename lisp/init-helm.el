@@ -24,13 +24,12 @@
   :config
   (require 'helm-config)
   (helm-mode 1)
-  (helm-autoresize-mode t)
+  (helm-autoresize-mode 1)
   )
 
 
 ;;; helm gtags use global be backend, here is ~/.globalrc example
 (use-package helm-gtags
-
   :hook
   ((dired-mode . helm-gtags-mode)
    (eshell-mode . helm-gtags-mode)
@@ -73,16 +72,34 @@
   )
 
 
-(use-package projectile
+;;; http://tuhdo.github.io/helm-projectile.html
+(use-package projectile  
   :init
   (projectile-mode +1)
   
   :bind
   ("C-c p" . projectile-command-map)
+
+  :custom
+  (projectile-sort-order 'recentf)
+  (projectile-enable-caching t)
+
+  ;; change the order
+  (projectile-project-root-functions
+   '(projectile-root-local
+     projectile-root-top-down
+     projectile-root-bottom-up
+     projectile-root-top-down-recurring))
   
   :config
   (require 'helm-projectile)
   (helm-projectile-on)
+
+  ;; golang
+  ;; (projectile-register-project-type
+  ;;  'go
+  ;;  '("go.mod")
+  ;;  :project-file "go.mod")
   )
 
 
