@@ -79,4 +79,5 @@
       )))
 
 (main)
-(sb-ext:exit) 
+(sb-ext:exit)
+;;(sb-ext:save-lisp-and-die "update-rust-analyzer" :toplevel #'main :executable t)
