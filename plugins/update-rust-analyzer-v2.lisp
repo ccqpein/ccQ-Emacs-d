@@ -21,7 +21,7 @@
 (defun main ()
   (let* ((current-version
            (handler-case
-               (get-output-stream-string (run-command "rust-analyzer" "--version"))
+               (string-right-trim '(#\Newline) (get-output-stream-string (run-command "rust-analyzer" "--version")))
              (error (m)
                (format t "receive error: ~a~%" m)
                (if (yes-or-no-p "wanna reinstall it?") " fakehash" (return-from main nil)))))
@@ -41,7 +41,7 @@
                                          (gethash "object" tag-detail))
                                 0 (length version-hash))))
 
-      (format t "newest: ~a, current: ~a" newest-hash version-hash)
+      (format t "newest: ~a, current: ~a~%" newest-hash version-hash)
 
       (if (version-hash-equal newest-hash version-hash)
           (format t "newest version ~a equal current version ~a, don't need to update~%"
