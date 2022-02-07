@@ -66,7 +66,8 @@
   :bind
   (:map lsp-mode-map
         ("C-c l M-d" . lsp-ui-peek-find-definitions)
-        ("C-c l M-r" . lsp-ui-peek-find-references))
+        ("C-c l M-r" . lsp-ui-peek-find-references)
+        ("C-c l M-i" . lsp-ui-peek-find-implementation))
   
   :config
   (setq lsp-ui-sideline-enable t
@@ -96,7 +97,11 @@
    )
 
   :bind
-  (("C-c l t s" . lsp-treemacs-symbols))
+  (("C-c l t s" . lsp-treemacs-symbols)
+   ("C-c l t r" . lsp-treemacs-references)
+   ("C-c l t i" . lsp-treemacs-implementations)
+   ("C-c l t c" . lsp-treemacs-call-hierarchy)
+   ("C-c l t t" . lsp-treemacs-type-hierarchy))
   )
 
 (provide 'init-lsp)
