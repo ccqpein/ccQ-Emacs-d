@@ -22,12 +22,16 @@
         treemacs-show-hidden-files          t
         treemacs-is-never-other-window      nil
         treemacs-goto-tag-strategy          'refetch-index
-        ;;treemacs--width-is-locked           nil
+        treemacs-width-is-initially-locked  nil
         
         treemacs-persist-file "~/.emacs.d/treemacs-persist")
-  
-  ;;(treemacs-toggle-fixed-width)
+
+  (treemacs-indent-guide-mode t)
   )
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
 
 (provide 'init-treemacs)
 
