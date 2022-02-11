@@ -36,6 +36,9 @@
 ;;;;;; Magit ;;;;;;;
 (use-package magit)
 
+(use-package forge
+  :after magit)
+
 (use-package ace-window
   :bind
   ("M-o" . ace-window))
