@@ -2,14 +2,16 @@
 
 - [Usage](#usage)
   - [Install](#install)
-- [Languages Supported and System Dependency](#languages-supported-and-system-dependency)
-- [About LSP](#about-lsp)
-- [About ispell](#about-ispell)
-- [About org-mode](#about-orgmode)
-- [About custom setting](#about-custom-setting)
-- [About Plugins](#about-plugins)
-- [About Ag](#about-ag)
-
+  - [Languages Supported and System Dependency](#languages-supported-and-system-dependency)
+- [About](#about)
+  - [About LSP](#about-lsp)
+  - [About ispell](#about-ispell)
+  - [About org-mode](#about-orgmode)
+  - [About custom setting](#about-custom-setting)
+  - [About Plugins](#about-plugins)
+  - [About Ag](#about-ag)
+  - [About forge](#about-forge)
+    
 Personal Emacs configure 
 
 My environment:
@@ -29,7 +31,8 @@ Run script to install all packages
 
 `emacs -q --script install-packages.el`
 
-## Languages Supported and System Dependency
+### Languages Supported and System Dependency ###
+
 List all languages support and the dependencies that need install in system. All packages which Emacs need in [packages](./packages) file.
 
 + Common Lisp
@@ -68,7 +71,9 @@ List all languages support and the dependencies that need install in system. All
 + C/Cpp
   - gcc install by homebrew, flycheck settings in `lisp/init-c.el`
    
-## About LSP ##
+## About ##
+
+### About LSP ###
 
 LSP configuration in `lisp/init-lsp.el`
 
@@ -84,22 +89,35 @@ Use [deno](https://deno.land/#installation) be my LSP
 
 Use [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) be Rust LSP. Update/Install it by using `sbcl --load ./plugins/update-rust-analyzer-v2.lisp`. You need has `sbcl` and `quicklisp` installed.
 
-## About ispell
+### About ispell ###
 
 I use `aspell` as `ispell` backend which installed by homebrew in my local machine. `Flyspell` config does not have single .el file, its require rule in `/lisp/init-markdown.el` 
 
-## About org-mode
+### About org-mode ###
+
 `org-agenda-files` is be set by environment variable `$ORG_PATH`
 
-## About custom setting
+### About custom setting ###
 
 The custom setting configure at the bottle of `init.el`. Focus on `jdee-jdk-registry`, you should change jdk path to your java home dir, or use `/Library/Java/Home` symbolic link instead of true jdk path.
 
-## About Plugins
+### About Plugins ###
 
 Some scripts or tools. Get more detail in plugins [README](./plugins/README.md)
 
-## About Ag ##
+### About Ag ###
 
 `helm` uses [Ag](https://github.com/ggreer/the_silver_searcher) be "grep" implement. So I install `ag` in my local and define command in `init-helm.el`.
 
+### About forge ###
+
+`[forge](https://github.com/magit/forge)` is the package binding with magit for getting details from Github of this repo. 
+
+Several configurations links:
+
+- [blog](https://practical.li/spacemacs/source-control/forge-configuration.html)
+- [Forge User and Developer Manual](https://magit.vc/manual/forge.html)
+
+For me, I just make `~/.authinfo` like 
+
+`machine api.github.com login {username}^forge password {github_token}`
