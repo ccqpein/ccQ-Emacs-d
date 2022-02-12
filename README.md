@@ -111,7 +111,7 @@ Some scripts or tools. Get more detail in plugins [README](./plugins/README.md)
 
 ### About forge ###
 
-`[forge](https://github.com/magit/forge)` is the package binding with magit for getting details from Github of this repo. 
+<code>[forge](https://github.com/magit/forge)</code> is the package binding with magit for getting details from Github of this repo. 
 
 Several configurations links:
 
