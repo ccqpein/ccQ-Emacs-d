@@ -72,7 +72,6 @@
   )
 
 
-;;; http://tuhdo.github.io/helm-projectile.html
 (use-package projectile  
   :init
   (projectile-mode +1)
@@ -92,6 +91,7 @@
      projectile-root-top-down-recurring))
   
   :config
+  ;;; http://tuhdo.github.io/helm-projectile.html
   (require 'helm-projectile)
   (helm-projectile-on)
 

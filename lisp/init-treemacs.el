@@ -3,7 +3,7 @@
   :ensure t
   
   :bind
-  (("C-x M-d" . treemacs)
+  (("M-0" . treemacs-select-window)
    :map treemacs-mode-map
    ("M-p" . treemacs-previous-project)
    ("M-n" . treemacs-next-project))
@@ -20,13 +20,16 @@
         treemacs-silent-refresh             nil
         treemacs-sorting                    'alphabetic-desc
         treemacs-show-hidden-files          t
-        treemacs-is-never-other-window      nil
+        treemacs-is-never-other-window      t
         treemacs-goto-tag-strategy          'refetch-index
         treemacs-width-is-initially-locked  nil
         
         treemacs-persist-file "~/.emacs.d/treemacs-persist")
 
   (treemacs-indent-guide-mode t)
+  (treemacs-load-theme "Default") ;;:= todo: check the all-the-icons...
+  ;;:= https://www.reddit.com/r/emacs/comments/i28u5r/ann_treemacsalltheicons_release/ and...
+  ;;:= https://github.com/Alexander-Miller/treemacs#treemacs-all-the-icons
   )
 
 (use-package treemacs-projectile

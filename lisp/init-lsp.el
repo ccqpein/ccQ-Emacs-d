@@ -67,18 +67,20 @@
   (:map lsp-mode-map
         ("C-c l M-d" . lsp-ui-peek-find-definitions)
         ("C-c l M-r" . lsp-ui-peek-find-references)
-        ("C-c l M-i" . lsp-ui-peek-find-implementation))
+        ("C-c l M-i" . lsp-ui-peek-find-implementation)
+        ("C-c l h i" . lsp-ui-imenu))
   
   :config
   (setq lsp-ui-sideline-enable t
         lsp-ui-sideline-delay 0.7
         lsp-ui-sideline-show-hover t
         lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-sideline-show-code-actions t
         lsp-ui-sideline-update-mode 'line
 
         lsp-ui-doc-enable t
         lsp-ui-doc-delay 0.7
-        lsp-ui-doc-position 'top
+        ;;lsp-ui-doc-position 'top ;; this only effect when lsp-ui-doc-show-with-cursor is not-nil
    
         lsp-ui-imenu-enable t
         )
@@ -88,9 +90,11 @@
   :commands helm-lsp-workspace-symbol) ;;:= MAYBE: give a key bind. Shows workspace symbols
 
 (use-package lsp-treemacs
+  :init
+  (lsp-treemacs-sync-mode 1)
+  
   :commands
   (lsp-treemacs-symbols
-   lsp-treemacs-sync-mode
    lsp-treemacs-errors-list
    lsp-treemacs-references
    lsp-treemacs-implementations
@@ -101,7 +105,8 @@
    ("C-c l t r" . lsp-treemacs-references)
    ("C-c l t i" . lsp-treemacs-implementations)
    ("C-c l t c" . lsp-treemacs-call-hierarchy)
-   ("C-c l t t" . lsp-treemacs-type-hierarchy))
+   ("C-c l t t" . lsp-treemacs-type-hierarchy)
+   ("C-c l t e" . lsp-treemacs-errors-list))
   )
 
 (provide 'init-lsp)
