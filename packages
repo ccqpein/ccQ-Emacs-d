@@ -32,7 +32,6 @@ yaml-mode
 use-package
 restclient
 treemacs
-flycheck-rust
 lsp-mode
 racer
 rust-mode
