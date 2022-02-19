@@ -33,7 +33,6 @@ use-package
 restclient
 treemacs
 lsp-mode
-racer
 rust-mode
 highlight-symbol
 tide

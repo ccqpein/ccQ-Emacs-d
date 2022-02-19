@@ -1,8 +1,4 @@
 ;;;;;;;; Rust ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package racer
-  :config
-  (define-key racer-mode-map (kbd "M-.") #'helm-gtags-dwim))
-
 (use-package rust-mode
   :ensure t
      
@@ -24,6 +20,11 @@
   ;;(rust-format-on-save t) ;; move this command to lsp
 
   :config
+  (setq lsp-rust-analyzer-proc-macro-enable t
+        lsp-rust-analyzer-cargo-load-out-dirs-from-check t
+        ;;;:= TODO: bind commands lsp-rust-analyzer-join-lines lsp-rust-analyzer-expand-macro
+        )
+  
   (require 'dap-gdb-lldb)
   (dap-gdb-lldb-setup)
 
