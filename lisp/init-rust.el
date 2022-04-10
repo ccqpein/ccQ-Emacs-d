@@ -28,28 +28,42 @@
   (require 'dap-gdb-lldb)
   (dap-gdb-lldb-setup)
   
-  ;;(require 'dap-cpptools)
-  ;;(dap-cpptools-setup)
+  ;; (require 'dap-cpptools)
+  ;; (dap-cpptools-setup)
   ;; (dap-register-debug-template
-  ;;  "Rust::GDB Run Configuration"
-  ;;  (list :type "gdb"
+  ;;  "Rust::CppTools Run Configuration"
+  ;;  (list :type "cppdbg"
   ;;        :request "launch"
-  ;;        :name "GDB::Run"
-  ;;        :gdbpath "~/.cargo/bin/rust-gdb"
-  ;;        :target nil
-  ;;        :cwd nil))
-
+  ;;        :name "Rust::Run"
+  ;;        :MIMode "gdb"
+  ;;        :miDebuggerPath "rust-gdb"
+  ;;        :environment []
+  ;;        :program "${workspaceFolder}/target/debug/gdb-debugger-demo"
+  ;;        :cwd "${workspaceFolder}"
+  ;;        :console "external"
+  ;;        :dap-compilation "cargo build"
+  ;;        :dap-compilation-dir "${workspaceFolder}"))
+  
   (dap-register-debug-template
    "Rust::GDB Run Configuration"
    (list :type "gdb"
          :request "launch"
          :name "GDB::Run"
-         :miDebuggerPath "rust-gdb"
-         :program "${workspaceFolder}/target/debug/gdb-debugger-demo"
-         :target "${workspaceFolder}/target/debug/gdb-debugger-demo"
-         :cwd "${workspaceFolder}"
-         :dap-compilation "cargo build"
-         :dap-compilation-dir "${workspaceFolder}"))
+         :gdbpath "rust-gdb"
+         :target nil
+         :cwd nil))
+
+  ;; (dap-register-debug-template
+  ;;  "Rust::GDB Run Configuration"
+  ;;  (list :type "gdb"
+  ;;        :request "launch"
+  ;;        :name "GDB::Run"
+  ;;        :miDebuggerPath "rust-gdb"
+  ;;        :program "${workspaceFolder}/target/debug/gdb-debugger-demo"
+  ;;        :target "${workspaceFolder}/target/debug/gdb-debugger-demo"
+  ;;        :cwd "${workspaceFolder}"
+  ;;        :dap-compilation "cargo build"
+  ;;        :dap-compilation-dir "${workspaceFolder}"))
 
   )
 
