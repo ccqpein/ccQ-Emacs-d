@@ -22,14 +22,35 @@
   :config
   (setq lsp-rust-analyzer-proc-macro-enable t
         lsp-rust-analyzer-cargo-load-out-dirs-from-check t
-        ;;;:= TODO: bind commands lsp-rust-analyzer-join-lines lsp-rust-analyzer-expand-macro
+;;;:= TODO: bind commands lsp-rust-analyzer-join-lines lsp-rust-analyzer-expand-macro
         )
   
   (require 'dap-gdb-lldb)
   (dap-gdb-lldb-setup)
+  
+  ;;(require 'dap-cpptools)
+  ;;(dap-cpptools-setup)
+  ;; (dap-register-debug-template
+  ;;  "Rust::GDB Run Configuration"
+  ;;  (list :type "gdb"
+  ;;        :request "launch"
+  ;;        :name "GDB::Run"
+  ;;        :gdbpath "~/.cargo/bin/rust-gdb"
+  ;;        :target nil
+  ;;        :cwd nil))
 
-  (require 'dap-cpptools)
-  (dap-cpptools-setup)
+  (dap-register-debug-template
+   "Rust::GDB Run Configuration"
+   (list :type "gdb"
+         :request "launch"
+         :name "GDB::Run"
+         :miDebuggerPath "rust-gdb"
+         :program "${workspaceFolder}/target/debug/gdb-debugger-demo"
+         :target "${workspaceFolder}/target/debug/gdb-debugger-demo"
+         :cwd "${workspaceFolder}"
+         :dap-compilation "cargo build"
+         :dap-compilation-dir "${workspaceFolder}"))
+
   )
 
 ;(require 'rust-mode)
