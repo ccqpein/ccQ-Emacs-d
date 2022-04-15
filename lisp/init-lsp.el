@@ -78,7 +78,8 @@
 
         lsp-ui-doc-enable t
         lsp-ui-doc-delay 0.7
-        ;;lsp-ui-doc-position 'top ;; this only effect when lsp-ui-doc-show-with-cursor is not-nil
+        lsp-ui-doc-show-with-cursor t
+        lsp-ui-doc-position 'top ;; this only effect when lsp-ui-doc-show-with-cursor is not-nil
    
         lsp-ui-imenu-enable t
         )
