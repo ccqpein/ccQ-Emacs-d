@@ -28,8 +28,8 @@
   (require 'dap-gdb-lldb)
   (dap-gdb-lldb-setup)
   
-  ;; (require 'dap-cpptools)
-  ;; (dap-cpptools-setup)
+  (require 'dap-cpptools)
+  (dap-cpptools-setup)
   ;; (dap-register-debug-template
   ;;  "Rust::CppTools Run Configuration"
   ;;  (list :type "cppdbg"
@@ -51,7 +51,9 @@
          :name "GDB::Run"
          :gdbpath "rust-gdb"
          :target nil
-         :cwd nil))
+         :dap-compilation "cargo build"
+         :dap-compilation-dir "${workspaceFolder}"
+         :cwd "${workspaceFolder}"))
 
   ;; (dap-register-debug-template
   ;;  "Rust::GDB Run Configuration"
