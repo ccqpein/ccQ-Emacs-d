@@ -34,7 +34,8 @@
   )
 
 ;;;;;; Magit ;;;;;;;
-(use-package magit)
+(use-package magit
+  :hook (magit-mode . magit-delta-mode))
 
 (use-package forge
   :after magit)
