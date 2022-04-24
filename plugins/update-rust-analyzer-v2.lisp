@@ -12,7 +12,7 @@
 
 (defun call-github-api (url)
   (yason:parse
-   (get-output-stream-string (run-command "curl" "-s" url))))
+   (get-output-stream-string (run-command "curl" "-sL" url))))
 
 (defun version-hash-equal (new current)
   (let ((clean-current (car (str:split " " current))))
