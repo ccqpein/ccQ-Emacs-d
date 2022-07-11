@@ -35,7 +35,7 @@
 
 ;;;;;; Magit ;;;;;;;
 (use-package magit
-  :hook (magit-mode . magit-delta-mode)
+  ;;:hook (magit-mode . magit-delta-mode)
 
   :bind
   (("M-RET" . magit-diff-visit-file-other-window))
