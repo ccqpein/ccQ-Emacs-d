@@ -1,4 +1,4 @@
-(ql:quickload '("yason" "str"))
+(ql:quickload '("yason" "str" "alexandria"))
 
 (defparameter *IN-PROXY* nil)
 
@@ -15,18 +15,25 @@
    (get-output-stream-string (run-command "curl" "-sL" url))))
 
 (defun version-hash-equal (new current)
-  (let ((clean-current (car (str:split " " current))))
-    (str:starts-with? clean-current new)))
+  (str:starts-with? current new))
+
+(defun parse-current-version ()
+  (loop
+    with xx = (list
+               (get-output-stream-string (run-command "rust-analyzer" "--version")))
+    for w in '(#\Newline #\Space #\( #\))
+    do (setf xx (alexandria:flatten (mapcar (lambda (ss) (str:split w ss :omit-nulls t)) xx)))
+    finally (return xx)))
 
 (defun main ()
   (let* ((current-version
            (handler-case
-               (string-right-trim '(#\Newline) (get-output-stream-string (run-command "rust-analyzer" "--version")))
+               (parse-current-version)
              (error (m)
                (format t "receive error: ~a~%" m)
                (if (yes-or-no-p "wanna reinstall it?") " fakehash" (return-from main nil)))))
          
-         (version-hash (subseq current-version (1+ (position #\Space current-version)))))
+         (version-hash (nth 2 current-version)))
 
     (format t "Go get newest release data~%")
 
@@ -37,15 +44,15 @@
                         (format nil
                                 "https://api.github.com/repos/rust-analyzer/rust-analyzer/git/refs/tags/~a"
                                 tag-name)))
-           (newest-hash (subseq (gethash "sha"
-                                         (gethash "object" tag-detail))
-                                0 (length version-hash))))
+           (newest-hash (gethash "sha"
+                                 (gethash "object" tag-detail))))
 
       (format t "newest: ~a, current: ~a~%" newest-hash version-hash)
 
       (if (version-hash-equal newest-hash version-hash)
           (format t "newest version ~a equal current version ~a, don't need to update~%"
-                  newest-hash current-version)
+                  (subseq newest-hash 0 10)
+                  (str:join #\Space current-version))
 
           ;; have newer version
           (let ((download-link (gethash "browser_download_url"
