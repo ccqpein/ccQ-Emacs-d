@@ -26,8 +26,11 @@
                                                   go-mode
                                                   swift-mode
                                                   js-mode
+                                                  json-mode
                                                   ))
-                         (lsp-organize-imports)
+                         (ignore-errors
+                           ;; json-mode "json-ls" will give error
+                           (lsp-organize-imports))
                          (lsp-format-buffer))))
   (setq 
    lsp-go-env '((GOFLAGS . "-tags=integration"))
