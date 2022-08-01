@@ -3,11 +3,11 @@
   :ensure t
      
   :hook
-  (rust-mode . eldoc-mode)
-  (rust-mode . company-mode)
-  (rust-mode . cargo-minor-mode)
-  (rust-mode . hs-minor-mode)
-  (rust-mode . lsp-deferred)
+  ((rust-mode . eldoc-mode)
+   (rust-mode . company-mode)
+   (rust-mode . cargo-minor-mode)
+   (rust-mode . hs-minor-mode)
+   (rust-mode . lsp-deferred))
 
   :bind
   (:map rust-mode-map

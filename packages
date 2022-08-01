@@ -42,7 +42,6 @@ cider
 clojure-mode
 auctex
 js2-mode
-web-mode
 swiper
 slime
 py-autopep8
