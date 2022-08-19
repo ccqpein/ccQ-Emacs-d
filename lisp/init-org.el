@@ -1,5 +1,10 @@
 ;;;;;; Org mode ;;;;;;;;;;
 (use-package org
+  :hook
+  (
+   (org-mode . org-indent-mode)
+   )
+  
   :bind
   (:map org-mode-map
 	    ("C-c l" . org-store-link)
