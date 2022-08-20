@@ -31,6 +31,9 @@
       (file
        "template/template_header.org" ;; relative path to org-directory
        ))))
+
+  ;; define the location of archive
+  (org-archive-location "archive/%s_archive::* Archived Tasks")
   )
 
 (provide 'init-org)
