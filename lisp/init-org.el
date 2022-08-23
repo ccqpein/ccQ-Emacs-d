@@ -3,6 +3,7 @@
   :hook
   (
    (org-mode . org-indent-mode)
+   (org-mode . visual-line-mode)
    )
   
   :bind
