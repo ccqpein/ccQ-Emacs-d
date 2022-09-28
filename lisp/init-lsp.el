@@ -5,6 +5,9 @@
   :hook
   (;; for yas
    (lsp-mode . yas-minor-mode)
+
+   ;; for toml file, need install taplo
+   (conf-toml-mode . lsp-deferred)
    )
 
   :commands (lsp lsp-deferred)
@@ -22,16 +25,18 @@
         lsp-use-plists t ;;https://emacs-lsp.github.io/lsp-mode/page/performance/
         )
   (add-hook 'before-save-hook
-            (lambda () (when (member major-mode '(rust-mode
-                                                  go-mode
-                                                  swift-mode
-                                                  js-mode
-                                                  json-mode
-                                                  ))
-                         (ignore-errors
-                           ;; json-mode "json-ls" will give error
-                           (lsp-organize-imports))
-                         (lsp-format-buffer))))
+            (lambda ()
+			  (when (member major-mode '(rust-mode
+                                         go-mode
+                                         swift-mode
+                                         js-mode
+                                         json-mode
+										 conf-toml-mode
+                                         ))
+                (ignore-errors
+                  ;; json-mode "json-ls" will give error
+                  (lsp-organize-imports))
+                (lsp-format-buffer))))
   (setq 
    lsp-go-env '((GOFLAGS . "-tags=integration"))
    )
