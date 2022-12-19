@@ -14,11 +14,10 @@
 
   :config
   (require 'py-autopep8)
-  
-
-  :hook
-  (elpy-mode . py-autopep8-enable-on-save)
   )
+
+(use-package py-autopep8
+  :hook ((python-mode) . py-autopep8-mode))
 
 (provide 'init-python)
 

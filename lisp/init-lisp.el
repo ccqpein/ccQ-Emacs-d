@@ -4,6 +4,7 @@
   (setq
    slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog)
    inferior-lisp-program "/usr/local/bin/sbcl"
+   ;;inferior-lisp-program "/usr/local/bin/clisp"
    )
   
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
