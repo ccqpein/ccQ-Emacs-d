@@ -33,6 +33,7 @@
 (add-to-list 'default-frame-alist '(height . 60))
 (global-hl-line-mode 1)
 (global-display-line-numbers-mode)
+(column-number-mode)
 ;; close bars
 ;; settings below might just works when emacs installed with-cocoa (by brewcask)
 (tool-bar-mode -1)
