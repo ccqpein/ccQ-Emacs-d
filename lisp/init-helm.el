@@ -56,10 +56,11 @@
   (:map helm-gtags-mode-map
    ("C-c g a" . helm-gtags-tags-in-this-function)
    ("C-c g j" . helm-gtags-select)
-   ("M-." . helm-gtags-dwim)
-   ("M-," . helm-gtags-pop-stack)
+   ("C-c g d" . helm-gtags-dwim)
+   ("C-c g b" . helm-gtags-pop-stack)
    ("C-c <" . helm-gtags-previous-history)
-   ("C-c >" . helm-gtags-next-history))
+   ("C-c >" . helm-gtags-next-history)
+   ("M-." . nil))
 
   :custom
   (helm-gtags-ignore-case t)
