@@ -60,7 +60,8 @@
    ("C-c g b" . helm-gtags-pop-stack)
    ("C-c <" . helm-gtags-previous-history)
    ("C-c >" . helm-gtags-next-history)
-   ("M-." . nil))
+   ("M-." . nil)
+   ("C-t" . nil))
 
   :custom
   (helm-gtags-ignore-case t)
