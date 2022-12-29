@@ -24,7 +24,8 @@
    '((emacs-lisp . t)
 	 (dot . t)
 	 (python . t)
-     (lisp . t)))
+     (lisp . t)
+	 (shell . t)))
 
   ;;; capture templates
   (org-capture-templates
