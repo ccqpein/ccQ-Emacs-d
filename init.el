@@ -27,7 +27,6 @@
 (setq comp-deferred-compilation t)
 (package-initialize)
 
-
 ;;;;;;;;;; set frame default ;;;;;;;;;;;;;;;
 (add-to-list 'default-frame-alist '(width . 93))
 (add-to-list 'default-frame-alist '(height . 60))
@@ -76,6 +75,8 @@
 
 ;;; other modes
 (require 'init-external)
+
+(require 'init-treesitter)
 
 ;;; languages
 (require 'init-treemacs)
