@@ -19,7 +19,6 @@
 
   :config
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
-  (add-to-list 'tree-sitter-major-mode-language-alist '(conf-toml-mode . toml))
   
   (setq lsp-idle-delay 0.700
         lsp-log-io nil

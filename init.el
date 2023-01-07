@@ -76,8 +76,6 @@
 ;;; other modes
 (require 'init-external)
 
-(require 'init-treesitter)
-
 ;;; languages
 (require 'init-treemacs)
 

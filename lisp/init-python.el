@@ -10,7 +10,7 @@
 
   :bind
   (:map elpy-mode-map
-	("M-." . nil))
+		("M-." . nil))
 
   :config
   (require 'py-autopep8)
