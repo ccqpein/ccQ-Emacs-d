@@ -11,7 +11,7 @@
   - [About Plugins](#about-plugins)
   - [About Ag](#about-ag)
   - [About forge](#about-forge)
-  - [About tree-sitter (treesit)](#about-treesitter-treesit)
+  - [About tree-sitter (treesit)](#about-tree-sitter-(treesit))
     
 Personal Emacs configure 
 
