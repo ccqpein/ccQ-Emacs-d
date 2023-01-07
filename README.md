@@ -11,6 +11,7 @@
   - [About Plugins](#about-plugins)
   - [About Ag](#about-ag)
   - [About forge](#about-forge)
+  - [About tree-sitter (treesit)](#about-treesitter-treesit)
     
 Personal Emacs configure 
 
@@ -121,3 +122,10 @@ Several configurations links:
 For me, I just make `~/.authinfo` like 
 
 `machine api.github.com login {username}^forge password {github_token}`
+
+### About tree-sitter (treesit) ###
+
+I use [tree-sitter-module](https://github.com/casouri/tree-sitter-module.git) build the `tree-sitter` libraries. 
+
+Then move the `dylib` files to the `treesit-extra-load-path` (`"~/.emacs.d/tree-sitter-libs/")`, which set in `lisp/init-custom.el`)
+
