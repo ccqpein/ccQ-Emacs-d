@@ -27,12 +27,12 @@
   
   (add-hook 'before-save-hook
             (lambda ()
-			  (when (member major-mode '(rust-mode
-                                         go-mode
+			  (when (member major-mode '(rust-mode rust-ts-mode
+                                         go-mode go-ts-mode
                                          swift-mode
                                          js-mode
                                          json-mode
-										 conf-toml-mode
+										 conf-toml-mode toml-ts-mode
                                          ))
                 (ignore-errors
                   ;; json-mode "json-ls" will give error
