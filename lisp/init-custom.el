@@ -4,6 +4,13 @@
   (setq treesit-extra-load-path '("~/.emacs.d/tree-sitter-libs/"))
   (add-hook 'go-mode-hook 'go-ts-mode)
   (add-hook 'python-mode-hook 'python-ts-mode)
-  (add-hook 'rust-mode-hook 'rust-ts-mode))
+  (add-hook 'rust-mode-hook 'rust-ts-mode)
+
+  (dolist (queryS '((rust-ts-mode . "rust")
+					(go-ts-mode . "go,godoc")
+					(python-ts-mode . "python3,django,twisted,sphinx,flask,tornado,sqlalchemy,numpy,scipy,saltcvp")))
+	(add-to-list 'dash-at-point-mode-alist-legacy queryS)
+    (add-to-list 'dash-at-point-mode-alist queryS))
+  )
 
 (provide 'init-custom)

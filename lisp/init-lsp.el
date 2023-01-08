@@ -8,6 +8,7 @@
 
    ;; for toml file, need install taplo
    (conf-toml-mode . lsp-deferred)
+   (toml-ts-mode . lsp-deferred)
    )
 
   :commands (lsp lsp-deferred)
