@@ -48,4 +48,6 @@
   :bind
   ("M-o" . ace-window))
 
+(define-key global-map (kbd "TAB") 'company-indent-or-complete-common)
+
 (provide 'init-general)

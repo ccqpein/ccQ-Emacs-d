@@ -11,7 +11,6 @@
 
   :bind
   (:map rust-mode-map
-    	("TAB" . company-indent-or-complete-common)
         ("C-c C-d" . rust-dbg-wrap-or-unwrap)
         ("C-c d" . nil))
 
