@@ -32,7 +32,6 @@ merlin
 utop
 tuareg
 yaml-mode
-use-package
 restclient
 treemacs
 lsp-mode
