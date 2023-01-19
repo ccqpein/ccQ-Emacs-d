@@ -49,3 +49,5 @@
 	(if (check-if-already-install pkg)
 		(git-pull pkg)
 		(git-clone pkg))))
+
+(main)
