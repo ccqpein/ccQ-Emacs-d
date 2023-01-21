@@ -4,7 +4,7 @@
   (
    (org-mode . org-indent-mode)
    (org-mode . visual-line-mode)
-   (org-mode . org-jira-mode)
+   ;;(org-mode . org-jira-mode)
    )
   
   :bind
@@ -19,7 +19,7 @@
   (org-directory (getenv "ORG_PATH"))
   (org-log-done t)
   (org-hide-leading-stars t)
-  (org-hide-emphasis-markers t)
+  ;;(org-hide-emphasis-markers t)
   (org-log-into-drawer t)
   (org-babel-load-languages
    '((emacs-lisp . t)

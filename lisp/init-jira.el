@@ -8,11 +8,13 @@
 ;;   (push org-jira-working-dir org-agenda-files)
 ;;   )
 
-(eval-after-load 'org-jira
-       '(progn
-		  (setf org-jira-working-dir (concat (getenv "ORG_PATH") "/jira")
-				jiralib-url (getenv "JIRA_URL"))
-          (add-to-list 'org-agenda-files org-jira-working-dir)
-		  ))
+;; (eval-after-load 'org-jira
+;;        '(progn
+;; 		  (setf org-jira-working-dir (concat (getenv "ORG_PATH") "/jira")
+;; 				jiralib-url (getenv "JIRA_URL"))
+;;           (add-to-list 'org-agenda-files org-jira-working-dir)
+;; 		  ))
+
+;;(use-package ejira)
 
 (provide 'init-jira)
