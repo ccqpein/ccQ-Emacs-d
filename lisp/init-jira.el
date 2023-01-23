@@ -15,6 +15,14 @@
 ;;           (add-to-list 'org-agenda-files org-jira-working-dir)
 ;; 		  ))
 
-;;(use-package ejira)
+(cl-defun make-sure-if-install (name recipe)
+  (unless (package-installed-p (intern name))
+	(funcall #'quelpa recipe)))
+
+(use-package ejira
+  :init (make-sure-if-install
+		 "ejira"
+		 '(ejira :fetcher git :url "https://github.com/nyyManni/ejira.git"))
+  )
 
 (provide 'init-jira)

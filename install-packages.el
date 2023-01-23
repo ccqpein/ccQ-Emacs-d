@@ -43,8 +43,8 @@
       (princ (format "%s installed \n\n" package)))))
 
 ;;; run the addtional scripts if there is one
-(if (yes-or-no-p "wanna run addtional package installment? ")
-	(let ((default-directory (concat cpath "plugins")))
-	  (princ (format "starting to run additional script"))
-	  (princ (shell-command-to-string "sbcl --load install-packages.lisp --non-interactive"))))
+;; (if (yes-or-no-p "wanna run addtional package installment? ")
+;; 	(let ((default-directory (concat cpath "plugins")))
+;; 	  (princ (format "starting to run additional script"))
+;; 	  (princ (shell-command-to-string "sbcl --load install-packages.lisp --non-interactive"))))
 

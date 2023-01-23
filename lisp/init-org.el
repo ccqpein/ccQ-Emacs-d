@@ -4,7 +4,7 @@
   (
    (org-mode . org-indent-mode)
    (org-mode . visual-line-mode)
-   ;;(org-mode . org-jira-mode)
+   (org-mode . ejira-mode)
    )
   
   :bind
