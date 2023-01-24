@@ -9,6 +9,7 @@
    ;; for toml file, need install taplo
    (conf-toml-mode . lsp-deferred)
    (toml-ts-mode . lsp-deferred)
+   (markdown-mode . lsp-deferred)
    )
 
   :commands (lsp lsp-deferred)
@@ -65,7 +66,6 @@
   (tooltip-mode 1)
   (dap-ui-controls-mode 1)
   )
-
 
 (use-package lsp-ui
   :custom
