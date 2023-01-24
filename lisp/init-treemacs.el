@@ -1,7 +1,5 @@
 ;;;;;;;; treemacs ;;;;;;;;;
-(use-package treemacs
-  :ensure t
-  
+(use-package treemacs  
   :bind
   (("M-0" . treemacs-select-window)
    :map treemacs-mode-map
@@ -44,7 +42,7 @@
 
 (use-package treemacs-projectile
   :after (treemacs projectile)
-  :ensure t)
+  )
 
 (provide 'init-treemacs)
 

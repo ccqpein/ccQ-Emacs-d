@@ -1,5 +1,5 @@
 ;;;;;;;; Javascript mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package js-mode
+(use-package js
   :config
   (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
   :hook

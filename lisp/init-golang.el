@@ -1,7 +1,5 @@
 ;;;;;; go-mode ;;;;;
 (use-package go-mode
-  :ensure t
-
   :custom
   (tab-width 4)
   (compile-command "go build")
@@ -18,7 +16,7 @@
   :config
   (setq-default flycheck-disabled-checkers '(go-staticcheck))
 
-  (require 'dap-go)
+  (straight-use-package 'dap-go)
   (dap-go-setup)
   )
 

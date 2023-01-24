@@ -1,6 +1,7 @@
 ;;;;;;; slime ;;;;;;;;;
 (use-package slime
   :config
+  (straight-use-package 'paredit)
   (setq
    slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog)
    inferior-lisp-program "/usr/local/bin/sbcl"
@@ -33,8 +34,6 @@
 
 ;;;;;;;;; Clojure ;;;;;;;;;;;;
 (use-package clojure-mode
-  :ensure t
-
   :bind
   (:map clojurec-mode-map
    ("\C-c\C-z" . cider-jack-in))
@@ -47,7 +46,7 @@
   (clojure-mode . enable-paredit-mode)
   
   :config
-  (require 'cider-mode)
+  (straight-use-package 'cider-mode)
   )
 
 (eval-after-load "auto-complete"

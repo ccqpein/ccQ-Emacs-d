@@ -1,8 +1,6 @@
 ;;;;;;;;; Haskell ;;;;;;;;;;;;;
 ;; need installed `hindent` `stylish-haskell`
 (use-package haskell-mode
-  :ensure t
-
   :bind
   (:map haskell-mode-map
 		("C-c C-l" . haskell-process-load-or-reload)

@@ -1,6 +1,5 @@
 ;;;;;;;;pythono-mode;;;;;;;;;;;;;;;;;;
 (use-package elpy
-  :ensure t
   :init (elpy-enable)
 
   :custom
@@ -11,10 +10,10 @@
 
   :bind
   (:map elpy-mode-map
-		("M-." . nil))
+	("M-." . nil))
 
   :config
-  (require 'py-autopep8)
+  (straight-use-package 'py-autopep8)
   )
 
 (use-package py-autopep8

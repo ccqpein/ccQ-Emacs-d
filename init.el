@@ -1,14 +1,4 @@
 ;;; init file
-(require 'package)
-
-;; update 2/16/2019, temporary delete default gnu source because cannot refresh
-(setq package-archives
-      '(
-        ("melpa" . "https://melpa.org/packages/")
-        ("melpa-stable" . "https://stable.melpa.org/packages/")
-        ;;("gnu" . "https://elpa.gnu.org/packages/")
-        ))
-
 (dolist (path '("~/.emacs.d/elpa"
 				"~/.emacs.d/plugins/"
 				"~/.emacs.d/lisp/"
@@ -25,7 +15,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 (setq comp-deferred-compilation t)
-(package-initialize)
+(setq straight-use-package-by-default t)
 
 ;;;;;;;;;; set frame default ;;;;;;;;;;;;;;;
 (add-to-list 'default-frame-alist '(width . 93))
@@ -45,25 +35,21 @@
 (setq backup-directory-alist '(("" . "~/.emacs.d/backups")))
 (defalias 'list-buffers 'ibuffer) ; make ibuffer default
 
+(require 'init-bootstrap)
 
 ;;;;;; Styling and Themes ;;;;;;;
 (load-theme 'solarized-dark t)
 
-
 ;;;;;; use-package ;;;;;;;;;;;;
 (eval-when-compile (require 'use-package))
 
-
 ;;;;;;; autocomplete ;;;;;;
 (ac-config-default)
-
 (global-auto-complete-mode t)
-
 
 ;;;;;;; flycheck ;;;;;;;
 (global-flycheck-mode)
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
-
 
 ;; windmove
 (global-set-key (kbd "s-<left>")  'windmove-left)
@@ -151,7 +137,8 @@
  '(magit-diff-arguments '("--no-ext-diff" "--stat"))
  '(markdown-command "~/.emacs.d/plugins/open-markdown-to-web.sh")
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
- '(package-selected-packages
+ ;;:= todo: maybe delete this after straight running well
+ '(package-selected-packages 
    '(f posframe forge treemacs-projectile solarized-theme dap-mode helm-ag helm-projectile clang-format company-jedi julia-mode julia-repl magit json-mode projectile lsp-sourcekit helm-core helm-lsp lsp-treemacs lsp-ui groovy-mode elm-mode flycheck-elm flycheck-haskell company-coq proof-general graphviz-dot-mode cargo ac-slime merlin utop tuareg yaml-mode restclient treemacs lsp-mode rust-mode highlight-symbol tide helm-gtags helm ac-cider cider clojure-mode auctex js2-mode swiper swift-mode slime py-autopep8 pkg-info paredit multiple-cursors markdown-mode jdee hindent haskell-mode google-this go-mode expand-region exec-path-from-shell elpy dash-at-point better-defaults ac-php))
  '(recentf-max-saved-items 10)
  '(send-mail-function 'mailclient-send-it)

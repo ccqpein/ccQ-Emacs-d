@@ -73,7 +73,7 @@
   )
 
 
-(use-package projectile  
+(use-package projectile
   :init
   (projectile-mode +1)
   
@@ -93,7 +93,7 @@
   
   :config
   ;;; http://tuhdo.github.io/helm-projectile.html
-  (require 'helm-projectile)
+  (straight-use-package 'helm-projectile)
   (helm-projectile-on)
 
   ;; golang

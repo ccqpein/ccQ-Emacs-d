@@ -1,6 +1,6 @@
 ;;(use-package proof-general)
 
-(use-package company-coq-mode
+(use-package company-coq
   :hook coq-mode
   )
 

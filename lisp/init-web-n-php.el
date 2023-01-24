@@ -101,10 +101,10 @@
   (php-mode . (lambda ()
 				(define-key php-mode-map (kbd "M-.") 'ac-php-find-symbol-at-point)
 				(define-key php-mode-map (kbd "C-c s") 'toggle-php-flavor-mode)
-             ))
+				))
   
   :config
-  (require 'ac-php))
+  (straight-use-package 'ac-php))
 
 ;(require 'php-mode)
 ;(require 'ac-php)
