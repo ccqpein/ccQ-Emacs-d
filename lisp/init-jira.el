@@ -22,7 +22,7 @@
   :config
   (add-hook 'jiralib2-post-login-hook #'ejira-guess-epic-sprint-fields)
 
-  (straight-use-package 'ejira-agenda)
+  (require 'ejira-agenda)
 
   
   )
