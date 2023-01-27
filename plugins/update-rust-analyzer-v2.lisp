@@ -31,7 +31,7 @@
                (parse-current-version)
              (error (m)
                (format t "receive error: ~a~%" m)
-               (if (yes-or-no-p "wanna reinstall it?") " fakehash" (return-from main nil)))))
+               (if (yes-or-no-p "wanna reinstall it?") '("" "" " fakehash") (return-from main nil)))))
          
          (version-hash (nth 2 current-version)))
 
@@ -56,7 +56,7 @@
 
           ;; have newer version
           (let ((download-link (gethash "browser_download_url"
-                                        (find-if (lambda (x) (string= "rust-analyzer-x86_64-apple-darwin.gz"
+                                        (find-if (lambda (x) (string= "rust-analyzer-aarch64-apple-darwin.gz"
                                                                       (gethash "name" x)))
                                                  (gethash "assets" response-json-body)))))
 

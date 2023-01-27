@@ -11,7 +11,7 @@
   (add-to-list 'load-path path))
 
 ;;; add all subdirs in load path
-(let ((default-directory "/usr/local/share/emacs/site-lisp/"))
+(let ((default-directory "/opt/homebrew/share/emacs/site-lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
 (setq comp-deferred-compilation t)
