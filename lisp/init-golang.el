@@ -8,7 +8,6 @@
   :hook
   ((go-mode . hs-minor-mode)
    (go-mode . (lambda () (funcall 'auto-complete-mode -1)))
-   ;;(before-save . gofmt-before-save) ;; because lsp go-mode fmt screw up
    (go-mode . lsp-deferred)
    (go-mode . yas-minor-mode)
    )
@@ -17,7 +16,7 @@
   (setq-default flycheck-disabled-checkers '(go-staticcheck))
 
   (straight-use-package 'dap-go)
-  (dap-go-setup)
+  ;;(dap-go-setup)
   )
 
 (provide 'init-golang)
