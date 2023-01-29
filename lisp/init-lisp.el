@@ -1,11 +1,13 @@
 ;;;;;;; slime ;;;;;;;;;
 (use-package slime
+  :init (straight-use-package 'ac-slime)
   :config
   (straight-use-package 'paredit)
   (setq
    slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog)
-   inferior-lisp-program "/usr/local/bin/sbcl"
-   ;;inferior-lisp-program "/usr/local/bin/clisp"
+   inferior-lisp-program (if (string= "arm64\n" (shell-command-to-string "uname -m"))
+							 "/opt/homebrew/bin/sbcl"
+							 "/usr/local/bin/sbcl")
    )
   
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)

@@ -17,13 +17,21 @@
 (defun version-hash-equal (new current)
   (str:starts-with? current new))
 
+(defun check-the-architecture ()
+  (if (str:starts-with?
+	   "arm64"
+	   (get-output-stream-string (run-command "uname" "-m")))
+	  'arm64
+	  'x86
+	  ))
+
 (defun parse-current-version ()
   (loop
-    with xx = (list
-               (get-output-stream-string (run-command "rust-analyzer" "--version")))
-    for w in '(#\Newline #\Space #\( #\))
-    do (setf xx (alexandria:flatten (mapcar (lambda (ss) (str:split w ss :omit-nulls t)) xx)))
-    finally (return xx)))
+	with xx = (list
+			   (get-output-stream-string (run-command "rust-analyzer" "--version")))
+	for w in '(#\Newline #\Space #\( #\))
+	do (setf xx (alexandria:flatten (mapcar (lambda (ss) (str:split w ss :omit-nulls t)) xx)))
+	finally (return xx)))
 
 (defun main ()
   (let* ((current-version
@@ -55,10 +63,15 @@
                   (str:join #\Space current-version))
 
           ;; have newer version
-          (let ((download-link (gethash "browser_download_url"
-                                        (find-if (lambda (x) (string= "rust-analyzer-aarch64-apple-darwin.gz"
-                                                                      (gethash "name" x)))
-                                                 (gethash "assets" response-json-body)))))
+          (let ((download-link
+				  (gethash "browser_download_url"
+                           (find-if (lambda (x)
+									  (string=
+									   (case (check-the-architecture)
+										 (x86 "rust-analyzer-x86_64-apple-darwin.gz")
+										 (arm64 "rust-analyzer-aarch64-apple-darwin.gz"))
+                                       (gethash "name" x)))
+                                    (gethash "assets" response-json-body)))))
 
             ;; check
             (when (not download-link)
@@ -68,20 +81,28 @@
             ;; start to download rust-analyzer
             (format t "Start to download newest version from ~a~%" download-link)
 
-            (run-command "wget" download-link
-                         "-O"
-                         (format nil "~a/.cargo/bin/rust-analyzer-x86_64-apple-darwin.gz" (sb-ext:posix-getenv "HOME"))
-                         (if *in-proxy* "--no-check-certificate" ""))
-            
-            (run-command "gunzip" "-dk" (format nil "~a/.cargo/bin/rust-analyzer-x86_64-apple-darwin.gz" (sb-ext:posix-getenv "HOME")))
-            
-            (run-command "mv"
-                         (format nil "~a/.cargo/bin/rust-analyzer-x86_64-apple-darwin" (sb-ext:posix-getenv "HOME"))
-                         (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
-            
-            (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
-            
-            (format t "Download done")
+            (let* ((filename (format nil
+									 "~a/.cargo/bin/rust-analyzer-newer"
+									 (sb-ext:posix-getenv "HOME")
+									 ))
+				   (d-filename (format nil "~a~a" filename ".gz")))
+			  
+			  (format t "Downloading to ~a~%" d-filename)
+			  
+			  (run-command "wget" download-link
+						   "-O"
+						   d-filename
+						   (if *in-proxy* "--no-check-certificate" ""))
+             
+              (run-command "gunzip" "-dk" d-filename) ;; gunzip will create a file has filename
+             
+              (run-command "mv"
+						   filename
+                           (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
+             
+              (run-command "chmod" "+x" (format nil "~a/.cargo/bin/rust-analyzer" (sb-ext:posix-getenv "HOME")))
+             
+              (format t "Download done"))
             ))
       )))
 
