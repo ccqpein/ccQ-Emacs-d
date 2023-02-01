@@ -15,9 +15,16 @@
                                     ("Medium"  . ?C)
                                     ("Low"     . ?D)
                                     ("Lowest"  . ?E))
-        ejira-todo-states-alist   '(("To Do"       . 1)
-                                    ("In Progress" . 2)
-                                    ("Done"        . 3)))
+
+		;; this var is used as:
+		;; (alist-get status ejira-todo-states-alist 1 nil #'equal)
+		;; for example, it will return 2 if the status is "In progress".
+		;; Then it will pass 2 to (org-todo) for getting the todo keyword from
+		;; org-todo-keywords. org-todo-keywords is defined by #+TODO
+		;; header in org file
+        ejira-todo-states-alist   '(("In progress" . 2)
+                                    ("Done"        . 3)
+									))
 
   :config
   (add-hook 'jiralib2-post-login-hook #'ejira-guess-epic-sprint-fields)
@@ -33,5 +40,3 @@
   )
 
 (provide 'init-jira)
-
-

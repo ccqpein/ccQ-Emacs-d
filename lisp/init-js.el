@@ -2,6 +2,8 @@
 (use-package js
   :config
   (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-mode))
+  (straight-use-package 'js2-mode)
+  
   :hook
   (
    (js-mode . hs-minor-mode)
