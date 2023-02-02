@@ -72,6 +72,7 @@
   (helm-gtags-suggested-key-mapping t)
   )
 
+(use-package helm-ag)
 
 (use-package projectile
   :init
@@ -92,7 +93,7 @@
      projectile-root-top-down-recurring))
   
   :config
-  ;;; http://tuhdo.github.io/helm-projectile.html
+  ;; http://tuhdo.github.io/helm-projectile.html
   (straight-use-package 'helm-projectile)
   (helm-projectile-on)
 
