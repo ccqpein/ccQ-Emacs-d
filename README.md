@@ -28,9 +28,7 @@ All configure files store in `~/.emacs.d` that Emacs default path.
 
 Use [this repo](github.com/jimeh/build-emacs-for-macos.git) to compile emacs in my local.
 
-Run script to install all packages 
-
-`emacs -q --script install-packages.el`
+Use `straight.el` to manage packages. Don't need to install packages manually.
 
 ### Languages Supported and System Dependency ###
 
