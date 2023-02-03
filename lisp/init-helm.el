@@ -12,14 +12,6 @@
   (helm-imenu-fuzzy-match                t)
   (helm-scroll-amount                    8)
   (helm-ff-file-name-history-use-recentf t)
-  
-  (helm-grep-ag-command
-   "ag --line-numbers -S \\
---hidden \\
---color --color-match '31;43' \\
---ignore-dir .git \\
---nogroup %s %s %s")
-  (helm-grep-ag-pipe-cmd-switches '("--color-match '31;43'"))
 
   :config
   (helm-mode 1)
@@ -72,7 +64,9 @@
   (helm-gtags-suggested-key-mapping t)
   )
 
-(use-package helm-ag)
+(use-package helm-ag
+  :custom
+  (helm-follow-mode-persistent t))
 
 (use-package projectile
   :init
@@ -102,15 +96,13 @@
    'go
    '("go.mod")
    :project-file "go.mod")
-
-  ;;(setf projectile-project-types (seq-subseq projectile-project-types (- (length projectile-project-types) 3)))
   )
 
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "C-c h s") 'helm-do-grep-ag)
+(global-set-key (kbd "C-c h s") 'helm-do-ag)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x r b") 'helm-filtered-bookmarks)
