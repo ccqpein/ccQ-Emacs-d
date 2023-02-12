@@ -8,6 +8,7 @@
   ;;(add-hook 'python-mode-hook 'python-ts-mode)
   ;;(add-hook 'rust-mode-hook 'rust-ts-mode)
   (add-hook 'rust-ts-mode-hook 'rust-mode)
+  ;;(add-hook 'go-mode-hook 'go-ts-mode)
 
 
   ;; for dash
