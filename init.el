@@ -11,7 +11,8 @@
   (add-to-list 'load-path path))
 
 (setq comp-deferred-compilation t)
-(setq straight-use-package-by-default t)
+(setq straight-use-package-by-default t
+	  straight-repository-branch "develop")
 
 ;;;;;;;;;; set frame default ;;;;;;;;;;;;;;;
 (add-to-list 'default-frame-alist '(width . 93))
