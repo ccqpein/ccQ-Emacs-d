@@ -26,7 +26,7 @@ All configure files store in `~/.emacs.d` that Emacs default path.
 
 ### Install
 
-Use [this repo](github.com/jimeh/build-emacs-for-macos.git) to compile emacs in my local.
+Use [this repo](https://github.com/jimeh/build-emacs-for-macos.git) to compile emacs in my local.
 
 Use `straight.el` to manage packages. Don't need to install packages manually.
 
@@ -122,6 +122,8 @@ For me, I just make `~/.authinfo` like
 `machine api.github.com login {username}^forge password {github_token}`
 
 ### About tree-sitter (treesit) ###
+
+**CAUTION: not stable yet**
 
 I use [tree-sitter-module](https://github.com/casouri/tree-sitter-module.git) build the `tree-sitter` libraries. 
 
