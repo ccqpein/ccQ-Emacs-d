@@ -10,6 +10,7 @@
    (conf-toml-mode . lsp-deferred)
    (toml-ts-mode . lsp-deferred)
    (markdown-mode . lsp-deferred)
+   (python-mode . lsp-deferred)
    )
 
   :commands (lsp lsp-deferred)

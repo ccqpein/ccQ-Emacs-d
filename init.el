@@ -29,7 +29,11 @@
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
 
+(setq explicit-shell-file-name "$SHELL"
+	  explicit-zsh-args '("--interactive" "--login"))
+
 (setq backup-directory-alist '(("" . "~/.emacs.d/backups")))
+
 (defalias 'list-buffers 'ibuffer) ; make ibuffer default
 
 (require 'init-bootstrap)
