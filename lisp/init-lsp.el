@@ -100,8 +100,8 @@
   :commands helm-lsp-workspace-symbol) ;;:= MAYBE: give a key bind. Shows workspace symbols
 
 (use-package lsp-treemacs
-  :init
-  (lsp-treemacs-sync-mode 1)
+  ;;:init
+  ;;(lsp-treemacs-sync-mode 1)
   
   :commands
   (lsp-treemacs-symbols
