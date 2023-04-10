@@ -10,6 +10,7 @@
    (conf-toml-mode . lsp-deferred)
    (toml-ts-mode . lsp-deferred)
    (markdown-mode . lsp-deferred)
+   (python-ts-mode . lsp-deferred)
    (python-mode . lsp-deferred)
    )
 
@@ -31,11 +32,12 @@
   (add-hook 'before-save-hook
             (lambda ()
 			  (when (member major-mode '(rust-mode rust-ts-mode
-                                         go-mode go-ts-mode
+                                         go-ts-mode
                                          swift-mode
                                          js-mode
                                          json-mode
 										 conf-toml-mode toml-ts-mode
+										 python-ts-mode
                                          ))
                 (ignore-errors
                   ;; json-mode "json-ls" will give error
