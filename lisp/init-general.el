@@ -1,5 +1,4 @@
 ;;;;;;;;;;; global general packages ;;;;;;;;;;;;;
-;;;:= TODO: still need to know how to move auto-complete and yasnippet here
 
 ;;;;;;;; multiple-cursors ;;;;;;;;;;;;;;;;
 (use-package multiple-cursors

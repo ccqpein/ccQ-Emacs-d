@@ -30,10 +30,6 @@
     (read-kbd-macro paredit-backward-delete-key)
     nil))
 
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'slime-repl-mode))
-
-
 ;;;;;;;;; Clojure ;;;;;;;;;;;;
 (use-package clojure-mode
   :bind
@@ -50,10 +46,5 @@
   :config
   (straight-use-package 'cider-mode)
   )
-
-(eval-after-load "auto-complete"
-       '(progn
-          (add-to-list 'ac-modes 'cider-mode)
-          (add-to-list 'ac-modes 'cider-repl-mode)))
 
 (provide 'init-lisp)

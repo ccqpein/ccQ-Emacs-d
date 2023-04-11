@@ -13,8 +13,6 @@
 
 (straight-use-package 'solarized-theme)
 
-(straight-use-package 'auto-complete)
-
 (straight-use-package 'flycheck)
 
 (provide 'init-bootstrap)
