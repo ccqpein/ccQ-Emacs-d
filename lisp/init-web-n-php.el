@@ -56,44 +56,7 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  ;; `M-x package-install [ret] company`
-  (company-mode +1))
-
-;(require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-
-;; (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
-;; (add-to-list 'auto-mode-alist '("\\.blade\\.php\\'" . web-mode))
-
-;(setq web-mode-enable-auto-closing t)
-;(setq web-mode-enable-auto-pairing t)
-;(setq web-mode-enable-current-element-highlight t)
-
-;(add-hook 'web-mode-hook
-;          '(lambda ()
-;             (define-key web-mode-map (kbd "C-c s") 'toggle-php-flavor-mode)
-;             (define-key web-mode-map (kbd "C-c C-;") 'web-mode-comment-or-uncomment)))
-
-;; for typescript mode
-;(add-hook 'web-mode-hook
-;          (lambda ()
-;            (when (string-equal "tsx" (file-name-extension buffer-file-name))
-;              (setup-tide-mode))
-;            (when (string-equal "jsx" (file-name-extension buffer-file-name))
-;              (setup-tide-mode))))
-
+  )
 
 ;;;;;;; PHP mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package php-mode
