@@ -44,10 +44,6 @@
 ;;;;;; use-package ;;;;;;;;;;;;
 (eval-when-compile (require 'use-package))
 
-;;;;;;; autocomplete ;;;;;;
-(ac-config-default)
-(global-auto-complete-mode t)
-
 ;;;;;;; flycheck ;;;;;;;
 (global-flycheck-mode)
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)

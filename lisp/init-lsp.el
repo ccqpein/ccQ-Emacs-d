@@ -1,6 +1,9 @@
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
+  (defun lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(flex)))
 
   :hook
   (;; for yas
@@ -12,6 +15,11 @@
    (markdown-mode . lsp-deferred)
    (python-ts-mode . lsp-deferred)
    (python-mode . lsp-deferred)
+   (go-mode . lsp-deferred)
+   (go-ts-mode . lsp-deferred)
+   (rust-mode . lsp-deferred)
+   
+   (lsp-completion-mode . lsp-mode-setup-completion)
    )
 
   :commands (lsp lsp-deferred)
@@ -21,6 +29,9 @@
         ("C-c l g d" . lsp-find-definition) ;; I like d => definition rather than g
         )
 
+  :custom
+  (lsp-completion-provider :none)
+  
   :config
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
   

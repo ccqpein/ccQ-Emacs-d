@@ -8,7 +8,6 @@
   :hook
   ((go-mode . hs-minor-mode)
    (go-mode . (lambda () (funcall 'auto-complete-mode -1)))
-   (go-mode . lsp-deferred)
    (go-mode . yas-minor-mode)
    )
   

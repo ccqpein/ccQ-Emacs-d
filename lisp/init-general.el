@@ -48,6 +48,24 @@
   :bind
   ("M-o" . ace-window))
 
-(define-key global-map (kbd "TAB") 'company-indent-or-complete-common)
+
+(use-package corfu
+  :init
+  (global-corfu-mode)
+
+  ;; Optional customizations
+  :custom
+  (corfu-cycle t)
+  (corfu-auto t)
+  (corfu-separator ?\s)
+  (corfu-quit-at-boundary nil)
+  (corfu-quit-no-match t)
+  (corfu-preview-current nil)
+  (corfu-preselect 'prompt)
+  (corfu-on-exact-match nil)
+  (corfu-scroll-margin 5)
+  )
+
+(setq tab-always-indent 'complete)
 
 (provide 'init-general)
