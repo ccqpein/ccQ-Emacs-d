@@ -12,7 +12,7 @@
         ("C-c C-d" . rust-dbg-wrap-or-unwrap)
         ("C-c d" . nil))
 
-  :custom
+  ;;:custom
   ;;(company-tooltip-align-annotations t)
   ;;(rust-format-on-save t) ;; move this command to lsp
 
