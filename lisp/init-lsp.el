@@ -43,7 +43,7 @@
   (add-hook 'before-save-hook
             (lambda ()
 			  (when (member major-mode '(rust-mode rust-ts-mode
-                                         go-ts-mode
+                                         go-ts-mode go-mode
                                          swift-mode
                                          js-mode
                                          json-mode
