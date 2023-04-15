@@ -47,7 +47,6 @@
   :bind
   ("M-o" . ace-window))
 
-
 (use-package corfu
   :init
   (global-corfu-mode)
@@ -60,7 +59,7 @@
   (corfu-quit-at-boundary nil)
   (corfu-quit-no-match t)
   (corfu-preview-current nil)
-  (corfu-preselect 'prompt)
+  (corfu-preselect 'first)
   (corfu-on-exact-match nil)
   (corfu-scroll-margin 5)
   )
