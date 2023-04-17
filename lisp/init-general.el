@@ -50,18 +50,25 @@
 (use-package corfu
   :init
   (global-corfu-mode)
+  (corfu-popupinfo-mode)
 
-  ;; Optional customizations
+  :straight (corfu :files (:defaults "extensions/*")
+				   :includes (corfu-popupinfo))
+  
   :custom
   (corfu-cycle t)
   (corfu-auto t)
   (corfu-separator ?\s)
   (corfu-quit-at-boundary nil)
   (corfu-quit-no-match t)
-  (corfu-preview-current nil)
-  (corfu-preselect 'first)
+  (corfu-preview-current 'insert)
+  (corfu-preselect 'prompt)
   (corfu-on-exact-match nil)
   (corfu-scroll-margin 5)
+  (corfu-auto-delay 0.0)
+
+  ;; corfu-popupinfo
+  (corfu-popupinfo-delay '(0.5 . 0.2))
   )
 
 (setq tab-always-indent 'complete)

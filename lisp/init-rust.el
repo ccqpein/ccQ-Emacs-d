@@ -66,4 +66,18 @@
   ;;        :dap-compilation-dir "${workspaceFolder}"))
   )
 
+(use-package rust-ts-mode
+  :init (straight-use-package 'cargo)
+
+  :hook
+  ((rust-ts-mode . eldoc-mode)
+   (rust-ts-mode . cargo-minor-mode)
+   (rust-ts-mode . hs-minor-mode)
+   )
+
+  (setq lsp-rust-analyzer-proc-macro-enable t
+        lsp-rust-analyzer-cargo-load-out-dirs-from-check t
+        )
+  )
+
 (provide 'init-rust)

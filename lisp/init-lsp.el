@@ -18,7 +18,8 @@
    (go-mode . lsp-deferred)
    (go-ts-mode . lsp-deferred)
    (rust-mode . lsp-deferred)
-   
+   (rust-ts-mode . lsp-deferred)
+
    (lsp-completion-mode . lsp-mode-setup-completion)
    )
 

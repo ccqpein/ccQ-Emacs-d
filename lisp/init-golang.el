@@ -13,8 +13,18 @@
   :config
   (setq-default flycheck-disabled-checkers '(go-staticcheck))
 
-  (straight-use-package 'dap-go)
+  ;;(straight-use-package 'dap-go)
   ;;(dap-go-setup)
+  )
+
+(use-package go-ts-mode
+  :hook
+  ((go-ts-mode . hs-minor-mode)
+   (go-ts-mode . yas-minor-mode)
+   )
+  
+  :config
+  (setq-default flycheck-disabled-checkers '(go-staticcheck))
   )
 
 (provide 'init-golang)
