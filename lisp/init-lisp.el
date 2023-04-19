@@ -1,10 +1,9 @@
 ;;;;;;; slime ;;;;;;;;;
 (use-package slime
-  :init (straight-use-package 'ac-slime)
   :config
   (straight-use-package 'paredit)
   (setq
-   slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog)
+   slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog slime-cl-indent)
    inferior-lisp-program (if (string= "arm64\n" (shell-command-to-string "uname -m"))
 							 "/opt/homebrew/bin/sbcl"
 							 "/usr/local/bin/sbcl")
@@ -18,10 +17,6 @@
   (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
   (add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
   (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
-  
-  (add-hook 'slime-mode-hook 'set-up-slime-ac)
-  (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-
   )
 
 ;;Stop SLIME's REPL from grabbing DEL, which is annoying when backspacing over a '('
