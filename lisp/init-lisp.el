@@ -1,13 +1,19 @@
 ;;;;;;; slime ;;;;;;;;;
+(use-package slime-cape
+  :straight (slime-cape :type git :host github :repo "ccqpein/slime-cape")
+  :hook
+  (slime . slime-cape)  
+  )
+
 (use-package slime
   :config
   (straight-use-package 'paredit)
+  
   (setq
-   slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog slime-cl-indent)
+   slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog slime-cl-indent slime-cape)
    inferior-lisp-program (if (string= "arm64\n" (shell-command-to-string "uname -m"))
 							 "/opt/homebrew/bin/sbcl"
-							 "/usr/local/bin/sbcl")
-   )
+						   "/usr/local/bin/sbcl"))
   
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
@@ -29,7 +35,7 @@
 (use-package clojure-mode
   :bind
   (:map clojurec-mode-map
-   ("\C-c\C-z" . cider-jack-in))
+		("\C-c\C-z" . cider-jack-in))
   
   :hook
   (cider-mode . ac-flyspell-workaround)
@@ -42,4 +48,7 @@
   (straight-use-package 'cider-mode)
   )
 
+(straight-use-package '(slime-cape :type git :host github :repo "ccqpein/slime-cape"))
+
 (provide 'init-lisp)
+
