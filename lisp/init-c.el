@@ -22,7 +22,7 @@
   (setq-default flycheck-disabled-checkers '(c/c++-clang))
   (add-hook 'before-save-hook
             (lambda ()
-              (when (derived-mode-p '(c-mode c++-mode))
+              (when (derived-mode-p 'c-mode 'c++-mode)
                 (clang-format-buffer))))
   ;; (add-hook 'c-mode-hook
   ;;           (function

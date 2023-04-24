@@ -43,14 +43,15 @@
   
   (add-hook 'before-save-hook
             (lambda ()
-			  (when (derived-mode-p '(rust-mode rust-ts-mode
-                                         go-ts-mode go-mode
-                                         swift-mode
-                                         js-mode
-                                         json-mode
-										 conf-toml-mode toml-ts-mode
-										 python-ts-mode
-                                         ))
+			  (when (derived-mode-p 'rust-mode
+									'rust-ts-mode
+									'go-ts-mode 'go-mode
+									'swift-mode
+									'js-mode
+									'json-mode
+									'conf-toml-mode 'toml-ts-mode
+									'python-ts-mode
+									)
                 (ignore-errors
                   ;; json-mode "json-ls" will give error
                   (lsp-organize-imports))
