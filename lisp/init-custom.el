@@ -5,7 +5,8 @@
 
   ;; hooks of loading ts modes
   (add-hook 'go-ts-mode-hook 'go-mode)
-  (add-hook 'python-mode-hook 'python-ts-mode)
+  ;;(add-hook 'python-mode-hook 'python-ts-mode)
+  (add-hook 'python-ts-mode-hook 'python-mode)
   (add-hook 'rust-mode-hook 'rust-ts-mode)
   ;;(add-hook 'rust-ts-mode-hook 'rust-mode)
   ;;(add-hook 'go-mode-hook 'go-ts-mode)
