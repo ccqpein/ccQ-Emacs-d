@@ -1,6 +1,7 @@
 ;;;;;;;; Rust ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package rust-mode
   :init (straight-use-package 'cargo)
+
   :hook
   ((rust-mode . eldoc-mode)
    (rust-mode . cargo-minor-mode)

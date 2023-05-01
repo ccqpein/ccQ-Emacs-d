@@ -2,24 +2,27 @@
 (use-package slime-cape
   :straight (slime-cape :type git :host github :repo "ccqpein/slime-cape")
   :hook
-  (slime . slime-cape)  
+  (slime . slime-cape)
+  (slime-repl . slime-cape)
   )
 
 (use-package slime
-  :config
+  :init
   (straight-use-package 'paredit)
-  
+
+  :config
+  (slime-setup '(slime-fancy slime-repl slime-scratch slime-trace-dialog slime-cl-indent slime-cape))
   (setq
-   slime-contribs '(slime-fancy slime-repl slime-scratch slime-trace-dialog slime-cl-indent slime-cape)
    inferior-lisp-program (if (string= "arm64\n" (shell-command-to-string "uname -m"))
 							 "/opt/homebrew/bin/sbcl"
 						   "/usr/local/bin/sbcl"))
   
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+
   (add-hook 'lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-mode-hook 'hs-minor-mode)
-  
+    
   (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
   (add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
   (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
@@ -47,8 +50,6 @@
   :config
   (straight-use-package 'cider-mode)
   )
-
-(straight-use-package '(slime-cape :type git :host github :repo "ccqpein/slime-cape"))
 
 (provide 'init-lisp)
 
