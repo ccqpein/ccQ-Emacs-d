@@ -114,6 +114,8 @@
 
 (require 'init-jira)
 
+(require 'init-chat-gpt)
+
 (require 'init-custom)
 
 
