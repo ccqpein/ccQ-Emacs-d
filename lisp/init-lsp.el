@@ -135,4 +135,33 @@
    ("C-c l t e" . lsp-treemacs-errors-list))
   )
 
+;;; eglot below
+(use-package eglot
+  :hook
+  (
+   ;;(rust-mode . eglot-ensure)
+   ;;(rust-ts-mode . eglot-ensure)
+
+   (eglot-managed-mode . eglot-capf)
+   )
+
+  :config
+  (add-hook 'before-save-hook
+            (lambda ()
+			  (when (derived-mode-p
+					 'rust-mode
+					 'rust-ts-mode
+					 )
+                (ignore-errors
+                  (eglot-code-action-organize-imports))
+                (eglot-format-buffer))))
+  
+  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+  )
+
+(defun eglot-capf ()
+  (setq-local completion-at-point-functions
+              (list (cape-super-capf
+                     #'eglot-completion-at-point))))
+
 (provide 'init-lsp)
