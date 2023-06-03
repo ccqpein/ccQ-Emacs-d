@@ -88,6 +88,8 @@ Use [deno](https://deno.land/#installation) be my LSP
 
 Use [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer) be Rust LSP. Update/Install it by using `sbcl --load ./plugins/update-rust-analyzer-v2.lisp`. You need has `sbcl` and `quicklisp` installed.
 
+Or, which I am using now, `rustup component add rust-analyzer` can install the `rust-analyzer` directly.
+
 ### About ispell ###
 
 I use `aspell` as `ispell` backend which installed by homebrew in my local machine. `Flyspell` config does not have single .el file, its require rule in `/lisp/init-markdown.el` 
