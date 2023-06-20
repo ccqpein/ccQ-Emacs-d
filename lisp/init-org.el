@@ -1,5 +1,6 @@
 ;;;;;; Org mode ;;;;;;;;;;
 (use-package org
+  :ensure org-plus-contrib
   :hook
   (
    (org-mode . org-indent-mode)
@@ -52,5 +53,4 @@
 ;(setq org-agenda-files (list (getenv "ORG_PATH")))
 ;(setq org-log-done t)
 ;(setq org-hide-leading-stars t)
-;(provide 'init-org)
 
