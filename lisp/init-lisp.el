@@ -6,10 +6,10 @@
   (slime-repl . slime-cape)
   )
 
-(use-package slime
-  :init
-  (straight-use-package 'paredit)
+(use-package paredit)
 
+(use-package slime
+  :init (add-hook 'lisp-mode-hook 'paredit-mode)
   :config
   (slime-setup '(slime-fancy slime-repl slime-scratch slime-trace-dialog slime-cl-indent slime-cape))
   (setq

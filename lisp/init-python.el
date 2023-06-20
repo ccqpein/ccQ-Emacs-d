@@ -1,6 +1,7 @@
 ;;;;;;;;pythono-mode;;;;;;;;;;;;;;;;;;
 (use-package elpy
-  :init (elpy-enable)
+  :defer t
+  :init (advice-add 'python-mode :before 'elpy-enable)
 
   :custom
   (python-shell-completion-native-enable nil)

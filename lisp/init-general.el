@@ -83,4 +83,10 @@
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   )
 
+(use-package flycheck
+  :init (global-flycheck-mode)
+  :config
+  (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
+  )
+
 (provide 'init-general)

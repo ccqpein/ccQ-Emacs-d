@@ -11,8 +11,4 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'solarized-theme)
-
-(straight-use-package 'flycheck)
-
 (provide 'init-bootstrap)

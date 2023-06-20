@@ -20,6 +20,7 @@
 (global-hl-line-mode 1)
 (global-display-line-numbers-mode)
 (column-number-mode)
+
 ;; close bars
 ;; settings below might just works when emacs installed with-cocoa (by brewcask)
 (tool-bar-mode -1)
@@ -39,16 +40,13 @@
 (require 'init-bootstrap)
 
 ;;;;;; Styling and Themes ;;;;;;;
+(straight-use-package 'solarized-theme)
 (load-theme 'solarized-dark t)
 
 ;;;;;; use-package ;;;;;;;;;;;;
-(eval-when-compile (require 'use-package))
+(straight-use-package 'use-package)
 
-;;;;;;; flycheck ;;;;;;;
-(global-flycheck-mode)
-(remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
-
-;; windmove
+;;;;;; windmove ;;;;;;;;
 (global-set-key (kbd "s-<left>")  'windmove-left)
 (global-set-key (kbd "s-<right>") 'windmove-right)
 (global-set-key (kbd "s-<up>")    'windmove-up)
