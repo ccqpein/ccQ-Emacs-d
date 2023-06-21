@@ -1,6 +1,5 @@
 (use-package chatgpt-shell
   :straight (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el"))
-  
   :custom
   (chatgpt-shell-model-version "gpt-4")
   (chatgpt-shell-openai-key
