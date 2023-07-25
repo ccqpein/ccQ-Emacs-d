@@ -3,9 +3,9 @@
   )
 
 (use-package flyspell
-  :hook
-  (markdown-mode)
-  (org-mode)
+  ;;:hook
+  ;;(markdown-mode)
+  ;;(org-mode)
   )
 
 ;(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
