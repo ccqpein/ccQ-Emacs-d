@@ -37,6 +37,9 @@
 
 (defalias 'list-buffers 'ibuffer) ; make ibuffer default
 
+;; enable line wrapping
+(setq-default truncate-lines nil)
+
 (require 'init-bootstrap)
 
 ;;;;;; Styling and Themes ;;;;;;;
