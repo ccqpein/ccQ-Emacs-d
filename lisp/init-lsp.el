@@ -10,12 +10,13 @@
    (lsp-mode . yas-minor-mode)
 
    ;; for toml file, need install taplo
-   (conf-toml-mode . lsp-deferred)
+   ;; use treesit bind conf-toml-mode with toml-ts-mode
+   ;;(conf-toml-mode . lsp-deferred)
    
    (toml-ts-mode . lsp-deferred)
    (markdown-mode . lsp-deferred)
-   (python-ts-mode . lsp-deferred)
    (python-mode . lsp-deferred)
+   (python-ts-mode . lsp-deferred)
    (go-mode . lsp-deferred)
    (go-ts-mode . lsp-deferred)
    (rust-mode . lsp-deferred)
