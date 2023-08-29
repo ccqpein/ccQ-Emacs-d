@@ -17,14 +17,14 @@
   ;;(dap-go-setup)
   )
 
-;; (use-package go-ts-mode
-;;   :hook
-;;   ((go-ts-mode . hs-minor-mode)
-;;    (go-ts-mode . yas-minor-mode)
-;;    )
+(use-package go-ts-mode
+  :hook
+  ((go-ts-mode . hs-minor-mode)
+   (go-ts-mode . yas-minor-mode)
+   )
   
-;;   :config
-;;   (setq-default flycheck-disabled-checkers '(go-staticcheck))
-;;   )
+  :config
+  (setq-default flycheck-disabled-checkers '(go-staticcheck))
+  )
 
 (provide 'init-golang)
