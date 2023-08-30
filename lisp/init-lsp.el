@@ -60,6 +60,7 @@
                 (lsp-format-buffer))))
   (setq 
    lsp-go-env '((GOFLAGS . "-tags=integration"))
+   lsp-rust-features "all"
    )
   )
 

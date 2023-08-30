@@ -2,27 +2,46 @@
 
 ;;; Code:
 
-;; (defface kdl-keyword-face
-;;   '((t (:foreground "yellow")))
-;;   "Face for KDL keywords.")
+(defvar kdl-mode-syntax-table
+  (let ((st (make-syntax-table prog-mode-syntax-table)))
+    ;; (modify-syntax-entry ?+  "." st)
+    ;; (modify-syntax-entry ?-  "." st)
+    ;; (modify-syntax-entry ?%  "." st)
+    ;; (modify-syntax-entry ?&  "." st)
+    ;; (modify-syntax-entry ?|  "." st)
+    ;; (modify-syntax-entry ?^  "." st)
+    ;; (modify-syntax-entry ?!  "." st)
+    ;; (modify-syntax-entry ?=  "." st)
+    ;; (modify-syntax-entry ?<  "." st)
+    ;; (modify-syntax-entry ?>  "." st)
+    (modify-syntax-entry ?/  ". 124b" st)
+    ;; (modify-syntax-entry ?*  ". 23" st)
+    (modify-syntax-entry ?\n "> b" st)
+    (modify-syntax-entry ?\" "\"" st)
+    (modify-syntax-entry ?\' "\"" st)
+    ;; (modify-syntax-entry ?`  "\"" st)
+    (modify-syntax-entry ?\\ "\\" st)
+    ;; (modify-syntax-entry ?_  "w" st)
+	st
+	))
 
 (defvar kdl-font-lock-keywords
   `(
 	;;(,(rx-to-string `(: (or ,@kdl-keywords-regexp)) 'word) 0 font-lock-keyword-face)
-	("\\([[:word:]]+\\)\s+" 1 font-lock-keyword-face)
-	("\\([[:word:]]+\\)=" 1 font-lock-variable-name-face)
+	("\\([^\s+;\n{}()]+\\)[\s+|;|\n]" 1 font-lock-keyword-face)
+	("\\(.+\\)=" 1 font-lock-variable-name-face)
 	("r#\\(\".*\"\\)#" 0 font-lock-string-face)
 	))
 
 ;;;###autoload
 (define-derived-mode kdl-mode prog-mode "KDL"
   "Major mode for editing KDL files."
-  (message "in kdl")
-  
+  :syntax-table kdl-mode-syntax-table
+
   (setq-local comment-start "// ")
   (setq-local comment-start-skip "//+ *")
-  (setq-local comment-end "")
-  (setq tab-width 4)
+
+  (setq-local indent-tabs-mode t) ;;:= TODO: not right
   
   (setq-local font-lock-defaults
               '(,kdl-font-lock-keywords ; Keywords highlighting
