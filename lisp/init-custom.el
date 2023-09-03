@@ -6,7 +6,7 @@
 		  major-mode-remap-alist
           '((python-mode . python-ts-mode)
 			;;(rust-mode . rust-ts-mode)
-			(go-mode . go-ts-mode)
+			;;(go-mode . go-ts-mode)
 			(conf-toml-mode . toml-ts-mode)
 			))
 
