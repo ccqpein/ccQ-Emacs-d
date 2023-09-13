@@ -52,4 +52,6 @@
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.kdl" . kdl-mode))
 
-(provide 'kdl-mode)
+;;(provide 'kdl-mode)
+(provide 'init-kdl)
+
