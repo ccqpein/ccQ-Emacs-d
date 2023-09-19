@@ -119,7 +119,6 @@
 
 (require 'init-custom)
 
-(require 'init-kdl)
 
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
