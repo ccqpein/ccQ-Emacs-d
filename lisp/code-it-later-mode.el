@@ -25,11 +25,32 @@
 											   (alist-get 'content crumb)))
 		   collect (cons file-name crumbs)))
 
+(defclass code-it-later-class (helm-source-async)
+  ()
+  "async helm source"
+  )
+
+(defvar code-it-later-source nil)
+
+(defun set-code-it-later-source ()
+  "set source"
+  (setf code-it-later-source
+		(helm-make-source "code-it-later"
+			'code-it-later-class
+		  :candidates-process
+		  (lambda ()
+			(let ((proc (apply #'start-file-process "code-it-later" nil '("echo" "a" "b"))))
+			  proc))
+		  )))
+
 ;;;###autoload
 (defun code-it-later ()
   (interactive)
-  (helm :sources (helm-build-sync-source "test"
-				   :candidates '(a b c d e))
+  (set-code-it-later-source)
+  (helm :sources
+		;; (helm-build-sync-source "test"
+		;;   :candidates '(a b c d e))
+		'code-it-later-source
         ;;:full-frame t
         ;;:default input
         :candidate-number-limit 500
