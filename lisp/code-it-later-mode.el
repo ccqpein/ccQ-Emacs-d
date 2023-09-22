@@ -16,14 +16,29 @@
   (shell-command-to-string "codeitlater -O json"))
 
 (defun parse-response (respose)
-  ""
+  "collect the reponse from json to alist"
   (cl-loop for bread across respose
 		   do (message "bread: %s\n" bread)
 		   for file-name = (alist-get 'file_path bread)
 		   for crumbs = (cl-loop for crumb across (alist-get 'crumbs bread)
-								 collect (cons (alist-get 'line_num crumb)
-											   (alist-get 'content crumb)))
+								 collect (list (alist-get 'line_num crumb)
+											   (alist-get 'content crumb)
+											   (alist-get 'keyword crumb)
+											   (alist-get 'ignore crumb)))
 		   collect (cons file-name crumbs)))
+
+(defun format-to-emacs-buffer (responses)
+  (message "bread after parse: %s\n" responses)
+  (cl-loop with results = '()
+		   for bread in responses
+		   for filename = (car bread)
+		   for crumbs = (cdr bread)
+		   
+		   do (cl-loop for crumb in crumbs
+					   do (message "cumbs: %s" crumb)
+					   do (add-to-list 'results
+									   (format "%s:%s: %s" filename (car crumb) (nth 1 crumb))))
+		   finally (return results)))
 
 (defclass code-it-later-class (helm-source-async)
   ()
@@ -39,7 +54,23 @@
 			'code-it-later-class
 		  :candidates-process
 		  (lambda ()
-			(let ((proc (apply #'start-file-process "code-it-later" nil '("echo" "a" "b"))))
+			(let ((proc (prog1 (apply )
+						  (set-process-sentinel
+						   proc
+						   (lambda (process event)
+							 (princ
+							  (format "Process: %s had the event '%s'" process event))
+							 (helm-process-deferred-sentinel-hook
+							  process event (helm-default-directory))
+							 (when (string= event "finished\n")
+							   (helm-ag--do-ag-propertize helm-input)))))
+						;; (apply
+						;; 	;;#'start-file-process "code-it-later" nil
+						;; 	;;'("echo" "a" "b")
+						;; 	#'start-process-shell-command "code-it-later" nil
+						;; 	'("codeitlater -O json ~/.emacs.d/lisp/")
+						;; 	)
+						))
 			  proc))
 		  )))
 
