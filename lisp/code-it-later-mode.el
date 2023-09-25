@@ -11,11 +11,11 @@
   "for test now"
   :group 'code-it-later)
 
-(defun run-code-it-later (&rest keys &key)
-  "run codeitlater and get the json response"
-  (shell-command-to-string "codeitlater -O json"))
+;; (defun run-code-it-later (&rest keys &key)
+;;   "run codeitlater and get the json response"
+;;   (shell-command-to-string "codeitlater -O json"))
 
-(defun parse-response (respose)
+(defun parse-response-json (respose)
   "collect the reponse from json to alist"
   (cl-loop for bread across respose
 		   do (message "bread: %s\n" bread)
@@ -40,10 +40,34 @@
 									   (format "%s:%s: %s" filename (car crumb) (nth 1 crumb))))
 		   finally (return results)))
 
+(defun code-it-later--filter-one-by-one (candidate)
+  (cons candidate candidate)
+  )
+
 (defclass code-it-later-class (helm-source-async)
-  ()
+  ((candidate-number-limit :initform 99999)
+   (filter-one-by-one :initform 'code-it-later--filter-one-by-one)
+   )
   "async helm source"
   )
+
+(defun do-code-it-later ()
+  ""
+  (let ((proc (apply 	
+			   #'start-process-shell-command "code-it-later" nil
+			   '("codeitlater -O list ~/.emacs.d/lisp/")
+			   ;;'("echo -e \"a\\nb\\nc\\nd\\n\"")
+			   )))
+	(prog1 proc
+	  (set-process-sentinel
+	   proc
+	   (lambda (process event)
+		 (when (string= event "finished\n")
+		   (with-helm-window
+			 (save-excursion
+			   (message (buffer-name))
+			   ))
+		   (message "done codeitlater")))))))
 
 (defvar code-it-later-source nil)
 
@@ -54,25 +78,19 @@
 			'code-it-later-class
 		  :candidates-process
 		  (lambda ()
-			(let ((proc (prog1 (apply )
-						  (set-process-sentinel
-						   proc
-						   (lambda (process event)
-							 (princ
-							  (format "Process: %s had the event '%s'" process event))
-							 (helm-process-deferred-sentinel-hook
-							  process event (helm-default-directory))
-							 (when (string= event "finished\n")
-							   (helm-ag--do-ag-propertize helm-input)))))
-						;; (apply
-						;; 	;;#'start-file-process "code-it-later" nil
-						;; 	;;'("echo" "a" "b")
-						;; 	#'start-process-shell-command "code-it-later" nil
-						;; 	'("codeitlater -O json ~/.emacs.d/lisp/")
-						;; 	)
+			(let ((proc (do-code-it-later)
 						))
 			  proc))
+		  
 		  )))
+
+;;;###autoload
+(defun code-it-later-dummy ()
+  (interactive)
+  (helm :sources (helm-build-sync-source "test"
+                 :candidates '(a b c d e)
+                 :display-to-real (lambda (c) (concat c ":modified by d-t-r")))
+		:buffer "*helm test*"))
 
 ;;;###autoload
 (defun code-it-later ()
@@ -85,6 +103,7 @@
         ;;:full-frame t
         ;;:default input
         :candidate-number-limit 500
+		:filter-one-by-one 'code-it-later--filter-one-by-one
         :buffer "*code-it-later*")
   )
 
@@ -108,7 +127,7 @@
 ;;   ;; 		   )
 
 ;;   ;;(message "%s\n" data)
-;;   (parse-response data)
+;;   (parse-response-json data)
 ;;   )
 
 (provide 'code-it-later-mode)
