@@ -47,15 +47,22 @@
 (defclass code-it-later-class (helm-source-async)
   ((candidate-number-limit :initform 99999)
    (filter-one-by-one :initform 'code-it-later--filter-one-by-one)
+   ;;:= DEL: (requires-pattern :initform 3)
    )
   "async helm source"
   )
 
-(defun do-code-it-later ()
+(defun do-code-it-later (dirs)
   ""
   (let ((proc (apply 	
 			   #'start-process-shell-command "code-it-later" nil
 			   '("codeitlater -O list ~/.emacs.d/lisp/")
+			   ;; (list (cl-loop with args = "codeitlater -O list "
+			   ;; 			 for d in dirs
+			   ;; 			 do (setf args (concat args d " "))
+			   ;; 			 finally (return args)
+			   ;; 			 ))
+			   ;;(string-join "codeitlater -O list " dirs)
 			   ;;'("echo -e \"a\\nb\\nc\\nd\\n\"")
 			   )))
 	(prog1 proc
@@ -69,19 +76,28 @@
 			   ))
 		   (message "done codeitlater")))))))
 
+(defun string-join (ss &optional join-str)
+  (let ((j (if join-str join-str " ")))
+	(cl-loop with result = (car ss)
+			 for s in (cdr ss)
+			 do (setf result (concat result j s))
+			 finally (return result)
+			 )))
+
 (defvar code-it-later-source nil)
 
-(defun set-code-it-later-source ()
+(defun set-code-it-later-source (dirs)
   "set source"
   (setf code-it-later-source
 		(helm-make-source "code-it-later"
 			'code-it-later-class
 		  :candidates-process
 		  (lambda ()
-			(let ((proc (do-code-it-later)
+			(let ((proc (do-code-it-later dirs)
 						))
 			  proc))
-		  
+		  :header-name
+		  (lambda (_) (concat "code it later at: " (string-join dirs " and ")))
 		  )))
 
 ;;;###autoload
@@ -95,16 +111,21 @@
 ;;;###autoload
 (defun code-it-later ()
   (interactive)
-  (set-code-it-later-source)
-  (helm :sources
-		;; (helm-build-sync-source "test"
-		;;   :candidates '(a b c d e))
-		'code-it-later-source
-        ;;:full-frame t
-        ;;:default input
-        :candidate-number-limit 500
-		:filter-one-by-one 'code-it-later--filter-one-by-one
-        :buffer "*code-it-later*")
+  (let ((dirs (helm-read-file-name
+			  "Code it later in dir: "
+			  :default default-directory
+			  :marked-candidates t :must-match t)))
+	(message "dirs: %s" dirs)
+	(set-code-it-later-source dirs)
+	(message "here")
+	(helm :sources
+		  ;; (helm-build-sync-source "test"
+		  ;;   :candidates '(a b c d e))
+		  'code-it-later-source
+          ;;:full-frame t
+          ;;:default input
+		  :filter-one-by-one 'code-it-later--filter-one-by-one
+          :buffer "*code-it-later*"))
   )
 
 
