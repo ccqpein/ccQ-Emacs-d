@@ -1,5 +1,6 @@
 (require 'cl-lib)
 (require 'helm)
+(require 'helm-ag)
 
 (defgroup code-it-later nil
   "code-it-later emacs mode")
@@ -44,10 +45,22 @@
   (cons candidate candidate)
   )
 
+(defun code-it-later--persistent-action (candidate)
+  (message "in code-it-later--persistent-action cand: %s" candidate)
+  (let* ((file-line (helm-grep-split-line candidate))
+		 (filename (or (cl-first file-line) candidate))
+		 (line (cl-second file-line)))
+	(message "in code-it-later--persistent-action: %s, %s, %s\n"
+			 file-line
+			 filename
+			 line)))
+
 (defclass code-it-later-class (helm-source-async)
   ((candidate-number-limit :initform 99999)
    (filter-one-by-one :initform 'code-it-later--filter-one-by-one)
    ;;:= DEL: (requires-pattern :initform 3)
+   (persistent-action :initform 'code-it-later--persistent-action)
+   ;;(persistent-action :initform 'helm-ag--persistent-action)
    )
   "async helm source"
   )
@@ -56,12 +69,12 @@
   ""
   (let ((proc (apply 	
 			   #'start-process-shell-command "code-it-later" nil
-			   '("codeitlater -O list ~/.emacs.d/lisp/")
-			   ;; (list (cl-loop with args = "codeitlater -O list "
-			   ;; 			 for d in dirs
-			   ;; 			 do (setf args (concat args d " "))
-			   ;; 			 finally (return args)
-			   ;; 			 ))
+			   ;;'("codeitlater -O list ~/.emacs.d/lisp/")
+			   (list (cl-loop with args = "codeitlater -O list "
+						 for d in dirs
+						 do (setf args (concat args d " "))
+						 finally (return args)
+						 ))
 			   ;;(string-join "codeitlater -O list " dirs)
 			   ;;'("echo -e \"a\\nb\\nc\\nd\\n\"")
 			   )))
@@ -74,7 +87,7 @@
 			 (save-excursion
 			   (message (buffer-name))
 			   ))
-		   (message "done codeitlater")))))))
+		   (message "done codeitlater1")))))))
 
 (defun string-join (ss &optional join-str)
   (let ((j (if join-str join-str " ")))
@@ -115,16 +128,16 @@
 			  "Code it later in dir: "
 			  :default default-directory
 			  :marked-candidates t :must-match t)))
-	(message "dirs: %s" dirs)
+	;;(message "dirs: %s" dirs)
 	(set-code-it-later-source dirs)
-	(message "here")
+	;;(message "here")
 	(helm :sources
 		  ;; (helm-build-sync-source "test"
 		  ;;   :candidates '(a b c d e))
 		  'code-it-later-source
           ;;:full-frame t
           ;;:default input
-		  :filter-one-by-one 'code-it-later--filter-one-by-one
+		  ;;:filter-one-by-one 'code-it-later--filter-one-by-one
           :buffer "*code-it-later*"))
   )
 
