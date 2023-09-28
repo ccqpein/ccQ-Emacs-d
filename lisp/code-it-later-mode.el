@@ -42,11 +42,12 @@
 		   finally (return results)))
 
 (defun code-it-later--filter-one-by-one (candidate)
+  (message candidate)
   (cons candidate candidate)
   )
 
 (defun code-it-later--persistent-action (candidate)
-  (message "in code-it-later--persistent-action cand: %s" candidate)
+  (message "in code-it-later--persistent-action cand")
   (let* ((file-line (helm-grep-split-line candidate))
 		 (filename (or (cl-first file-line) candidate))
 		 (line (cl-second file-line)))
@@ -59,8 +60,12 @@
   ((candidate-number-limit :initform 99999)
    (filter-one-by-one :initform 'code-it-later--filter-one-by-one)
    ;;:= DEL: (requires-pattern :initform 3)
+
    (persistent-action :initform 'code-it-later--persistent-action)
    ;;(persistent-action :initform 'helm-ag--persistent-action)
+   ;;(persistent-action :initform 'helm-grep-persistent-action)
+   
+   ;;(action :initform 'helm-ag--actions)
    )
   "async helm source"
   )
@@ -69,14 +74,11 @@
   ""
   (let ((proc (apply 	
 			   #'start-process-shell-command "code-it-later" nil
-			   ;;'("codeitlater -O list ~/.emacs.d/lisp/")
 			   (list (cl-loop with args = "codeitlater -O list "
 						 for d in dirs
 						 do (setf args (concat args d " "))
 						 finally (return args)
 						 ))
-			   ;;(string-join "codeitlater -O list " dirs)
-			   ;;'("echo -e \"a\\nb\\nc\\nd\\n\"")
 			   )))
 	(prog1 proc
 	  (set-process-sentinel
@@ -104,6 +106,8 @@
   (setf code-it-later-source
 		(helm-make-source "code-it-later"
 			'code-it-later-class
+		  ;;:persistent-action
+		  ;;'code-it-later--persistent-action
 		  :candidates-process
 		  (lambda ()
 			(let ((proc (do-code-it-later dirs)
