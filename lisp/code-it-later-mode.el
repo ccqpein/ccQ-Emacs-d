@@ -66,6 +66,8 @@
    ;;(persistent-action :initform 'helm-grep-persistent-action)
    
    ;;(action :initform 'helm-ag--actions)
+   ;;:follow t
+   :follow (and helm-follow-mode-persistent 1)
    )
   "async helm source"
   )
@@ -122,7 +124,8 @@
   (interactive)
   (helm :sources (helm-build-sync-source "test"
                  :candidates '(a b c d e)
-                 :display-to-real (lambda (c) (concat c ":modified by d-t-r")))
+                 :display-to-real (lambda (c) (concat c ":modified by d-t-r"))
+				 :persistent-action (lambda (_) (message "hello")))
 		:buffer "*helm test*"))
 
 ;;;###autoload
