@@ -51,23 +51,23 @@
   (let* ((file-line (helm-grep-split-line candidate))
 		 (filename (or (cl-first file-line) candidate))
 		 (line (cl-second file-line)))
-	(message "in code-it-later--persistent-action: %s, %s, %s\n"
+	(message "in code-it-later--persistent-action: %s, %s, %s, %s\n"
 			 file-line
 			 filename
-			 line)))
+			 line
+			 default-directory)
+	(find-file filename)
+	(goto-char (point-min))
+	(when line
+	  (forward-line (1- (string-to-number line))))
+	(helm-highlight-current-line)
+	))
 
 (defclass code-it-later-class (helm-source-async)
   ((candidate-number-limit :initform 99999)
    (filter-one-by-one :initform 'code-it-later--filter-one-by-one)
    ;;:= DEL: (requires-pattern :initform 3)
-
    (persistent-action :initform 'code-it-later--persistent-action)
-   ;;(persistent-action :initform 'helm-ag--persistent-action)
-   ;;(persistent-action :initform 'helm-grep-persistent-action)
-   
-   ;;(action :initform 'helm-ag--actions)
-   ;;:follow t
-   :follow (and helm-follow-mode-persistent 1)
    )
   "async helm source"
   )
@@ -117,6 +117,7 @@
 			  proc))
 		  :header-name
 		  (lambda (_) (concat "code it later at: " (string-join dirs " and ")))
+		  :follow (and helm-follow-mode-persistent 1)
 		  )))
 
 ;;;###autoload
