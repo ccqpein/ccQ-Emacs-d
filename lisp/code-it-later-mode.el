@@ -51,11 +51,11 @@
   (let* ((file-line (helm-grep-split-line candidate))
 		 (filename (or (cl-first file-line) candidate))
 		 (line (cl-second file-line)))
-	(message "in code-it-later--persistent-action: %s, %s, %s, %s\n"
-			 file-line
-			 filename
-			 line
-			 default-directory)
+	;; (message "in code-it-later--persistent-action: %s, %s, %s, %s\n"
+	;; 		 file-line
+	;; 		 filename
+	;; 		 line
+	;; 		 default-directory)
 	(find-file filename)
 	(goto-char (point-min))
 	(when line
@@ -63,11 +63,31 @@
 	(helm-highlight-current-line)
 	))
 
+(defun code-it-later--action-find-file (candidate)
+  (code-it-later--persistent-action candidate)
+  )
+
+(defun code-it-later--action-find-file-other-window (candidate)
+  (let* ((file-line (helm-grep-split-line candidate))
+		 (filename (or (cl-first file-line) candidate))
+		 (line (cl-second file-line)))
+	(find-file-other-window filename)
+	(goto-char (point-min))
+	(when line
+	  (forward-line (1- (string-to-number line))))
+	(helm-highlight-current-line)))
+
+(defvar code-it-later--actions
+  (helm-make-actions
+   "Open file"              #'code-it-later--action-find-file
+   "Open file other window" #'code-it-later--action-find-file-other-window))
+
 (defclass code-it-later-class (helm-source-async)
   ((candidate-number-limit :initform 99999)
    (filter-one-by-one :initform 'code-it-later--filter-one-by-one)
    ;;:= DEL: (requires-pattern :initform 3)
    (persistent-action :initform 'code-it-later--persistent-action)
+   (action :initform 'code-it-later--actions)
    )
   "async helm source"
   )
