@@ -42,9 +42,16 @@
 		   finally (return results)))
 
 (defun code-it-later--filter-one-by-one (candidate)
-  (message candidate)
-  (cons candidate candidate)
-  )
+  (let* ((split (helm-grep-split-line candidate))
+		 (file (nth 0 split))
+         (lineno (nth 1 split))
+         (str (nth 2 split)))
+	(cons (concat (propertize file 'face 'helm-moccur-buffer)
+                  ":"
+                  (propertize lineno 'face 'helm-grep-lineno)
+                  ":"
+                  str)
+          candidate)))
 
 (defun code-it-later--persistent-action (candidate)
   (message "in code-it-later--persistent-action cand")
