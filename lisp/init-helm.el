@@ -13,6 +13,9 @@
   (helm-scroll-amount                    8)
   (helm-ff-file-name-history-use-recentf t)
 
+  ;; for helm-ag
+  (helm-follow-mode-persistent           t)
+
   :config
   (helm-mode 1)
   (helm-autoresize-mode 1)
@@ -65,8 +68,7 @@
   )
 
 (use-package helm-ag
-  :custom
-  (helm-follow-mode-persistent t))
+  )
 
 (use-package projectile
   :init
