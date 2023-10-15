@@ -12,9 +12,7 @@
   
   :config
   (setq-default flycheck-disabled-checkers '(go-staticcheck))
-
-  ;;(straight-use-package 'dap-go)
-  ;;(dap-go-setup)
+  (require 'dap-dlv-go)
   )
 
 (use-package go-ts-mode
