@@ -72,6 +72,7 @@
   )
 
 (setq tab-always-indent 'complete)
+(setq indent-tabs-mode nil)
 
 (use-package cape
   :init
