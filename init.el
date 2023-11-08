@@ -13,6 +13,7 @@
 (setq comp-deferred-compilation t)
 (setq straight-use-package-by-default t
 	  straight-repository-branch "develop")
+(setq tab-always-indent 'complete)
 
 ;;;;;;;;;; set frame default ;;;;;;;;;;;;;;;
 (add-to-list 'default-frame-alist '(width . 93))
@@ -132,6 +133,7 @@
  '(haskell-process-suggest-remove-import-lines t)
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
+ '(indent-tabs-mode nil)
  '(jdee-compiler '("javac"))
  '(jdee-jdk-registry '(("1.8" . "/Library/Java/Home")))
  '(magit-diff-arguments '("--no-ext-diff" "--stat"))

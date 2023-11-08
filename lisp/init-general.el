@@ -71,9 +71,6 @@
   (corfu-popupinfo-delay '(0.5 . 0.2))
   )
 
-(setq tab-always-indent 'complete)
-(setq indent-tabs-mode nil)
-
 (use-package cape
   :init
   (add-to-list 'completion-at-point-functions #'cape-dict)
@@ -90,9 +87,9 @@
   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
   )
 
-(use-package code-it-later-mode
-  :straight (code-it-later-mode :type git :host github :repo "ccqpein/code-it-later-mode")
-  :commands code-it-later
+(use-package helm-code-it-later
+  :straight (helm-code-it-later :type git :host github :repo "ccqpein/helm-code-it-later")
+  :commands helm-code-it-later
   )
 
 (provide 'init-general)
