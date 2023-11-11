@@ -1,7 +1,10 @@
 ;;;;;;;;pythono-mode;;;;;;;;;;;;;;;;;;
 (use-package elpy
-  :defer t
-  :init (advice-add 'python-mode :before 'elpy-enable)
+  :init
+  (elpy-enable)
+
+  ;; for ts mode, has to add the hook here 2023/11/11
+  :hook (python-ts-mode . elpy-mode)
 
   :custom
   (python-shell-completion-native-enable nil)
@@ -18,7 +21,7 @@
   )
 
 (use-package py-autopep8
-  :hook ((python-mode) . py-autopep8-mode))
+  :hook ((python-mode python-ts-mode) . py-autopep8-mode))
 
 (provide 'init-python)
 
