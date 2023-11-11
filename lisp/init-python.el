@@ -14,14 +14,14 @@
 
   :bind
   (:map elpy-mode-map
-	("M-." . nil))
+        ("M-." . nil))
 
   :config
   (straight-use-package 'py-autopep8)
+  (setq lsp-pylsp-plugins-yapf-enabled     t
+        lsp-pylsp-plugins-autopep8-enabled t
+        lsp-pylsp-plugins-flake8-enabled   t)
   )
-
-(use-package py-autopep8
-  :hook ((python-mode python-ts-mode) . py-autopep8-mode))
 
 (provide 'init-python)
 
