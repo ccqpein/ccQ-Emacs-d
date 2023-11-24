@@ -4,11 +4,11 @@
   (defun lsp-mode-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
           '(flex)))
-
+  
   :hook
   (;; for yas
    (lsp-mode . yas-minor-mode)
-
+   
    ;; for toml file, need install taplo
    ;; use treesit bind conf-toml-mode with toml-ts-mode
    ;;(conf-toml-mode . lsp-deferred)
@@ -21,17 +21,17 @@
    (go-ts-mode . lsp-deferred)
    (rust-mode . lsp-deferred)
    (rust-ts-mode . lsp-deferred)
-
+   
    (lsp-completion-mode . lsp-mode-setup-completion)
    )
-
+  
   :commands (lsp lsp-deferred)
-
+  
   :bind
   (:map lsp-mode-map
         ("C-c l g d" . lsp-find-definition) ;; I like d => definition rather than g
         )
-
+  
   :custom
   (lsp-completion-provider :none)
   
@@ -45,15 +45,15 @@
   
   (add-hook 'before-save-hook
             (lambda ()
-			  (when (derived-mode-p 'rust-mode
-									'rust-ts-mode
-									'go-ts-mode 'go-mode
-									'swift-mode
-									;;'js-mode
-									'json-mode
-									'conf-toml-mode 'toml-ts-mode
-									'python-ts-mode
-									)
+              (when (derived-mode-p 'rust-mode
+                                    'rust-ts-mode
+                                    'go-ts-mode 'go-mode
+                                    'swift-mode
+                                    ;;'js-mode
+                                    'json-mode
+                                    'conf-toml-mode 'toml-ts-mode
+                                    'python-ts-mode
+                                    )
                 (ignore-errors
                   ;; json-mode "json-ls" will give error
                   (lsp-organize-imports))
@@ -78,7 +78,7 @@
   (dap-auto-configure-mode t "Automatically configure dap.")
   (dap-auto-configure-features
    '(sessions locals breakpoints expressions tooltip))
-
+  
   :config
   (dap-ui-mode 1)
   (dap-tooltip-mode 1)
@@ -89,7 +89,7 @@
 (use-package lsp-ui
   :custom
   (lsp-ui-peek-always-show t)
-
+  
   :bind
   (:map lsp-mode-map
         ("C-c l M-d" . lsp-ui-peek-find-definitions)
@@ -104,12 +104,12 @@
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-sideline-show-code-actions t
         lsp-ui-sideline-update-mode 'line
-
+        
         lsp-ui-doc-enable t
         lsp-ui-doc-delay 0.7
         lsp-ui-doc-show-with-cursor t
         lsp-ui-doc-position 'top ;; this only effect when lsp-ui-doc-show-with-cursor is not-nil
-   
+        
         lsp-ui-imenu-enable t
         )
   )
@@ -124,7 +124,7 @@
    lsp-treemacs-references
    lsp-treemacs-implementations
    )
-
+  
   :bind
   (("C-c l t s" . lsp-treemacs-symbols)
    ("C-c l t r" . lsp-treemacs-references)
@@ -140,17 +140,17 @@
   (
    ;;(rust-mode . eglot-ensure)
    ;;(rust-ts-mode . eglot-ensure)
-
+   
    (eglot-managed-mode . eglot-capf)
    )
-
+  
   :config
   (add-hook 'before-save-hook
             (lambda ()
-			  (when (derived-mode-p
-					 'rust-mode
-					 'rust-ts-mode
-					 )
+              (when (derived-mode-p
+                     'rust-mode
+                     'rust-ts-mode
+                     )
                 (ignore-errors
                   (eglot-code-action-organize-imports))
                 (eglot-format-buffer))))

@@ -13,7 +13,7 @@
 ;;;;;;;; expand-region ;;;;;;;;;;;;;;;
 (use-package expand-region
   :bind ("C-@" . er/expand-region)
-
+  
   :config
   (delete-selection-mode 1))
 
@@ -35,7 +35,7 @@
 ;;;;;; Magit ;;;;;;;
 (use-package magit
   ;;:hook (magit-mode . magit-delta-mode)
-
+  
   :bind
   (("M-RET" . magit-diff-visit-file-other-window))
   )
@@ -51,9 +51,9 @@
   :init
   (global-corfu-mode)
   (corfu-popupinfo-mode)
-
+  
   :straight (corfu :files (:defaults "extensions/*")
-				   :includes (corfu-popupinfo))
+                   :includes (corfu-popupinfo))
   
   :custom
   (corfu-cycle t)
@@ -66,7 +66,7 @@
   (corfu-on-exact-match nil)
   (corfu-scroll-margin 5)
   (corfu-auto-delay 0.0)
-
+  
   ;; corfu-popupinfo
   (corfu-popupinfo-delay '(0.5 . 0.2))
   )

@@ -1,5 +1,4 @@
 (use-package elm-mode
-
   :hook
   (
    (elm-mode . elm-format-on-save-mode)

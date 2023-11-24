@@ -1,21 +1,21 @@
 ;;;;;;;; Rust ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package rust-mode
   :init (straight-use-package 'cargo)
-
+  
   :hook
   ((rust-mode . cargo-minor-mode)
    (rust-mode . hs-minor-mode)
    )
-
+  
   :bind
   (:map rust-mode-map
         ("C-c C-d" . rust-dbg-wrap-or-unwrap)
         ("C-c d" . nil))
-
+  
   ;;:custom
   ;;(company-tooltip-align-annotations t)
   ;;(rust-format-on-save t) ;; move this command to lsp
-
+  
   :config
   (straight-use-package 'dap-mode)
   (setq lsp-rust-analyzer-proc-macro-enable t
@@ -52,7 +52,7 @@
          :dap-compilation "cargo build"
          :dap-compilation-dir "${workspaceFolder}"
          :cwd "${workspaceFolder}"))
-
+  
   ;; (dap-register-debug-template
   ;;  "Rust::GDB Run Configuration"
   ;;  (list :type "gdb"

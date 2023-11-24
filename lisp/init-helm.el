@@ -12,10 +12,10 @@
   (helm-imenu-fuzzy-match                t)
   (helm-scroll-amount                    8)
   (helm-ff-file-name-history-use-recentf t)
-
+  
   ;; for helm-ag
   (helm-follow-mode-persistent           t)
-
+  
   :config
   (helm-mode 1)
   (helm-autoresize-mode 1)
@@ -46,18 +46,18 @@
    (rust-mode . helm-gtags-mode)
    (js-mode . helm-gtags-mode)
    )
-
+  
   :bind
   (:map helm-gtags-mode-map
-   ("C-c g a" . helm-gtags-tags-in-this-function)
-   ("C-c g j" . helm-gtags-select)
-   ("C-c g d" . helm-gtags-dwim)
-   ("C-c g b" . helm-gtags-pop-stack)
-   ("C-c <" . helm-gtags-previous-history)
-   ("C-c >" . helm-gtags-next-history)
-   ("M-." . nil)
-   ("C-t" . nil))
-
+        ("C-c g a" . helm-gtags-tags-in-this-function)
+        ("C-c g j" . helm-gtags-select)
+        ("C-c g d" . helm-gtags-dwim)
+        ("C-c g b" . helm-gtags-pop-stack)
+        ("C-c <" . helm-gtags-previous-history)
+        ("C-c >" . helm-gtags-next-history)
+        ("M-." . nil)
+        ("C-t" . nil))
+  
   :custom
   (helm-gtags-ignore-case t)
   (helm-gtags-auto-update t)
@@ -76,11 +76,11 @@
   
   :bind
   ("C-c p" . projectile-command-map)
-
+  
   :custom
   (projectile-sort-order 'recentf)
   (projectile-enable-caching t)
-
+  
   ;; change the order
   (projectile-project-root-functions
    '(projectile-root-local
@@ -92,7 +92,7 @@
   ;; http://tuhdo.github.io/helm-projectile.html
   (straight-use-package 'helm-projectile)
   (helm-projectile-on)
-
+  
   ;; golang
   (projectile-register-project-type
    'go
