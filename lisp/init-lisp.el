@@ -14,8 +14,8 @@
   (slime-setup '(slime-fancy slime-repl slime-scratch slime-trace-dialog slime-cl-indent slime-cape))
   (setq
    inferior-lisp-program (if (string= "arm64\n" (shell-command-to-string "uname -m"))
-							 "/opt/homebrew/bin/sbcl"
-						   "/usr/local/bin/sbcl"))
+                             "/opt/homebrew/bin/sbcl --dynamic-space-size 5Gb"
+                           "/usr/local/bin/sbcl"))
   
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
@@ -38,7 +38,7 @@
 (use-package clojure-mode
   :bind
   (:map clojurec-mode-map
-		("\C-c\C-z" . cider-jack-in))
+        ("\C-c\C-z" . cider-jack-in))
   
   :hook
   (cider-mode . ac-flyspell-workaround)
