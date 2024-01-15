@@ -20,7 +20,6 @@
 (use-package merlin
   :hook
   ((tuareg-mode . merlin-mode)
-   (merlin-mode . company-mode)
    )
   :config
   (setq merlin-command 'opam)
