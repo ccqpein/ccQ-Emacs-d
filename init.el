@@ -1,18 +1,12 @@
 ;;; init file
-(dolist (path '("~/.emacs.d/elpa"
-				"~/.emacs.d/plugins/"
-				"~/.emacs.d/lisp/"
-				
-				;; opam_link is local alias be created by opam switch.
-				;; so I do not need to change site-lisp after update opam switch
-				;; opam switch link <switch version> ~/.emacs.d/opam_link
-				"~/.emacs.d/opam_link/_opam/share/emacs/site-lisp/"
+(dolist (path '("~/.emacs.d/plugins/"
+                "~/.emacs.d/lisp/"
                 ))
   (add-to-list 'load-path path))
 
 (setq comp-deferred-compilation t)
 (setq straight-use-package-by-default t
-	  straight-repository-branch "develop")
+      straight-repository-branch "develop")
 (setq tab-always-indent 'complete)
 
 ;;;;;;;;;; set frame default ;;;;;;;;;;;;;;;
@@ -32,7 +26,7 @@
 (setq show-paren-style 'parenthesis)
 
 (setq explicit-shell-file-name "$SHELL"
-	  explicit-zsh-args '("--interactive" "--login"))
+      explicit-zsh-args '("--interactive" "--login"))
 
 (setq backup-directory-alist '(("" . "~/.emacs.d/backups")))
 
@@ -100,7 +94,7 @@
 
 (require 'init-yaml)
 
-;;(require 'init-ocaml)
+(require 'init-ocaml)
 
 (require 'init-coq)
 
