@@ -87,9 +87,9 @@
   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
   )
 
-(use-package helm-code-it-later
-  :straight (helm-code-it-later :type git :host github :repo "ccqpein/helm-code-it-later")
-  :commands helm-code-it-later
+(use-package code-it-later-mode
+  :straight (code-it-later-mode :type git :host github :repo "ccqpein/code-it-later-mode")
+  :commands code-it-later
   )
 
 (provide 'init-general)
