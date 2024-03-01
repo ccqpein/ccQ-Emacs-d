@@ -12,6 +12,7 @@
   (helm-imenu-fuzzy-match                t)
   (helm-scroll-amount                    8)
   (helm-ff-file-name-history-use-recentf t)
+  (helm-candidate-number-limit           500)
   
   ;; for helm-ag
   (helm-follow-mode-persistent           t)
