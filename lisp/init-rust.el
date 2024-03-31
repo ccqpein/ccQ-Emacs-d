@@ -12,15 +12,10 @@
         ("C-c C-d" . rust-dbg-wrap-or-unwrap)
         ("C-c d" . nil))
   
-  ;;:custom
-  ;;(company-tooltip-align-annotations t)
-  ;;(rust-format-on-save t) ;; move this command to lsp
-  
   :config
   (straight-use-package 'dap-mode)
   (setq lsp-rust-analyzer-proc-macro-enable t
         lsp-rust-analyzer-cargo-load-out-dirs-from-check t
-;;;:= TODO: bind commands lsp-rust-analyzer-join-lines lsp-rust-analyzer-expand-macro
         )
   
   (require 'dap-gdb-lldb)

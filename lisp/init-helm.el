@@ -16,7 +16,7 @@
   
   ;; for helm-ag
   (helm-follow-mode-persistent           t)
-  
+
   :config
   (helm-mode 1)
   (helm-autoresize-mode 1)
@@ -68,9 +68,19 @@
   (helm-gtags-suggested-key-mapping t)
   )
 
+;; I like helm-do-ag better. use helm-ag for calling rg
 (use-package helm-ag
+  :custom
+  (helm-ag-base-command "rg --no-heading --line-number --color never")
+  (helm-ag-success-exit-status '(0 2))
   )
 
+;; only for projectile-rg using
+(use-package helm-rg)
+
+;;:= should I replace projectile with helm brower?
+;;:= just need git project find file and rg search
+;;:= maybe I can delete helm-rg after move
 (use-package projectile
   :init
   (projectile-mode +1)
@@ -100,7 +110,6 @@
    '("go.mod")
    :project-file "go.mod")
   )
-
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
