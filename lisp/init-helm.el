@@ -76,7 +76,10 @@
   )
 
 ;; only for projectile-rg using
-(use-package helm-rg)
+(use-package helm-rg
+  :straight (helm-rg :type git :host github :repo "cosmicexplorer/helm-rg"
+                     :fork "ccqpein/helm-rg")
+  )
 
 ;;:= should I replace projectile with helm brower?
 ;;:= just need git project find file and rg search
