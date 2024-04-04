@@ -70,6 +70,7 @@
 
 ;; I like helm-do-ag better. use helm-ag for calling rg
 (use-package helm-ag
+  :straight t
   :custom
   (helm-ag-base-command "rg --no-heading --line-number --color never")
   (helm-ag-success-exit-status '(0 2))
