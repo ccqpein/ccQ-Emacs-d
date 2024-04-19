@@ -72,7 +72,7 @@
 (use-package helm-ag
   :straight t
   :custom
-  (helm-ag-base-command "rg --no-heading --line-number --color never")
+  (helm-ag-base-command "rg -i --no-heading --line-number --color never")
   (helm-ag-success-exit-status '(0 2))
   )
 
