@@ -17,11 +17,13 @@
   ;; for helm-ag
   (helm-follow-mode-persistent           t)
 
+  (helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
+  (helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
+  
   :config
   (helm-mode 1)
   (helm-autoresize-mode 1)
   )
-
 
 ;;; helm gtags use global be backend, here is ~/.globalrc example
 (use-package helm-gtags
@@ -68,14 +70,6 @@
   (helm-gtags-suggested-key-mapping t)
   )
 
-;; I like helm-do-ag better. use helm-ag for calling rg
-(use-package helm-ag
-  :straight t
-  :custom
-  (helm-ag-base-command "rg -i --no-heading --line-number --color never")
-  (helm-ag-success-exit-status '(0 2))
-  )
-
 ;; only for projectile-rg using
 (use-package helm-rg
   :straight (helm-rg :type git :host github :repo "cosmicexplorer/helm-rg"
@@ -115,10 +109,21 @@
    :project-file "go.mod")
   )
 
+;;;###autoload
+(defun helm-do-grep-ag-q (arg)
+  "I like path choosing before the search"
+  (interactive "P")
+  (require 'helm-files)
+  (helm-grep-ag (helm-read-file-name
+                 "helm-grep-ag in dir: "
+                 :default default-directory
+                 :must-match t)
+                arg))
+
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "C-c h s") 'helm-do-ag)
+(global-set-key (kbd "C-c h s") 'helm-do-grep-ag-q)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x r b") 'helm-filtered-bookmarks)

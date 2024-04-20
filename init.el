@@ -127,6 +127,7 @@
  '(haskell-process-suggest-remove-import-lines t)
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
+ '(helm-source-names-using-follow '("RG"))
  '(indent-tabs-mode nil)
  '(jdee-compiler '("javac"))
  '(jdee-jdk-registry '(("1.8" . "/Library/Java/Home")))
