@@ -16,7 +16,7 @@
 
   :bind
   (:map chatgpt-shell-mode-map
-        ("M-<return>" . chatgpt-shell-submit)
+        ("s-<return>" . chatgpt-shell-submit)
         ("<return>" . chatgpt-shell-newline))
 
   :config
