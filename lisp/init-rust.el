@@ -18,11 +18,12 @@
         lsp-rust-analyzer-cargo-load-out-dirs-from-check t
         )
   
-  (require 'dap-gdb-lldb)
-  (dap-gdb-lldb-setup)
+  ;;(require 'dap-gdb-lldb)
+  ;;(dap-gdb-lldb-setup)
   
   (require 'dap-cpptools)
-  (dap-cpptools-setup)
+  ;;(dap-cpptools-setup)
+  
   ;; (dap-register-debug-template
   ;;  "Rust::CppTools Run Configuration"
   ;;  (list :type "cppdbg"
@@ -36,29 +37,19 @@
   ;;        :console "external"
   ;;        :dap-compilation "cargo build"
   ;;        :dap-compilation-dir "${workspaceFolder}"))
-  
+
   (dap-register-debug-template
-   "Rust::GDB Run Configuration"
-   (list :type "gdb"
-         :request "launch"
-         :name "GDB::Run"
-         :gdbpath "rust-gdb"
-         :target nil
+   "Rust LLDB Debug Configuration"
+   (list :type "cppdbg"
+	     :request "launch"
+	     :name "Rust::Run"
+	     :MIMode "lldb"
+	     :gdbpath "rust-lldb"
+	     :program (concat (projectile-project-root) "target/debug/" (projectile-project-name))
+	     :environment []
+         :targetarchitecture "arm"
          :dap-compilation "cargo build"
-         :dap-compilation-dir "${workspaceFolder}"
-         :cwd "${workspaceFolder}"))
-  
-  ;; (dap-register-debug-template
-  ;;  "Rust::GDB Run Configuration"
-  ;;  (list :type "gdb"
-  ;;        :request "launch"
-  ;;        :name "GDB::Run"
-  ;;        :miDebuggerPath "rust-gdb"
-  ;;        :program "${workspaceFolder}/target/debug/gdb-debugger-demo"
-  ;;        :target "${workspaceFolder}/target/debug/gdb-debugger-demo"
-  ;;        :cwd "${workspaceFolder}"
-  ;;        :dap-compilation "cargo build"
-  ;;        :dap-compilation-dir "${workspaceFolder}"))
+	     :cwd (projectile-project-root)))
   )
 
 ;; (use-package rust-ts-mode
