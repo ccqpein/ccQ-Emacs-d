@@ -45,11 +45,12 @@
 	     :name "Rust::Run"
 	     :MIMode "lldb"
 	     :gdbpath "rust-lldb"
-	     :program (concat (projectile-project-root) "target/debug/" (projectile-project-name))
+	     :program "${workspaceFolder}/target/debug/${workspaceFolderBasename}"
 	     :environment []
          :targetarchitecture "arm"
-         :dap-compilation "cargo build"
-	     :cwd (projectile-project-root)))
+         ;;:dap-compilation "cargo build"
+	     :cwd "${workspaceFolder}"
+         :dap-compilation-dir "${workspaceFolder}"))
   )
 
 ;; (use-package rust-ts-mode
