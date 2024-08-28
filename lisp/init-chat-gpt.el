@@ -1,7 +1,10 @@
 (use-package shell-maker
   :straight (:host github :repo "xenodium/chatgpt-shell" :files ("shell-maker.el"))
+  
   :custom
-  (shell-maker-transcript-default-path "~/Desktop/Org/GPT-transcript"))
+  (shell-maker-transcript-default-path "~/Desktop/Org/GPT-transcript")
+  (shell-maker-forget-file-after-clear t)
+  )
 
 (use-package chatgpt-shell
   :straight (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el"))
@@ -17,7 +20,8 @@
   :bind
   (:map chatgpt-shell-mode-map
         ("s-<return>" . chatgpt-shell-submit)
-        ("<return>" . chatgpt-shell-newline))
+        ("<return>" . chatgpt-shell-newline)
+        ("C-c M-o" . chatgpt-shell-clear-buffer))
 
   :config
   (setf chatgpt-shell-system-prompts
