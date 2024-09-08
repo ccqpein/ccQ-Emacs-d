@@ -11,4 +11,22 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(defun check-commands-existence (commands)
+  "Check if all COMMANDS exist in the PATH."
+  (let ((missing-commands
+         (remove nil
+                 (mapcar (lambda (cmd)
+                           (unless (executable-find cmd)
+                             cmd))
+                         commands))))
+    (dolist (cmd missing-commands)
+      (message "Warning: %s, maybe need for some configuration, not found in PATH." cmd))))
+
+;; Example usage
+(check-commands-existence
+ '("codeitlater"
+   "rust-analyzer" ;; for rust lsp
+   "ruff-lsp" ;; for python lsp
+   ))
+
 (provide 'init-bootstrap)

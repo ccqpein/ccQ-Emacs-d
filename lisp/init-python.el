@@ -19,7 +19,6 @@
   
   :config
   (straight-use-package 'py-autopep8)
-  (setq lsp-pylsp-plugins-yapf-enabled     t
-        lsp-pylsp-plugins-flake8-enabled   t))
+  (setq lsp-ruff-lsp-show-notifications "onError"))
 
 (provide 'init-python)
