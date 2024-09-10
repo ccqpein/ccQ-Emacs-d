@@ -19,6 +19,7 @@
   
   :config
   (straight-use-package 'py-autopep8)
-  (setq lsp-ruff-lsp-show-notifications "onError"))
+  (setq lsp-ruff-lsp-show-notifications "onError"
+        lsp-ruff-lsp-server-command '("ruff" "server")))
 
 (provide 'init-python)

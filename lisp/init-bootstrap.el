@@ -26,7 +26,7 @@
 (check-commands-existence
  '("codeitlater"
    "rust-analyzer" ;; for rust lsp
-   "ruff-lsp" ;; for python lsp
+   "ruff" ;; for python lsp
    ))
 
 (provide 'init-bootstrap)
