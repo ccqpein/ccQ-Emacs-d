@@ -8,14 +8,14 @@
 
 (use-package chatgpt-shell
   :straight (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el"))
-
+  
   :custom
-  (chatgpt-shell-model-version "gpt-4o")
+  (chatgpt-shell-model-version "chatgpt-4o-latest")
   (chatgpt-shell-openai-key
    (exec-path-from-shell-copy-env "OPENAI_API_KEY"))
   
   ;; use nil as the default
-  (chatgpt-shell-system-prompt 0)
+  (chatgpt-shell-system-prompt nil)
 
   :bind
   (:map chatgpt-shell-mode-map
