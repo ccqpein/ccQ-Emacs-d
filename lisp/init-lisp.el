@@ -12,6 +12,29 @@
   :init (add-hook 'lisp-mode-hook 'paredit-mode)
   :config
   (slime-setup '(slime-fancy slime-repl slime-scratch slime-trace-dialog slime-cl-indent slime-cape))
+
+  ;; define some helper functions below after slime load
+  
+  ;;Stop SLIME's REPL from grabbing DEL, which is annoying when backspacing over a '('
+  (defun override-slime-repl-bindings-with-paredit ()
+    (define-key slime-repl-mode-map
+                (read-kbd-macro paredit-backward-delete-key)
+                nil))
+
+  ;;:= maybe give some keybinding?
+  (defun slime-compile-buffer ()
+    "compile the current buffer of lisp file.
+ignore the first line `#!` because sometimes it is script"
+    (interactive)
+    (save-excursion
+      (goto-char (point-min))
+      (while (and (not (eobp))
+                  (or (looking-at "^#!")
+                      (looking-at "^\\s-*$")))
+        (forward-line))
+      (if (not (eobp))
+          (slime-compile-region (point) (point-max)))))
+  
   (setq
    inferior-lisp-program (if (string= "arm64\n" (shell-command-to-string "uname -m"))
                              "/opt/homebrew/bin/sbcl --dynamic-space-size 5Gb"
@@ -28,11 +51,6 @@
   (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
   )
 
-;;Stop SLIME's REPL from grabbing DEL, which is annoying when backspacing over a '('
-(defun override-slime-repl-bindings-with-paredit ()
-  (define-key slime-repl-mode-map
-    (read-kbd-macro paredit-backward-delete-key)
-    nil))
 
 ;;;;;;;;; Clojure ;;;;;;;;;;;;
 (use-package clojure-mode
