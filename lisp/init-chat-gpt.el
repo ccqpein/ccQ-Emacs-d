@@ -1,5 +1,5 @@
 (use-package shell-maker
-  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("shell-maker.el"))
+  :straight (:host github :repo "xenodium/shell-maker")
   
   :custom
   (shell-maker-transcript-default-path "~/Desktop/Org/GPT-transcript")
@@ -7,8 +7,8 @@
   )
 
 (use-package chatgpt-shell
-  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell.el"))
-  
+  :straight (:host github :repo "xenodium/chatgpt-shell")
+    
   :custom
   (chatgpt-shell-model-version "chatgpt-4o-latest")
   (chatgpt-shell-openai-key
