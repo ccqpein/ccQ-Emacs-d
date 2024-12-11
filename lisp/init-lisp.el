@@ -37,7 +37,7 @@ ignore the first line `#!` because sometimes it is script"
   
   (setq
    inferior-lisp-program (if (string= "arm64\n" (shell-command-to-string "uname -m"))
-                             "/opt/homebrew/bin/sbcl --dynamic-space-size 5Gb"
+                             "/opt/homebrew/bin/sbcl --dynamic-space-size 10Gb"
                            "/usr/local/bin/sbcl"))
   
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
