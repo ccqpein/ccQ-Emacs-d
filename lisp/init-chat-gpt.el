@@ -8,11 +8,14 @@
 
 (use-package chatgpt-shell
   :straight (:host github :repo "xenodium/chatgpt-shell")
-    
+  
   :custom
-  (chatgpt-shell-model-version "chatgpt-4o-latest")
   (chatgpt-shell-openai-key
    (exec-path-from-shell-copy-env "OPENAI_API_KEY"))
+  (chatgpt-shell-anthropic-key
+   (exec-path-from-shell-copy-env "ANTHROPIC_API_KEY"))
+  (chatgpt-shell-google-key
+   (exec-path-from-shell-copy-env "GEMINI_API_KEY"))
   
   ;; use nil as the default
   (chatgpt-shell-system-prompt nil)
