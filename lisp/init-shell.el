@@ -6,4 +6,6 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "GOPATH"))
 
+(use-package fish-mode)
+
 (provide 'init-shell)

@@ -6,6 +6,7 @@
    (org-mode . org-indent-mode)
    (org-mode . visual-line-mode)
    (org-mode . ejira-mode)
+   (org-mode . (lambda () (set-local-variable 'tab-width 8)))
    )
   
   :bind
