@@ -52,9 +52,6 @@
 
 (require 'init-general)
 
-;;; other modes
-(require 'init-external)
-
 ;;; languages
 (require 'init-treemacs)
 
@@ -112,7 +109,8 @@
 
 (require 'init-chat-gpt)
 
-(require 'init-custom)
+;; other modes and some custom config
+(require 'init-others)
 
 
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

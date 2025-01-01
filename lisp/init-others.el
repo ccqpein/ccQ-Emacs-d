@@ -1,3 +1,8 @@
+;;; others el including anything that not enough inside the general
+
+(use-package protobuf-mode
+  :mode "\\.proto\\'")
+
 (use-package treesit
   :straight nil
   :when (treesit-available-p)
@@ -16,7 +21,18 @@
                     (python-ts-mode . "python3,django,twisted,sphinx,flask,tornado,sqlalchemy,numpy,scipy,saltcvp")))
     (add-to-list 'dash-at-point-mode-alist-legacy queryS)
     (add-to-list 'dash-at-point-mode-alist queryS)
-    )
-  )
+    ))
 
-(provide 'init-custom)
+(use-package copilot
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :ensure t
+
+  :hook
+  (lisp-mode . copilot-mode)
+  (emacs-lisp-mode . copilot-mode)
+  
+  :bind
+  (:map copilot-completion-map
+        ("TAB" . copilot-accept-completion)))
+
+(provide 'init-others)
