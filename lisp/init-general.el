@@ -92,4 +92,12 @@
   :commands code-it-later
   )
 
+(use-package ultra-scroll
+  :straight (ultra-scroll :type git :host github :repo "jdtsmith/ultra-scroll")
+  :init
+  (setq scroll-conservatively 101
+        scroll-margin 0)
+  :config
+  (ultra-scroll-mode 1))
+
 (provide 'init-general)
