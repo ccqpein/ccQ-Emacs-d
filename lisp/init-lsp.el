@@ -32,9 +32,6 @@
         ("C-c l g d" . lsp-find-definition) ;; I like d => definition rather than g
         )
   
-  :custom
-  (lsp-completion-provider :none)
-  
   :config
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
   
@@ -98,9 +95,9 @@
         ("C-c l h i" . lsp-ui-imenu))
   
   :config
-  (setq lsp-ui-sideline-enable t
+  (setq lsp-ui-sideline-enable t 
         lsp-ui-sideline-delay 0.7
-        lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-show-hover nil ;; only keep the action
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-sideline-show-code-actions t
         lsp-ui-sideline-update-mode 'line
