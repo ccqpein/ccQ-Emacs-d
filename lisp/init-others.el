@@ -27,9 +27,10 @@
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
   :ensure t
 
-  :hook
-  (lisp-mode . copilot-mode)
-  (emacs-lisp-mode . copilot-mode)
+  ;;; manully start the mode looks better 
+  ;;:hook
+  ;;(lisp-mode . copilot-mode)
+  ;;(emacs-lisp-mode . copilot-mode)
   
   :bind
   (:map copilot-completion-map
