@@ -26,7 +26,10 @@
    )
   
   :commands (lsp lsp-deferred)
-  
+
+  :custom
+  (lsp-completion-provider :none) ;; use Corfu
+
   :bind
   (:map lsp-mode-map
         ("C-c l g d" . lsp-find-definition) ;; I like d => definition rather than g
