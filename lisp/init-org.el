@@ -6,7 +6,6 @@
    (org-mode . org-indent-mode)
    (org-mode . visual-line-mode)
    (org-mode . ejira-mode)
-   (org-mode . (lambda () (set-local-variable 'tab-width 8)))
    )
   
   :bind
@@ -29,6 +28,7 @@
      (python . t)
      (lisp . t)
      (shell . t)))
+  (tab-width 8)
 
   ;; capture templates
   (org-capture-templates
@@ -48,7 +48,14 @@
       (let* ((element (org-element-context))
              (type (org-element-type element))
              (pos (point)))
-        (if (or (eq type 'code))
+        ;;(message "%s, %s, %s" element type pos)
+        ;;(message "%s" (1- (org-element-property :end element)))
+        (if (or (eq type 'code)
+                (eq type 'underline)
+                (eq type 'bold)
+                (eq type 'italic)
+                (eq type 'verbatim)
+                (eq type 'strike-through))
             (progn
               (goto-char (1- (org-element-property :end element)))
               (delete-char 1)

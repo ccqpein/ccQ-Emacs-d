@@ -13,6 +13,7 @@
 (add-to-list 'default-frame-alist '(width . 93))
 (add-to-list 'default-frame-alist '(height . 60))
 (global-hl-line-mode 1)
+(global-font-lock-mode)
 (global-display-line-numbers-mode)
 (column-number-mode)
 
