@@ -20,7 +20,7 @@
   (org-directory (getenv "ORG_PATH"))
   (org-log-done t)
   (org-hide-leading-stars t)
-  ;;(org-hide-emphasis-markers t)
+  (org-hide-emphasis-markers t)
   (org-log-into-drawer t)
   (org-babel-load-languages
    '((emacs-lisp . t)
@@ -50,6 +50,7 @@
              (pos (point)))
         ;;(message "%s, %s, %s" element type pos)
         ;;(message "%s" (1- (org-element-property :end element)))
+        ;;(message "%s" (1- (org-element-property :begin element)))
         (if (or (eq type 'code)
                 (eq type 'underline)
                 (eq type 'bold)
@@ -57,7 +58,7 @@
                 (eq type 'verbatim)
                 (eq type 'strike-through))
             (progn
-              (goto-char (1- (org-element-property :end element)))
+              (goto-char (- (org-element-property :end element) 2))
               (delete-char 1)
               (goto-char (org-element-property :begin element))
               (delete-char 1)
