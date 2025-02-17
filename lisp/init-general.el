@@ -100,4 +100,20 @@
   :config
   (ultra-scroll-mode 1))
 
+;;; check the height with (face-attribute 'default :height)
+(defun my-adjust-default-face-for-frame (frame)
+  "Adjust the default face height based on FRAME's dimensions."
+  (with-selected-frame frame
+    (set-face-attribute 'default frame
+                        :height (if (and (= 1728 (display-pixel-width))
+                                         (= 1117 (display-pixel-height)))
+                                    140 ; for the specific resolution
+                                  120))))  ; default height otherwise
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions #'my-adjust-default-face-for-frame)
+  (progn
+    (my-adjust-default-face-for-frame (selected-frame))
+    (add-hook 'after-make-frame-functions #'my-adjust-default-face-for-frame)))
+
 (provide 'init-general)
