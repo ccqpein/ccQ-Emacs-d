@@ -105,10 +105,15 @@
   "Adjust the default face height based on FRAME's dimensions."
   (with-selected-frame frame
     (set-face-attribute 'default frame
-                        :height (if (and (= 1728 (display-pixel-width))
-                                         (= 1117 (display-pixel-height)))
-                                    140 ; for the specific resolution
-                                  120))))  ; default height otherwise
+                        :height (cond ((and (= 1728 (display-pixel-width))
+                                            (= 1117 (display-pixel-height)))
+                                       140)
+                                      ((and (= 1920 (display-pixel-width)) ;; this one is the buggy one
+                                            (= 2197 (display-pixel-height)))
+                                       140)
+                                      ((=  1440 (display-pixel-height))
+                                       160)
+                                      (t 120)))))
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions #'my-adjust-default-face-for-frame)
