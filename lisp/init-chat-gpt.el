@@ -30,8 +30,7 @@
   :config
   (setf chatgpt-shell-system-prompts
         (delete-dups
-         (append '(("Grammar/Spell checker" . "You are going to correct the grammar and spelling. Try you best to keep the languages style.")
-                   ("Writing helper" . "Your task is to correct the grammar and spelling of various articles. These could include programming documents, READMEs, technical documents, papers, reports, and more. Please ensure you maintain the author's personal writing style appropriate to each type of article."))
+         (append gpt-system-prompts ;; custom prompts
                  chatgpt-shell-system-prompts))))
 
 (provide 'init-chat-gpt)

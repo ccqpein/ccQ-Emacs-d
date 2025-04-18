@@ -11,3 +11,4 @@ plugins/jdee-server/
 !lisp/
 !install.ros
 *\.elc
+lisp/init-custom.el

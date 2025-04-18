@@ -53,6 +53,10 @@
 
 (require 'init-general)
 
+;;; load some custom setting
+;;; init-custom file in .gitignore
+(require 'init-custom)
+
 ;;; languages
 (require 'init-treemacs)
 
@@ -112,7 +116,6 @@
 
 ;; other modes and some custom config
 (require 'init-others)
-
 
 ;;;;;;;;;;; custom setting;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
