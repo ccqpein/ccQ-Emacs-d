@@ -58,7 +58,7 @@
                 (eq type 'verbatim)
                 (eq type 'strike-through))
             (progn
-              (goto-char (- (org-element-property :end element) 2))
+              (goto-char (- (org-element-property :end element) 1))
               (delete-char 1)
               (goto-char (org-element-property :begin element))
               (delete-char 1)
