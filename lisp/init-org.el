@@ -38,7 +38,7 @@
        ))))
   
   ;; define the location of archive
-  (org-archive-location (concat org-directory "archive/%s_archive::* Archived Tasks"))
+  (org-archive-location (concat org-directory "/archive/%s_archive::* Archived Tasks"))
 
   :config
   ;; my emphasis function
