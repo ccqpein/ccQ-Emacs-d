@@ -1,3 +1,4 @@
+;;;  -*- lexical-binding: t; -*-
 ;;; others el including anything that not enough inside the general
 
 (use-package protobuf-mode

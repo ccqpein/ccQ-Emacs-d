@@ -114,6 +114,8 @@
 
 (require 'init-chat-gpt)
 
+(require 'init-mcp)
+
 ;; other modes and some custom config
 (require 'init-others)
 
