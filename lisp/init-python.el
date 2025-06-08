@@ -9,8 +9,8 @@
   
   :custom
   (python-shell-completion-native-enable nil)
-  (python-shell-interpreter "ipython")
-  (python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i --pprint")
+  (python-shell-interpreter "uv")
+  (python-shell-interpreter-args "run ipython --simple-prompt -c exec('__import__(\\'readline\\')') -i --pprint")
   (elpy-rpc-python-command "~/.pyenv/shims/python")
   
   :bind
