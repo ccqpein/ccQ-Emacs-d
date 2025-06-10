@@ -27,6 +27,7 @@
  '("codeitlater"
    "rust-analyzer" ;; for rust lsp
    "ruff" ;; for python lsp
+   "uv"
    ))
 
 (provide 'init-bootstrap)
