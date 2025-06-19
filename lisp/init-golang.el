@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;; go-mode ;;;;;
 (use-package go-mode
   :custom

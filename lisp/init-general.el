@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;;;;;;; global general packages ;;;;;;;;;;;;;
 
 ;;;;;;;; multiple-cursors ;;;;;;;;;;;;;;;;

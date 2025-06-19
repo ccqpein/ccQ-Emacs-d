@@ -1,4 +1,4 @@
-;;; init file
+;; -*- lexical-binding: t; -*-
 (dolist (path '("~/.emacs.d/plugins/"
                 "~/.emacs.d/lisp/"
                 ))

@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package tide
   :after (typescript-mode flycheck)
   :hook ((typescript-mode . tide-setup)

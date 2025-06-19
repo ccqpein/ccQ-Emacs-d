@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package ejira
   :straight (ejira :type git :host github :repo "nyyManni/ejira")
   :init

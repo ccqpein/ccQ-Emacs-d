@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;;;;;; JAVA-jdee ;;;;;;;;;;
 (defun add-jdee-ac ()
   (let ((ACpath (file-name-as-directory (car ac-dictionary-directories))))

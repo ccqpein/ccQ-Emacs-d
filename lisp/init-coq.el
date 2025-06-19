@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;(use-package proof-general)
 
 ;; (use-package company-coq

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (defun gcc-version ()
   (car (last
         (split-string

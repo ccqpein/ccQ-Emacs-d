@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;;;; exec-path-from-shell ;;;;;;;;;;;;;;;;;
 (straight-use-package 'exec-path-from-shell)
 

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;; Helm ;;;;;;;;;;;;
 (use-package helm
   :custom
@@ -80,6 +82,7 @@
 ;;:= just need git project find file and rg search
 ;;:= maybe I can delete helm-rg after move
 (use-package projectile
+  ;;:straight (:local-repo "/Users/ccQ/Code/un-time-machine/projectile")
   :init
   (projectile-mode +1)
   

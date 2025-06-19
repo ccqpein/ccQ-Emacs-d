@@ -1,4 +1,4 @@
-;;(add-hook 'mhtml-mode-hook 'lsp-deferred)
+;; -*- lexical-binding: t; -*-
 
 ;; copy from https://github.com/ananthakumaran/tide#tsx
 (defun setup-tide-mode ()

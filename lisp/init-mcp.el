@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package mcp-hub
   :straight (:host github :repo "lizqwerscott/mcp.el")
   :custom (mcp-hub-servers

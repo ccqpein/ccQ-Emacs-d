@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;;;;;;;;; julia ;;;;;;;;;;;;;;;;;;;;
 (use-package julia-mode
   :hook

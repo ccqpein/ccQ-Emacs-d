@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;;;; Javascript mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package js
   :config

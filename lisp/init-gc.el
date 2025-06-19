@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; http://akrl.sdf.org
 ;;; change garbage collection of emacs
 (defmacro k-time (&rest body)

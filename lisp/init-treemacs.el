@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;;;; treemacs ;;;;;;;;;
 (use-package treemacs  
   :bind

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package tuareg
   :mode
   (("\\.ml\\'" . tuareg-mode))

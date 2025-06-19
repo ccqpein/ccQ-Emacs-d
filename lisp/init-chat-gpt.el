@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package shell-maker
   :straight (:host github :repo "xenodium/shell-maker")
   
@@ -7,8 +9,8 @@
   )
 
 (use-package chatgpt-shell
-  :straight (:host github :repo "xenodium/chatgpt-shell")
-    
+  ;;:straight (:host github :repo "xenodium/chatgpt-shell")
+  :straight (:local-repo "/Users/ccQ/Code/un-time-machine/chatgpt-shell")
   :custom
   (chatgpt-shell-openai-key
    (exec-path-from-shell-copy-env "OPENAI_API_KEY"))

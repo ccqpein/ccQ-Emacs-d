@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; actually, this just for jenkinsfile, I dont write groovy
 (use-package groovy-mode)
 

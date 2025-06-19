@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package dash-at-point
   :config
   (dolist (queryS '((swift-mode . "swift")

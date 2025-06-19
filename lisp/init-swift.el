@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package swift-mode
   :custom
   (swift-indent-offset 4)

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;;;;pythono-mode;;;;;;;;;;;;;;;;;;
 (use-package elpy
   :init

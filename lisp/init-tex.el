@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;; AUCTeX ;;;;;;
 ;; (require 'tex-mik)
 ;; (setq TeX-auto-save t)

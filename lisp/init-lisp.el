@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;;; slime ;;;;;;;;;
 (use-package slime-cape
   :straight (slime-cape :type git :host github :repo "ccqpein/slime-cape")

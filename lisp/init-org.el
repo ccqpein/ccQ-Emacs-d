@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;;;; Org mode ;;;;;;;;;;
 (use-package org
   :ensure org-plus-contrib
