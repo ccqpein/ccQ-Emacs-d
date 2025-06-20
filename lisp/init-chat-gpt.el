@@ -19,7 +19,7 @@
   
   ;; use nil as the default
   (chatgpt-shell-system-prompt nil)
-  (chatgpt-shell-model-version "gemini-2.5-flash-preview-05-20")
+  (chatgpt-shell-model-version "gemini-2.5-flash")
 
   :bind
   (:map chatgpt-shell-mode-map
