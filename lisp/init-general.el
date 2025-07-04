@@ -37,10 +37,7 @@
 ;;;;;; Magit ;;;;;;;
 (use-package magit
   :bind
-  (("M-RET" . magit-diff-visit-file-other-window))
-
-  :custom
-  (magit-git-executable "/opt/homebrew/bin/git"))
+  (("M-RET" . magit-diff-visit-file-other-window)))
 
 (use-package forge
   :after magit)
