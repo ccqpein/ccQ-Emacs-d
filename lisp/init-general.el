@@ -36,11 +36,11 @@
 
 ;;;;;; Magit ;;;;;;;
 (use-package magit
-  ;;:hook (magit-mode . magit-delta-mode)
-  
   :bind
   (("M-RET" . magit-diff-visit-file-other-window))
-  )
+
+  :custom
+  (magit-git-executable "/opt/homebrew/bin/git"))
 
 (use-package forge
   :after magit)
