@@ -100,22 +100,22 @@
   (ultra-scroll-mode 1))
 
 ;;; check the height with (face-attribute 'default :height)
-(defun my-adjust-default-face-for-frame (frame)
-  "Adjust the default face height based on FRAME's dimensions."
-  (with-selected-frame frame
-    (cond ((and (= 1728 (display-pixel-width))
-                (= 1117 (display-pixel-height)))
-           (set-face-attribute 'default frame :height 140))
-          ((and (= 1920 (display-pixel-width)) ;; this one is the buggy one
-                (= 2197 (display-pixel-height)))
-           (set-face-attribute 'default frame :height 140))
-          ((=  1440 (display-pixel-height))
-           (set-face-attribute 'default frame :height 160)))))
+;; (defun my-adjust-default-face-for-frame (frame)
+;;   "Adjust the default face height based on FRAME's dimensions."
+;;   (with-selected-frame frame
+;;     (cond ((and (= 1728 (display-pixel-width))
+;;                 (= 1117 (display-pixel-height)))
+;;            (set-face-attribute 'default frame :height 140))
+;;           ((and (= 1920 (display-pixel-width)) ;; this one is the buggy one
+;;                 (= 2197 (display-pixel-height)))
+;;            (set-face-attribute 'default frame :height 140))
+;;           ((=  1440 (display-pixel-height))
+;;            (set-face-attribute 'default frame :height 160)))))
 
-(if (daemonp)
-    (add-hook 'after-make-frame-functions #'my-adjust-default-face-for-frame)
-  (progn
-    (my-adjust-default-face-for-frame (selected-frame))
-    (add-hook 'after-make-frame-functions #'my-adjust-default-face-for-frame)))
+;; (if (daemonp)
+;;     (add-hook 'after-make-frame-functions #'my-adjust-default-face-for-frame)
+;;   (progn
+;;     (my-adjust-default-face-for-frame (selected-frame))
+;;     (add-hook 'after-make-frame-functions #'my-adjust-default-face-for-frame)))
 
 (provide 'init-general)
