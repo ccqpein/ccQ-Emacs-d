@@ -112,9 +112,7 @@
 
 (require 'init-jira)
 
-(require 'init-chat-gpt)
-
-(require 'init-mcp)
+(require 'init-llm)
 
 ;; other modes and some custom config
 (require 'init-others)

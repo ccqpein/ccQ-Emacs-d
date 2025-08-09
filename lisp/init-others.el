@@ -24,17 +24,5 @@
     (add-to-list 'dash-at-point-mode-alist queryS)
     ))
 
-(use-package copilot
-  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
-  :ensure t
-
-  ;;; manully start the mode looks better 
-  ;;:hook
-  ;;(lisp-mode . copilot-mode)
-  ;;(emacs-lisp-mode . copilot-mode)
-  
-  :bind
-  (:map copilot-completion-map
-        ("TAB" . copilot-accept-completion)))
 
 (provide 'init-others)

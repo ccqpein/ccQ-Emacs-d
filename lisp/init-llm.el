@@ -33,4 +33,32 @@
          (append gpt-system-prompts ;; custom prompts
                  chatgpt-shell-system-prompts))))
 
-(provide 'init-chat-gpt)
+(use-package mcp-hub
+  :straight (:host github :repo "lizqwerscott/mcp.el")
+  :custom (mcp-hub-servers
+           (list (cons "hyper-mcp"
+                       (list :command
+                             "~/.cargo/bin/hyper-mcp"
+                             :args
+                             (list "-c" (file-truename "~/Code/garage/ai/hyper-mcp-test/config.json")))))))
+
+(use-package copilot
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :ensure t
+
+  ;;; manully start the mode looks better 
+  ;;:hook
+  ;;(lisp-mode . copilot-mode)
+  ;;(emacs-lisp-mode . copilot-mode)
+  
+  :bind
+  (:map copilot-completion-map
+        ("TAB" . copilot-accept-completion)))
+
+(use-package claude-code-ide
+  :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
+  :bind ("C-c C-'" . claude-code-ide-menu) 
+  :config
+  (claude-code-ide-emacs-tools-setup))
+
+(provide 'init-llm)
