@@ -44,7 +44,8 @@
 
 (use-package ace-window
   :bind
-  ("M-o" . ace-window))
+  ("M-o" . ace-window)
+  )
 
 (use-package corfu
   :init
@@ -98,6 +99,28 @@
         scroll-margin 0)
   :config
   (ultra-scroll-mode 1))
+
+(use-package mb-depth
+  :init (setq enable-recursive-minibuffers t)
+  :config (minibuffer-depth-indicate-mode)
+  )
+
+(use-package saveplace
+  :config (save-place-mode)
+  )
+
+(use-package vundo
+  :bind
+  (("C-c M-y" . vundo))
+
+  :hook
+  (vundo-mode . vundo-popup-mode)
+  
+  :custom
+  (vundo-glyph-alist vundo-unicode-symbols)
+  (vundo-compact-display t)
+  (vundo-popup-timeout 2)
+  )
 
 ;;; check the height with (face-attribute 'default :height)
 ;; (defun my-adjust-default-face-for-frame (frame)
