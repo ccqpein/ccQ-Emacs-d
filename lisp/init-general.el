@@ -122,6 +122,20 @@
   (vundo-popup-timeout 2)
   )
 
+(defun tear-off-window ()
+  "Delete the selected window, and create a new frame displaying its buffer."
+  (interactive)
+  (let* ((window (selected-window))
+         (buf (window-buffer window))
+         (frame (make-frame)))
+    (select-frame frame)
+    (switch-to-buffer buf)
+    (delete-window window))
+  )
+
+(global-set-key (kbd "C-x 5 2") 'tear-off-window)
+
+
 ;;; check the height with (face-attribute 'default :height)
 ;; (defun my-adjust-default-face-for-frame (frame)
 ;;   "Adjust the default face height based on FRAME's dimensions."

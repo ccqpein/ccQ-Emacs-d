@@ -13,6 +13,11 @@
   (python-shell-completion-native-enable nil)
   (python-shell-interpreter "uv")
   (python-shell-interpreter-args "run ipython --simple-prompt -c exec('__import__(\\'readline\\')') -i --pprint")
+  (python-shell-prompt-regexp "^In \\[[0-9]+\\]: ")
+  (python-shell-prompt-block-regexp "^\\.\\.\\.+: ")
+  (python-shell-prompt-output-regexp "^Out\\[[0-9]+\\]: ")
+  (python-shell-prompt-input-regexps '("^In \\[[0-9]+\\]: "))
+  (python-shell-prompt-output-regexps '("^Out\\[[0-9]+\\]: "))
   
   :bind
   (:map elpy-mode-map
