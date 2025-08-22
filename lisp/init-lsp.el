@@ -39,6 +39,30 @@
   
   :config
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+
+  (defun lsp-cleanup-non-existent-workspaces ()
+    (interactive)
+    (let* ((all-lsp-folders (lsp-session-folders (lsp-session)))
+           (folders-to-remove nil))
+      (unless all-lsp-folders
+        (message "No LSP workspace folders found to check.")
+        (cl-return))
+
+      (message "Checking LSP workspace folders for existence...")
+      (dolist (folder all-lsp-folders)
+        (unless (file-directory-p folder)
+          (message "Folder no longer exists, marking for removal: %s" folder)
+          (setq folders-to-remove (cons folder folders-to-remove))))
+
+      (if folders-to-remove
+          (progn
+            (message "Removing non-existent LSP workspace folders...")
+            (dolist (folder folders-to-remove)
+              (lsp-workspace-folders-remove folder)
+              (message "Removed: %s" folder))
+            (message "LSP workspace cleanup complete."))
+        (message "All LSP workspace folders exist. No cleanup needed."))))
+
   
   (setq lsp-idle-delay 0.700
         lsp-log-io nil
@@ -67,7 +91,7 @@
   )
 
 ;;; https://emacs-lsp.github.io/dap-mode/page/configuration/
-;;:= need to find the way to switch depending on which language is using
+;;; need to find the way to switch depending on which language is using
 (use-package dap-mode
   :hook
   (
