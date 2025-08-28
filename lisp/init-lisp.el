@@ -23,7 +23,6 @@
                 (read-kbd-macro paredit-backward-delete-key)
                 nil))
 
-  ;;:= maybe give some keybinding?
   (defun slime-compile-buffer ()
     "compile the current buffer of lisp file.
 ignore the first line `#!` because sometimes it is script"
@@ -41,6 +40,11 @@ ignore the first line `#!` because sometimes it is script"
    inferior-lisp-program (if (string= "arm64\n" (shell-command-to-string "uname -m"))
                              "/opt/homebrew/bin/sbcl --dynamic-space-size 40Gb"
                            "/usr/local/bin/sbcl"))
+
+  (setq slime-completion-at-point-functions
+        '(;; slime-c-p-c-completion-at-point ;; this one has issue
+          slime-filename-completion
+          slime-simple-completion-at-point))
   
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
