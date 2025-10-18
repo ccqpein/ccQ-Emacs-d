@@ -33,6 +33,17 @@
          (append gpt-system-prompts ;; custom prompts
                  chatgpt-shell-system-prompts))))
 
+(use-package acp
+  :straight (:host github :repo "xenodium/acp.el"))
+
+(use-package agent-shell
+  :straight (:host github :repo "xenodium/agent-shell")
+  :custom
+  (agent-shell-google-authentication
+   (agent-shell-google-make-authentication
+    :api-key
+    (exec-path-from-shell-copy-env "GEMINI_API_KEY"))))
+
 (use-package mcp-hub
   :straight (:host github :repo "lizqwerscott/mcp.el")
   :custom (mcp-hub-servers
