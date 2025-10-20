@@ -29,7 +29,8 @@
      (dot . t)
      (python . t)
      (lisp . t)
-     (shell . t)))
+     (shell . t)
+     (sql . t)))
   (tab-width 8)
 
   ;; capture templates
