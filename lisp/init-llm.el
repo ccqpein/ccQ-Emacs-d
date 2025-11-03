@@ -6,7 +6,12 @@
   :custom
   (shell-maker-transcript-default-path "~/Desktop/Org/GPT-transcript")
   (shell-maker-forget-file-after-clear t)
-  )
+
+  ;;; these bindings will make effect on chatgpt and agent shell
+  :bind
+  (:map shell-maker-mode-map
+        ("s-<return>" . shell-maker-submit)
+        ("<return>" . newline)))
 
 (use-package chatgpt-shell
   :custom
@@ -23,8 +28,6 @@
 
   :bind
   (:map chatgpt-shell-mode-map
-        ("s-<return>" . chatgpt-shell-submit)
-        ("<return>" . chatgpt-shell-newline)
         ("C-c M-o" . chatgpt-shell-clear-buffer))
 
   :config
