@@ -24,7 +24,7 @@
   
   ;; use nil as the default
   (chatgpt-shell-system-prompt nil)
-  (chatgpt-shell-model-version "gemini-2.5-flash")
+  (chatgpt-shell-model-version "gemini-3-flash-preview")
 
   :bind
   (:map chatgpt-shell-mode-map
@@ -44,8 +44,8 @@
   :custom
   (agent-shell-google-authentication
    (agent-shell-google-make-authentication
-    :api-key
-    (exec-path-from-shell-copy-env "GEMINI_API_KEY"))))
+    :none t)))
+  
 
 (use-package mcp-hub
   :straight (:host github :repo "lizqwerscott/mcp.el")
