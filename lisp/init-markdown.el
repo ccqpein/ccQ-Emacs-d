@@ -16,8 +16,9 @@ because lsp-completion-at-point is exclusive"
 
 (use-package flyspell
   :hook ((markdown-mode . flyspell-mode)
-         (org-mode . flyspell-mode)
-         (text-mode . flyspell-mode))
+         ;;(org-mode . flyspell-mode)
+         ;;(text-mode . flyspell-mode)
+         )
   :config
   (setq ispell-program-name "aspell"))
 
