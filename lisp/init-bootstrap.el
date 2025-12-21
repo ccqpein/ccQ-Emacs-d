@@ -32,6 +32,7 @@
    "rust-analyzer" ;; for rust lsp
    "ruff" ;; for python lsp
    "uv"
+   "aspell"
    ))
 
 (provide 'init-bootstrap)

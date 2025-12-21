@@ -138,6 +138,7 @@
  '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
  '(recentf-max-saved-items 10)
  '(send-mail-function 'mailclient-send-it)
+ '(text-mode-ispell-word-completion nil)
  '(visible-bell nil)
  '(warning-suppress-types '((comp))))
 (custom-set-faces

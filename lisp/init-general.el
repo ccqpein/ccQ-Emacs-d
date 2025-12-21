@@ -58,6 +58,7 @@
   :custom
   (corfu-cycle t)
   (corfu-auto t)
+  ;;(corfu-auto-prefix 2)
   (corfu-separator ?\s)
   (corfu-quit-at-boundary nil)
   (corfu-quit-no-match t)
