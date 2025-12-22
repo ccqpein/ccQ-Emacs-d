@@ -12,19 +12,31 @@ because lsp-completion-at-point is exclusive"
 
 (use-package markdown-mode
   :hook
-  ((lsp-managed-mode . my/markdown-capf-setup)))
-
-(use-package flyspell
-  :hook ((markdown-mode . flyspell-mode)
-         ;;(org-mode . flyspell-mode)
-         ;;(text-mode . flyspell-mode)
-         )
+  ((lsp-managed-mode . my/markdown-capf-setup))
+  
+  :bind (:map markdown-mode-map
+              ("C-;" . flyspell-correct-wrapper)
+              ("C-'" . flyspell-buffer)
+              )
   :config
-  (setq ispell-program-name "aspell"))
+  (setq ispell-program-name "aspell")
+  )
+
+;;; flyspell mode enable will lag my emacs
+;;; manually run the flyspell-buffer instead the on-fly check
+(use-package flyspell
+  ;; :hook (;;(markdown-mode . flyspell-mode)
+  ;;        ;;(org-mode . flyspell-mode)
+  ;;        ;;(text-mode . flyspell-mode)
+  ;;        )
+  :config
+  (setq ispell-program-name "aspell")
+  )
 
 (use-package flyspell-correct
-  :after flyspell
-  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+  ;; :bind (:map flyspell-mode-map
+  ;;             ("C-;" . flyspell-correct-wrapper))
+  )
 
 (use-package flyspell-correct-helm
   :after flyspell-correct)
