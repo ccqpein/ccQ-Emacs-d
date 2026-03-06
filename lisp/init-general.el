@@ -12,12 +12,12 @@
    ("C-c M-\\" . mc/mark-all-in-region))
   )
 
-;;;;;;;; expand-region ;;;;;;;;;;;;;;;
-(use-package expand-region
-  :bind ("C-@" . er/expand-region)
-  
-  :config
-  (delete-selection-mode 1))
+;;;;;;;; expreg (replace the expand-region) ;;;;;;;;;;;
+(use-package expreg
+  :straight (expreg :type git :host github :repo "casouri/expreg")
+  :bind (("C-=" . expreg-expand)
+         ("C--" . expreg-contract))
+  )
 
 ;;;;;;;; highlight-symbol ;;;;;;;;;;;;;;;;;;
 (use-package highlight-symbol
