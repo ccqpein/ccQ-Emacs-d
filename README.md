@@ -123,11 +123,14 @@ For me, I just make `~/.authinfo` like
 
 `machine api.github.com login {username}^forge password {github_token}`
 
-### About tree-sitter (treesit) ###
+### About tree-sitter (treesit)
 
-**CAUTION: not stable yet**
+#### Method 1
 
 I use [tree-sitter-module](https://github.com/casouri/tree-sitter-module.git) build the `tree-sitter` libraries. 
 
-Then move the `dylib` files to the `treesit-extra-load-path` (`"~/.emacs.d/tree-sitter-libs/")`, which set in `lisp/init-custom.el`)
+Then move the `dylib` files to the `treesit-extra-load-path` (`~/.emacs.d/tree-sitter-libs/`, which set in `lisp/init-others.el`)
 
+#### Method 2
+
+Use the command `M-x treesit-install-language-grammar` to install the `dylib` in `~/.emacs.d/tree-sitter`.
