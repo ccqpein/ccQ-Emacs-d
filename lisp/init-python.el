@@ -6,7 +6,6 @@
   (elpy-enable)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   
-  ;; for ts mode, has to add the hook here 2023/11/11
   :hook (python-ts-mode . elpy-mode)
   
   :custom

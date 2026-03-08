@@ -134,3 +134,16 @@ Then move the `dylib` files to the `treesit-extra-load-path` (`~/.emacs.d/tree-s
 #### Method 2
 
 Use the command `M-x treesit-install-language-grammar` to install the `dylib` in `~/.emacs.d/tree-sitter`.
+
+#### Method 3
+
+`treesit-auto` install the grammar. (still need the treesit mode config)
+
+```elisp
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+```

@@ -7,14 +7,14 @@
 (use-package treesit
   :straight nil
   :when (treesit-available-p)
-  :init
-  (setq ;;treesit-extra-load-path '("~/.emacs.d/tree-sitter-libs/")
-        major-mode-remap-alist
-        '((python-mode . python-ts-mode)
-          (rust-mode . rust-ts-mode)
-          (go-mode . go-ts-mode)
-          (conf-toml-mode . toml-ts-mode)
-          ))
+  ;; :init
+  ;; (setq ;;treesit-extra-load-path '("~/.emacs.d/tree-sitter-libs/")
+  ;;       major-mode-remap-alist
+  ;;       '((python-mode . python-ts-mode)
+  ;;         (rust-mode . rust-ts-mode)
+  ;;         (go-mode . go-ts-mode)
+  ;;         (conf-toml-mode . toml-ts-mode)
+  ;;         ))
   
   :config
   (dolist (queryS '((rust-ts-mode . "rust")
@@ -24,5 +24,12 @@
     (add-to-list 'dash-at-point-mode-alist queryS)
     ))
 
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-skip-modules '(markdown))
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 
 (provide 'init-others)
