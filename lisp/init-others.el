@@ -28,7 +28,7 @@
   :custom
   (treesit-auto-install 'prompt)
   :config
-  (treesit-auto-skip-modules '(markdown))
+  (delete 'markdown treesit-auto-langs)
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 

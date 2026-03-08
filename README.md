@@ -144,6 +144,7 @@ Use the command `M-x treesit-install-language-grammar` to install the `dylib` in
   :custom
   (treesit-auto-install 'prompt)
   :config
+  (delete 'markdown treesit-auto-langs) ;; <- I like old markdown mode
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 ```
