@@ -18,6 +18,8 @@
   )
 
 (use-package go-ts-mode
+  :custom
+  (go-ts-mode-indent-offset 4)
   :hook
   ((go-ts-mode . hs-minor-mode)
    (go-ts-mode . yas-minor-mode)
