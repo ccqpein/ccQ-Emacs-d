@@ -23,6 +23,8 @@
    (go-ts-mode . lsp-deferred)
    (rust-mode . lsp-deferred)
    (rust-ts-mode . lsp-deferred)
+   (json-mode . lsp-deferred)
+   (json-ts-mode . lsp-deferred)
    
    (lsp-completion-mode . lsp-mode-setup-completion)
    )
@@ -77,6 +79,7 @@
                                     'swift-mode
                                     ;;'js-mode
                                     'json-mode
+                                    'json-ts-mode
                                     'conf-toml-mode 'toml-ts-mode
                                     'python-ts-mode
                                     )

@@ -2,12 +2,13 @@
 
 ;;;;;; Org mode ;;;;;;;;;;
 (use-package org
-  :ensure org-plus-contrib
   :hook
   (
    (org-mode . org-indent-mode)
    (org-mode . visual-line-mode)
    ;;(org-mode . ejira-mode)
+   (org-mode . org-superstar-mode)
+   (org-mode . org-appear-mode)
    )
   
   :bind
@@ -61,7 +62,7 @@
                 (eq type 'verbatim)
                 (eq type 'strike-through))
             (progn
-              (goto-char (- (org-element-property :end element) 1))
+              (goto-char (- (org-element-property :end element) 2))
               (delete-char 1)
               (goto-char (org-element-property :begin element))
               (delete-char 1)
@@ -70,5 +71,13 @@
           (call-interactively #'org-emphasize)))))
   
   (global-set-key [remap org-emphasize] #'toggle-emphasis))
+
+(use-package org-contrib)
+
+(use-package org-superstar)
+
+(use-package org-appear
+  :custom
+  (org-appear-delay 1.0))
 
 (provide 'init-org)

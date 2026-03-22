@@ -2,8 +2,6 @@
 
 ;;;;;;;; Rust ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package rust-mode
-  :init (straight-use-package 'cargo)
-  
   :hook
   ((rust-mode . cargo-minor-mode)
    (rust-mode . hs-minor-mode)
@@ -56,8 +54,6 @@
   )
 
 (use-package rust-ts-mode
-  :init (straight-use-package 'cargo)
-
   :hook
   (;;(rust-ts-mode . eldoc-mode)
    (rust-ts-mode . cargo-minor-mode)
@@ -69,5 +65,7 @@
         lsp-rust-analyzer-cargo-load-out-dirs-from-check t
         )
   )
+
+(use-package cargo)
 
 (provide 'init-rust)

@@ -84,6 +84,8 @@
 
 (use-package flycheck
   :init (global-flycheck-mode)
+  :custom
+  (flycheck-disabled-checkers '(org-lint))
   :config
   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
   )
