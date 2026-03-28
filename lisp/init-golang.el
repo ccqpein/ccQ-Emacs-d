@@ -13,7 +13,6 @@
    )
   
   :config
-  (setq-default flycheck-disabled-checkers '(go-staticcheck))
   (require 'dap-dlv-go)
   )
 
@@ -24,9 +23,6 @@
   ((go-ts-mode . hs-minor-mode)
    (go-ts-mode . yas-minor-mode)
    )
-  
-  :config
-  (setq-default flycheck-disabled-checkers '(go-staticcheck))
   )
 
 (provide 'init-golang)

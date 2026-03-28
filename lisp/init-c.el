@@ -21,7 +21,6 @@
                                         (format "/usr/local/Cellar/gcc/%s/lib/gcc/10/gcc/x86_64-apple-darwin19/%s/include"gcc-version gcc-version )
                                         (format "/usr/local/Cellar/gcc/%s/lib/gcc/10/gcc/x86_64-apple-darwin19/%s/include-fixed"gcc-version gcc-version )
                                         ))
-  (setq-default flycheck-disabled-checkers '(c/c++-clang))
   (add-hook 'before-save-hook
             (lambda ()
               (when (derived-mode-p 'c-mode 'c++-mode)
