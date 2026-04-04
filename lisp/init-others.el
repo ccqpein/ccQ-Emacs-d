@@ -29,6 +29,7 @@
   (treesit-auto-install 'prompt)
   :config
   (delete 'markdown treesit-auto-langs)
+  (delete 'rust treesit-auto-langs) ;; rust-ts-mode not ready to me yet
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
