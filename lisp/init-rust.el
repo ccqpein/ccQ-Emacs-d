@@ -64,7 +64,18 @@
   (setq lsp-rust-analyzer-proc-macro-enable t
         lsp-rust-analyzer-cargo-load-out-dirs-from-check t
         )
+
+
+  ;;(add-hook 'rust-ts-mode-hook #'my-rust-ts-indent-fix)
   )
+
+;; (with-eval-after-load 'rust-ts-mode
+;;   (let ((current-rules (alist-get 'rust rust-ts-mode--indent-rules)))
+;;     (setq rust-ts-mode--indent-rules
+;;           `((rust . ,(append '(((node-is "where_clause") parent-bol 0)
+;;                                ((node-is "where") parent-bol 0)
+;;                                ((parent-is "where_clause") parent-bol rust-ts-indent-offset))
+;;                              current-rules))))))
 
 (use-package cargo)
 

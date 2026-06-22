@@ -30,6 +30,7 @@
   :config
   (delete 'markdown treesit-auto-langs)
   (delete 'rust treesit-auto-langs) ;; rust-ts-mode not ready to me yet
+  (delete 'go treesit-auto-langs) ;; go-ts-mode has the same issue
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
