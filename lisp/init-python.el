@@ -2,11 +2,9 @@
 
 ;;;;;;;;pythono-mode;;;;;;;;;;;;;;;;;;
 (use-package elpy
-  :init
-  (elpy-enable)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  
-  :hook (python-ts-mode . elpy-mode)
+  :hook
+  ((python-ts-mode . elpy-mode)
+   (python-mode . elpy-mode))
   
   :custom
   (python-shell-completion-native-enable nil)
@@ -23,6 +21,8 @@
         ("M-." . nil))
   
   :config
+  (elpy-enable)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (straight-use-package 'py-autopep8)
   (setenv "PYTHONIOENCODING" "utf-8")
   (add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))

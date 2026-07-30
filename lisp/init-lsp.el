@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package lsp-mode
+  :defer t
   :init
   (setq lsp-keymap-prefix "C-c l")
   (defun lsp-mode-setup-completion ()

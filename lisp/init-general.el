@@ -83,6 +83,7 @@
   )
 
 (use-package flycheck
+  :defer t
   :init
   (global-flycheck-mode 1)
   :config
@@ -141,6 +142,7 @@
 (global-set-key (kbd "C-x 5 2") 'tear-off-window)
 
 (use-package bm
+  :defer t
   :init
   (setq bm-restore-repository-on-load t)
 

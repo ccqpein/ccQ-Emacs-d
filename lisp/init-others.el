@@ -7,14 +7,6 @@
 (use-package treesit
   :straight nil
   :when (treesit-available-p)
-  ;; :init
-  ;; (setq ;;treesit-extra-load-path '("~/.emacs.d/tree-sitter-libs/")
-  ;;       major-mode-remap-alist
-  ;;       '((python-mode . python-ts-mode)
-  ;;         (rust-mode . rust-ts-mode)
-  ;;         (go-mode . go-ts-mode)
-  ;;         (conf-toml-mode . toml-ts-mode)
-  ;;         ))
   
   :config
   (dolist (queryS '((rust-ts-mode . "rust")
