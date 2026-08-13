@@ -207,4 +207,9 @@
 ;;     (my-adjust-default-face-for-frame (selected-frame))
 ;;     (add-hook 'after-make-frame-functions #'my-adjust-default-face-for-frame)))
 
+(use-package jj-diff
+  :defer t
+  :straight (:host github :repo "ccqpein/jj-diff.el")
+  :bind (("C-c j d" . jj-diff)))
+
 (provide 'init-general)
