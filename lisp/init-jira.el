@@ -2,6 +2,7 @@
 
 (use-package ejira
   :straight (ejira :type git :host github :repo "nyyManni/ejira")
+  :defer t
   :init
   (setq jiralib2-url              (getenv "JIRA_URL")
         jiralib2-auth             'token

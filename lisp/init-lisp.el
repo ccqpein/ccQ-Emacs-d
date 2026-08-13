@@ -5,19 +5,25 @@
   :straight (slime-cape :type git :host github :repo "ccqpein/slime-cape")
   :hook
   (slime . slime-cape)
-  (slime-repl . slime-cape)
-  )
+  (slime-repl . slime-cape))
 
 (use-package paredit
-  :hook (lisp-mode . paredit))
+  :hook ((emacs-lisp-mode
+          lisp-mode
+          lisp-interaction-mode
+          slime-repl-mode)
+         . enable-paredit-mode))
 
 (use-package slime
+  :hook
+  ((lisp-mode . hs-minor-mode)
+   (slime-repl-mode . override-slime-repl-bindings-with-paredit))
+      
   :config
   (slime-setup '(slime-fancy slime-repl slime-scratch slime-trace-dialog slime-cl-indent slime-cape))
 
   ;; define some helper functions below after slime load
-  
-  ;;Stop SLIME's REPL from grabbing DEL, which is annoying when backspacing over a '('
+  ;; Stop SLIME's REPL from grabbing DEL, which is annoying when backspacing over a '('
   (defun override-slime-repl-bindings-with-paredit ()
     (define-key slime-repl-mode-map
                 (read-kbd-macro paredit-backward-delete-key)
@@ -44,18 +50,7 @@ ignore the first line `#!` because sometimes it is script"
   (setq slime-completion-at-point-functions
         '(;; slime-c-p-c-completion-at-point ;; this one has issue
           slime-filename-completion
-          slime-simple-completion-at-point))
-  
-  (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-
-  (add-hook 'lisp-mode-hook 'enable-paredit-mode)
-  (add-hook 'lisp-mode-hook 'hs-minor-mode)
-    
-  (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-  (add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
-  (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
-  )
+          slime-simple-completion-at-point)))
 
 
 ;;;;;;;;; Clojure ;;;;;;;;;;;;
