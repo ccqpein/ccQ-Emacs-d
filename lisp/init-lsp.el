@@ -22,8 +22,8 @@
    (python-ts-mode . lsp-deferred)
    (go-mode . lsp-deferred)
    (go-ts-mode . lsp-deferred)
-   ;; (rust-mode . lsp-deferred)   ; migrated to eglot
-   ;; (rust-ts-mode . lsp-deferred) ; migrated to eglot
+   (rust-mode . lsp-deferred)
+   (rust-ts-mode . lsp-deferred)
    (json-mode . lsp-deferred)
    (json-ts-mode . lsp-deferred)
    
@@ -74,8 +74,8 @@
   
   (add-hook 'before-save-hook
             (lambda ()
-              (when (derived-mode-p ;; 'rust-mode
-                                    ;; 'rust-ts-mode
+              (when (derived-mode-p 'rust-mode
+                                    'rust-ts-mode
                                     'go-ts-mode 'go-mode
                                     'swift-mode
                                     ;;'js-mode
@@ -90,7 +90,7 @@
                 (lsp-format-buffer))))
   (setq 
    lsp-go-env '((GOFLAGS . "-tags=integration"))
-   ;; lsp-rust-features "all"
+   lsp-rust-features "all"
    )
   )
 
@@ -163,7 +163,5 @@
    ("C-c l t t" . lsp-treemacs-type-hierarchy)
    ("C-c l t e" . lsp-treemacs-errors-list))
   )
-
-;;; eglot configuration has been moved to init-eglot.el
 
 (provide 'init-lsp)
