@@ -105,6 +105,7 @@
 (require 'init-groovy)
 
 (require 'init-lsp)
+(require 'init-eglot)
 
 (require 'init-c)
 

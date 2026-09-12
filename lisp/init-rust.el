@@ -14,9 +14,10 @@
   
   :config
   (straight-use-package 'dap-mode)
-  (setq lsp-rust-analyzer-proc-macro-enable t
-        lsp-rust-analyzer-cargo-load-out-dirs-from-check t
-        )
+  ;; LSP settings migrated to init-eglot.el
+  ;; (setq lsp-rust-analyzer-proc-macro-enable t
+  ;;       lsp-rust-analyzer-cargo-load-out-dirs-from-check t
+  ;;       )
   
   ;;(require 'dap-gdb-lldb)
   ;;(dap-gdb-lldb-setup)
@@ -61,9 +62,10 @@
    )
 
   :config
-  (setq lsp-rust-analyzer-proc-macro-enable t
-        lsp-rust-analyzer-cargo-load-out-dirs-from-check t
-        )
+  ;; LSP settings migrated to init-eglot.el
+  ;; (setq lsp-rust-analyzer-proc-macro-enable t
+  ;;       lsp-rust-analyzer-cargo-load-out-dirs-from-check t
+  ;;       )
 
 
   ;;(add-hook 'rust-ts-mode-hook #'my-rust-ts-indent-fix)

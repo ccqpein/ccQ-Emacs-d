@@ -86,12 +86,12 @@
   :defer t
   :init
   (global-flycheck-mode 1)
+  (global-flycheck-eglot-mode 1)
   :config
   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
   (setq-default flycheck-disabled-checkers
                 (append flycheck-disabled-checkers
-                        '(org-lint go-staticcheck c/c++-clang)))
-  )
+                        '(org-lint go-staticcheck c/c++-clang))))
 
 (use-package code-it-later-mode
   :straight (code-it-later-mode :type git :host github :repo "ccqpein/code-it-later-mode")
