@@ -44,7 +44,9 @@
   :custom
   (agent-shell-google-authentication
    (agent-shell-google-make-authentication
-    :none t)))
+    :none t))
+  (agent-shell-antigravity-authentication
+   (agent-shell-antigravity-make-authentication :login t)))
   
 
 (use-package mcp-hub

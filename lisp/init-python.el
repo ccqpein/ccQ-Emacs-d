@@ -8,6 +8,7 @@
   
   :custom
   (python-shell-completion-native-enable nil)
+  (python-shell-prompt-detect-enabled nil)
   (python-shell-interpreter "uv")
   (python-shell-interpreter-args "run ipython --simple-prompt -c exec('__import__(\\'readline\\')') -i --pprint")
   (python-shell-prompt-regexp "^In \\[[0-9]+\\]: ")
@@ -21,6 +22,7 @@
         ("M-." . nil))
   
   :config
+  (setq python-shell-setup-code "")
   (elpy-enable)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (straight-use-package 'py-autopep8)
