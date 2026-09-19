@@ -214,18 +214,19 @@
   :bind (("C-c j d" . jj-diff)))
 
 (use-package kirigami
-  :defer
+  :preface
+  (keymap-unset global-map "C-x z")
   :init
   (kirigami-global-mode 1)
 
   :bind
   (
-   ("C-c z o" . kirigami-open-fold)     ; Open fold at point
-   ("C-c z O" . kirigami-open-fold-rec) ; Open fold recursively
-   ("C-c z r" . kirigami-open-folds)    ; Open all folds
-   ("C-c z c" . kirigami-close-fold)    ; Close fold at point
-   ("C-c z m" . kirigami-close-folds)   ; Close all folds
-   ("C-c z a" . kirigami-toggle-fold)   ; Toggle fold at point
+   ("C-x z o" . kirigami-open-fold)     ; Open fold at point
+   ("C-x z O" . kirigami-open-fold-rec) ; Open fold recursively
+   ("C-x z r" . kirigami-open-folds)    ; Open all folds
+   ("C-x z c" . kirigami-close-fold)    ; Close fold at point
+   ("C-x z m" . kirigami-close-folds)   ; Close all folds
+   ("C-x z a" . kirigami-toggle-fold)   ; Toggle fold at point
   )
   
   :custom
