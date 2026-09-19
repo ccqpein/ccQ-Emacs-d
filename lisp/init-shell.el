@@ -15,4 +15,8 @@
 
 (use-package vterm)
 
+(use-package ghostel
+  :custom
+  (ghostel-module-directory "~/.emacs.d/plugins/"))
+
 (provide 'init-shell)

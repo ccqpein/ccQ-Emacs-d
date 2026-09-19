@@ -12,3 +12,4 @@ plugins/jdee-server/
 !install.ros
 *\.elc
 lisp/init-custom.el
+plugins/ghostel-module.dylib
