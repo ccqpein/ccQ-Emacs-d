@@ -23,9 +23,9 @@ eems.sh
 
 Need change configuration to fit your environment
 
-### open-markdown-marked2.sh
+### open-markdown-quickmd.sh
 
-Need Marked 2
+Need QuickMD
 
 ### opam-user-setup ###
 

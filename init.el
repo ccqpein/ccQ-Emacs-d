@@ -134,7 +134,7 @@
  '(jdee-jdk-registry '(("1.8" . "/Library/Java/Home")))
  '(magit-diff-arguments '("--no-ext-diff" "--stat"))
  '(markdown-command "~/.emacs.d/plugins/open-markdown-to-web.sh")
- '(markdown-open-command "~/.emacs.d/plugins/open-markdown-marked2.sh")
+ '(markdown-open-command "~/.emacs.d/plugins/open-markdown-quickmd.sh")
  '(recentf-max-saved-items 10)
  '(send-mail-function 'mailclient-send-it)
  '(text-mode-ispell-word-completion nil)
